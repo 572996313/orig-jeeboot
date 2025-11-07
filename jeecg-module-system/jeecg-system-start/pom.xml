@@ -32,6 +32,7 @@
             <version>7.15.0</version>
         </dependency>-->
 
+        <!-- spring boot 监测工具 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-properties-migrator</artifactId>
