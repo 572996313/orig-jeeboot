@@ -1,0 +1,136 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.mybatis-plus",
+      "type": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties",
+      "sourceType": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties",
+      "description": "MyBatis-Plus增强配置"
+    },
+    {
+      "name": "jeecg.mybatis-plus.tenant",
+      "type": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties$TenantProperties",
+      "sourceType": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties",
+      "description": "多租户配置"
+    },
+    {
+      "name": "jeecg.mybatis-plus.dynamic-table",
+      "type": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties$DynamicTableProperties",
+      "sourceType": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties",
+      "description": "动态表名配置"
+    },
+    {
+      "name": "jeecg.mybatis-plus.interceptor",
+      "type": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties$InterceptorProperties",
+      "sourceType": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties",
+      "description": "SQL拦截器配置"
+    },
+    {
+      "name": "jeecg.mybatis-plus.pagination",
+      "type": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties$PaginationProperties",
+      "sourceType": "org.jeecg.config.mybatis.JeecgMybatisPlusProperties",
+      "description": "分页配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.mybatis-plus.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用MyBatis-Plus增强功能",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.mybatis-plus.tenant.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用多租户",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.mybatis-plus.tenant.column",
+      "type": "java.lang.String",
+      "description": "租户字段名",
+      "defaultValue": "tenant_id"
+    },
+    {
+      "name": "jeecg.mybatis-plus.tenant.tables",
+      "type": "java.lang.String[]",
+      "description": "需要进行租户隔离的表"
+    },
+    {
+      "name": "jeecg.mybatis-plus.tenant.ignore-tables",
+      "type": "java.lang.String[]",
+      "description": "排除的表(不进行租户隔离)"
+    },
+    {
+      "name": "jeecg.mybatis-plus.dynamic-table.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用动态表名",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.mybatis-plus.dynamic-table.prefix",
+      "type": "java.lang.String",
+      "description": "动态表名前缀",
+      "defaultValue": ""
+    },
+    {
+      "name": "jeecg.mybatis-plus.dynamic-table.suffix",
+      "type": "java.lang.String",
+      "description": "动态表名后缀",
+      "defaultValue": ""
+    },
+    {
+      "name": "jeecg.mybatis-plus.interceptor.sql-performance",
+      "type": "java.lang.Boolean",
+      "description": "是否启用SQL性能分析",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.mybatis-plus.interceptor.max-time",
+      "type": "java.lang.Long",
+      "description": "SQL性能分析最大执行时间(ms)",
+      "defaultValue": 3000
+    },
+    {
+      "name": "jeecg.mybatis-plus.interceptor.format",
+      "type": "java.lang.Boolean",
+      "description": "是否格式化SQL",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.mybatis-plus.interceptor.optimistic-locker",
+      "type": "java.lang.Boolean",
+      "description": "是否启用乐观锁插件",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.mybatis-plus.interceptor.data-change",
+      "type": "java.lang.Boolean",
+      "description": "是否启用数据变更记录",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.mybatis-plus.pagination.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用分页插件",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.mybatis-plus.pagination.max-limit",
+      "type": "java.lang.Long",
+      "description": "单页最大记录数(默认500条,-1不限制)",
+      "defaultValue": 500
+    },
+    {
+      "name": "jeecg.mybatis-plus.pagination.overflow",
+      "type": "java.lang.Boolean",
+      "description": "溢出总页数后是否进行处理",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.mybatis-plus.pagination.reasonable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用分页合理化(pageNum<=0时查询第一页,pageNum>pages查询最后一页)",
+      "defaultValue": true
+    }
+  ]
+}

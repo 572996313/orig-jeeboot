@@ -1,0 +1,138 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.datasource",
+      "type": "org.jeecg.config.datasource.JeecgDatasourceProperties",
+      "sourceType": "org.jeecg.config.datasource.JeecgDatasourceProperties",
+      "description": "Jeecg数据源配置属性"
+    },
+    {
+      "name": "jeecg.datasource.druid",
+      "type": "org.jeecg.config.datasource.JeecgDatasourceProperties$DruidProperties",
+      "sourceType": "org.jeecg.config.datasource.JeecgDatasourceProperties",
+      "description": "Druid数据源配置"
+    },
+    {
+      "name": "jeecg.datasource.dynamic",
+      "type": "org.jeecg.config.datasource.JeecgDatasourceProperties$DynamicProperties",
+      "sourceType": "org.jeecg.config.datasource.JeecgDatasourceProperties",
+      "description": "动态数据源配置"
+    },
+    {
+      "name": "jeecg.datasource.cors",
+      "type": "org.jeecg.config.datasource.JeecgDatasourceProperties$CorsProperties",
+      "sourceType": "org.jeecg.config.datasource.JeecgDatasourceProperties",
+      "description": "CORS跨域配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.datasource.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用数据源配置",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.druid.stat-view-servlet",
+      "type": "java.lang.Boolean",
+      "description": "是否启用Druid监控页面",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.druid.stat-view-servlet-url-pattern",
+      "type": "java.lang.String",
+      "description": "Druid监控页面访问路径",
+      "defaultValue": "/druid/*"
+    },
+    {
+      "name": "jeecg.datasource.druid.stat-view-servlet-login-username",
+      "type": "java.lang.String",
+      "description": "Druid监控页面登录用户名",
+      "defaultValue": "admin"
+    },
+    {
+      "name": "jeecg.datasource.druid.stat-view-servlet-login-password",
+      "type": "java.lang.String",
+      "description": "Druid监控页面登录密码",
+      "defaultValue": "123456"
+    },
+    {
+      "name": "jeecg.datasource.druid.web-stat-filter",
+      "type": "java.lang.Boolean",
+      "description": "是否启用Web监控",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.druid.web-stat-filter-exclusions",
+      "type": "java.lang.String",
+      "description": "Web监控排除的URL路径",
+      "defaultValue": "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+    },
+    {
+      "name": "jeecg.datasource.druid.wall-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用SQL防火墙",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.druid.multi-statement-allow",
+      "type": "java.lang.Boolean",
+      "description": "是否允许执行多条SQL语句",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.dynamic.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用动态数据源",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.datasource.dynamic.cache",
+      "type": "java.lang.Boolean",
+      "description": "是否启用数据源缓存",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.dynamic.cache-expire-minutes",
+      "type": "java.lang.Integer",
+      "description": "数据源缓存过期时间（分钟）",
+      "defaultValue": 30
+    },
+    {
+      "name": "jeecg.datasource.cors.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用CORS跨域",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "允许跨域的源",
+      "defaultValue": "*"
+    },
+    {
+      "name": "jeecg.datasource.cors.allowed-methods",
+      "type": "java.lang.String",
+      "description": "允许的HTTP方法",
+      "defaultValue": "GET,POST,PUT,DELETE,OPTIONS"
+    },
+    {
+      "name": "jeecg.datasource.cors.allowed-headers",
+      "type": "java.lang.String",
+      "description": "允许的HTTP请求头",
+      "defaultValue": "*"
+    },
+    {
+      "name": "jeecg.datasource.cors.allow-credentials",
+      "type": "java.lang.Boolean",
+      "description": "是否允许携带凭证",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.datasource.cors.max-age",
+      "type": "java.lang.Long",
+      "description": "预检请求缓存时间（秒）",
+      "defaultValue": 3600
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.security",
+      "type": "org.jeecg.config.security.JeecgSecurityProperties",
+      "sourceType": "org.jeecg.config.security.JeecgSecurityProperties",
+      "description": "Jeecg Security 安全认证配置"
+    },
+    {
+      "name": "jeecg.security.shiro",
+      "type": "org.jeecg.config.security.JeecgSecurityProperties$ShiroProperties",
+      "sourceType": "org.jeecg.config.security.JeecgSecurityProperties",
+      "description": "Shiro 安全框架配置"
+    },
+    {
+      "name": "jeecg.security.jwt",
+      "type": "org.jeecg.config.security.JeecgSecurityProperties$JwtProperties",
+      "sourceType": "org.jeecg.config.security.JeecgSecurityProperties",
+      "description": "JWT 令牌配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.security.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用安全认证",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.security.shiro.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用 Shiro",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.security.shiro.exclude-urls",
+      "type": "java.lang.String",
+      "description": "排除拦截的 URL，逗号分隔",
+      "defaultValue": "/sys/login,/sys/logout,/sys/cas/client/validateLogin"
+    },
+    {
+      "name": "jeecg.security.shiro.url-permission-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用 URL 权限控制",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.security.jwt.secret",
+      "type": "java.lang.String",
+      "description": "JWT 密钥",
+      "defaultValue": "jiangbo-secret-key"
+    },
+    {
+      "name": "jeecg.security.jwt.expire-time",
+      "type": "java.lang.Long",
+      "description": "JWT 过期时间（秒），默认 7 天",
+      "defaultValue": 604800
+    },
+    {
+      "name": "jeecg.security.jwt.token-header",
+      "type": "java.lang.String",
+      "description": "Token 请求头名称",
+      "defaultValue": "X-Access-Token"
+    }
+  ]
+}

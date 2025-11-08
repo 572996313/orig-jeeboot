@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jeecgframework.boot</groupId>
+        <artifactId>jeecg-boot-parent</artifactId>
+        <version>4.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>jeecg-boot-base-core</artifactId>
+    <packaging>jar</packaging>
+    <name>JeecgBoot Base Core (Aggregator)</name>
+    <description>
+        JeecgBoot 核心基础模块聚合包 - 向后兼容层
+        
+        本模块聚合了所有拆分后的子模块，保持与原 jeecg-boot-base-core 的API兼容性。
+        现有项目可以继续使用本模块，无需修改代码。
+        新项目建议按需引入具体的子模块。
+        
+        包含的子模块：
+        - jeecg-boot-base-constants (常量定义)
+        - jeecg-boot-base-api (API接口)
+        - jeecg-boot-base-utils (工具类)
+        - jeecg-boot-base-core-lite (轻量核心)
+        - jeecg-boot-starter-security (安全认证)
+        - jeecg-boot-starter-datasource (数据源)
+        - jeecg-boot-starter-mybatis-plus (MyBatis增强)
+        - jeecg-boot-starter-oss (对象存储)
+        - jeecg-boot-starter-api-doc (API文档)
+        - jeecg-boot-starter-excel (Excel处理)
+        - jeecg-boot-starter-desensitization (数据脱敏)
+        - jeecg-boot-starter-communication (通信服务)
+        - jeecg-boot-starter-elasticsearch (搜索引擎)
+        - jeecg-boot-starter-web (Web增强)
+    </description>
+
+    <properties>
+        <jeecg.version>4.0.0</jeecg.version>
+    </properties>
+
+    <dependencies>
+        <!-- ========================================= -->
+        <!-- 必选依赖 - 核心基础模块                      -->
+        <!-- ========================================= -->
+        
+        <!-- 常量定义模块 -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-base-constants</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- API接口定义模块 -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-base-api</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- 工具类模块 -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-base-utils</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- 轻量核心模块 -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-base-core-lite</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- ========================================= -->
+        <!-- 功能Starter模块 - 默认全部包含以保持兼容性      -->
+        <!-- ========================================= -->
+
+        <!-- 安全认证Starter (Shiro + JWT) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-security</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- 数据源Starter (Druid + 动态数据源) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-datasource</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- MyBatis-Plus增强Starter -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-mybatis-plus</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- 对象存储Starter (MinIO/阿里云OSS) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-oss</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- API文档Starter (Swagger/Knife4j) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-api-doc</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- Excel处理Starter (EasyPoi) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-excel</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- 数据脱敏Starter -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-desensitization</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- 通信服务Starter (邮件/短信/WebSocket) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-communication</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- Elasticsearch Starter -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+
+        <!-- Web增强Starter (CORS/防火墙/日志/异常处理) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-boot-starter-web</artifactId>
+            <version>${jeecg.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Source Plugin - 生成源码包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Javadoc Plugin - 生成文档 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <charset>UTF-8</charset>
+                    <docencoding>UTF-8</docencoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,179 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.oss",
+      "type": "org.jeecg.config.oss.JeecgOssProperties",
+      "sourceType": "org.jeecg.config.oss.JeecgOssProperties",
+      "description": "JeecgBoot对象存储配置"
+    },
+    {
+      "name": "jeecg.oss.minio",
+      "type": "org.jeecg.config.oss.JeecgOssProperties$MinioProperties",
+      "sourceType": "org.jeecg.config.oss.JeecgOssProperties",
+      "description": "MinIO配置"
+    },
+    {
+      "name": "jeecg.oss.aliyun",
+      "type": "org.jeecg.config.oss.JeecgOssProperties$AliyunProperties",
+      "sourceType": "org.jeecg.config.oss.JeecgOssProperties",
+      "description": "阿里云OSS配置"
+    },
+    {
+      "name": "jeecg.minio",
+      "type": "org.jeecg.config.oss.MinioConfig",
+      "sourceType": "org.jeecg.config.oss.MinioConfig",
+      "description": "MinIO配置（已过时，请使用jeecg.oss.minio）",
+      "deprecated": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.oss.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用OSS功能",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.oss.type",
+      "type": "java.lang.String",
+      "description": "OSS类型：minio, aliyun, local",
+      "defaultValue": "minio"
+    },
+    {
+      "name": "jeecg.oss.endpoint",
+      "type": "java.lang.String",
+      "description": "OSS服务端点"
+    },
+    {
+      "name": "jeecg.oss.access-key",
+      "type": "java.lang.String",
+      "description": "访问密钥ID"
+    },
+    {
+      "name": "jeecg.oss.secret-key",
+      "type": "java.lang.String",
+      "description": "访问密钥Secret"
+    },
+    {
+      "name": "jeecg.oss.bucket-name",
+      "type": "java.lang.String",
+      "description": "默认存储桶名称"
+    },
+    {
+      "name": "jeecg.oss.static-domain",
+      "type": "java.lang.String",
+      "description": "静态资源域名（CDN域名）"
+    },
+    {
+      "name": "jeecg.oss.local-path",
+      "type": "java.lang.String",
+      "description": "本地存储路径",
+      "defaultValue": "./upload"
+    },
+    {
+      "name": "jeecg.oss.auto-create-bucket",
+      "type": "java.lang.Boolean",
+      "description": "是否自动创建存储桶",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.oss.minio.endpoint",
+      "type": "java.lang.String",
+      "description": "MinIO服务端点"
+    },
+    {
+      "name": "jeecg.oss.minio.access-key",
+      "type": "java.lang.String",
+      "description": "MinIO访问密钥"
+    },
+    {
+      "name": "jeecg.oss.minio.secret-key",
+      "type": "java.lang.String",
+      "description": "MinIO访问密钥Secret"
+    },
+    {
+      "name": "jeecg.oss.minio.bucket-name",
+      "type": "java.lang.String",
+      "description": "MinIO存储桶名称"
+    },
+    {
+      "name": "jeecg.oss.aliyun.endpoint",
+      "type": "java.lang.String",
+      "description": "阿里云OSS端点"
+    },
+    {
+      "name": "jeecg.oss.aliyun.access-key-id",
+      "type": "java.lang.String",
+      "description": "阿里云访问密钥ID"
+    },
+    {
+      "name": "jeecg.oss.aliyun.access-key-secret",
+      "type": "java.lang.String",
+      "description": "阿里云访问密钥Secret"
+    },
+    {
+      "name": "jeecg.oss.aliyun.bucket-name",
+      "type": "java.lang.String",
+      "description": "阿里云OSS存储桶名称"
+    },
+    {
+      "name": "jeecg.minio.minio_url",
+      "type": "java.lang.String",
+      "description": "MinIO服务地址（已过时）",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.oss.endpoint",
+        "reason": "请使用新的配置格式"
+      }
+    },
+    {
+      "name": "jeecg.minio.minio_name",
+      "type": "java.lang.String",
+      "description": "MinIO访问密钥（已过时）",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.oss.access-key",
+        "reason": "请使用新的配置格式"
+      }
+    },
+    {
+      "name": "jeecg.minio.minio_pass",
+      "type": "java.lang.String",
+      "description": "MinIO访问密钥Secret（已过时）",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.oss.secret-key",
+        "reason": "请使用新的配置格式"
+      }
+    },
+    {
+      "name": "jeecg.minio.bucket_name",
+      "type": "java.lang.String",
+      "description": "MinIO存储桶名称（已过时）",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.oss.bucket-name",
+        "reason": "请使用新的配置格式"
+      }
+    }
+  ],
+  "hints": [
+    {
+      "name": "jeecg.oss.type",
+      "values": [
+        {
+          "value": "minio",
+          "description": "使用MinIO对象存储"
+        },
+        {
+          "value": "aliyun",
+          "description": "使用阿里云OSS"
+        },
+        {
+          "value": "local",
+          "description": "使用本地文件系统存储"
+        }
+      ]
+    }
+  ]
+}

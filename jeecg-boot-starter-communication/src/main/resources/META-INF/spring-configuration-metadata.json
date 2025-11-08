@@ -1,0 +1,140 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.communication",
+      "type": "org.jeecg.common.communication.config.JeecgCommunicationProperties",
+      "sourceType": "org.jeecg.common.communication.config.JeecgCommunicationProperties",
+      "description": "JeecgBoot通信模块配置"
+    },
+    {
+      "name": "jeecg.communication.email",
+      "type": "org.jeecg.common.communication.config.JeecgCommunicationProperties$EmailConfig",
+      "sourceType": "org.jeecg.common.communication.config.JeecgCommunicationProperties",
+      "description": "邮件服务配置"
+    },
+    {
+      "name": "jeecg.communication.sms",
+      "type": "org.jeecg.common.communication.config.JeecgCommunicationProperties$SmsConfig",
+      "sourceType": "org.jeecg.common.communication.config.JeecgCommunicationProperties",
+      "description": "短信服务配置"
+    },
+    {
+      "name": "jeecg.communication.websocket",
+      "type": "org.jeecg.common.communication.config.JeecgCommunicationProperties$WebSocketConfig",
+      "sourceType": "org.jeecg.common.communication.config.JeecgCommunicationProperties",
+      "description": "WebSocket服务配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.communication.email.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用邮件服务"
+    },
+    {
+      "name": "jeecg.communication.email.from",
+      "type": "java.lang.String",
+      "description": "发件人邮箱地址"
+    },
+    {
+      "name": "jeecg.communication.email.from-name",
+      "type": "java.lang.String",
+      "defaultValue": "JeecgBoot",
+      "description": "发件人名称"
+    },
+    {
+      "name": "jeecg.communication.email.template-path",
+      "type": "java.lang.String",
+      "defaultValue": "/templates/email",
+      "description": "邮件模板路径"
+    },
+    {
+      "name": "jeecg.communication.email.encoding",
+      "type": "java.lang.String",
+      "defaultValue": "UTF-8",
+      "description": "邮件编码"
+    },
+    {
+      "name": "jeecg.communication.sms.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用短信服务"
+    },
+    {
+      "name": "jeecg.communication.sms.provider",
+      "type": "java.lang.String",
+      "defaultValue": "aliyun",
+      "description": "短信服务提供商 (aliyun, tencent)"
+    },
+    {
+      "name": "jeecg.communication.sms.access-key",
+      "type": "java.lang.String",
+      "description": "短信服务AccessKey"
+    },
+    {
+      "name": "jeecg.communication.sms.secret-key",
+      "type": "java.lang.String",
+      "description": "短信服务SecretKey"
+    },
+    {
+      "name": "jeecg.communication.sms.sign-name",
+      "type": "java.lang.String",
+      "description": "短信签名"
+    },
+    {
+      "name": "jeecg.communication.sms.rate-limit.max-per-day",
+      "type": "java.lang.Integer",
+      "defaultValue": 10,
+      "description": "每日最大发送次数"
+    },
+    {
+      "name": "jeecg.communication.sms.rate-limit.max-per-hour",
+      "type": "java.lang.Integer",
+      "defaultValue": 5,
+      "description": "每小时最大发送次数"
+    },
+    {
+      "name": "jeecg.communication.sms.rate-limit.interval",
+      "type": "java.lang.Integer",
+      "defaultValue": 60,
+      "description": "发送间隔(秒)"
+    },
+    {
+      "name": "jeecg.communication.websocket.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用WebSocket服务"
+    },
+    {
+      "name": "jeecg.communication.websocket.path",
+      "type": "java.lang.String",
+      "defaultValue": "/websocket/**",
+      "description": "WebSocket访问路径"
+    },
+    {
+      "name": "jeecg.communication.websocket.allowed-origins",
+      "type": "java.lang.String",
+      "defaultValue": "*",
+      "description": "允许的来源"
+    },
+    {
+      "name": "jeecg.communication.websocket.heartbeat.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用心跳检测"
+    },
+    {
+      "name": "jeecg.communication.websocket.heartbeat.interval",
+      "type": "java.lang.Long",
+      "defaultValue": 30,
+      "description": "心跳检测间隔(秒)"
+    },
+    {
+      "name": "jeecg.communication.websocket.heartbeat.timeout-count",
+      "type": "java.lang.Integer",
+      "defaultValue": 3,
+      "description": "心跳超时次数"
+    }
+  ]
+}

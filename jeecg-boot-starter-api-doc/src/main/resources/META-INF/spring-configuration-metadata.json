@@ -1,0 +1,171 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.api-doc",
+      "type": "org.jeecg.config.JeecgApiDocProperties",
+      "sourceType": "org.jeecg.config.JeecgApiDocProperties",
+      "description": "JeecgBoot API文档配置"
+    },
+    {
+      "name": "jeecg.api-doc.contact",
+      "type": "org.jeecg.config.JeecgApiDocProperties$Contact",
+      "sourceType": "org.jeecg.config.JeecgApiDocProperties",
+      "description": "API文档联系人信息"
+    },
+    {
+      "name": "jeecg.api-doc.license",
+      "type": "org.jeecg.config.JeecgApiDocProperties$License",
+      "sourceType": "org.jeecg.config.JeecgApiDocProperties",
+      "description": "API文档许可证信息"
+    },
+    {
+      "name": "jeecg.api-doc.knife4j",
+      "type": "org.jeecg.config.JeecgApiDocProperties$Knife4j",
+      "sourceType": "org.jeecg.config.JeecgApiDocProperties",
+      "description": "Knife4j增强配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.api-doc.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用API文档",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.api-doc.type",
+      "type": "java.lang.String",
+      "description": "文档类型：swagger3, knife4j, springdoc",
+      "defaultValue": "knife4j"
+    },
+    {
+      "name": "jeecg.api-doc.production",
+      "type": "java.lang.Boolean",
+      "description": "是否在生产环境启用",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.api-doc.title",
+      "type": "java.lang.String",
+      "description": "API文档标题",
+      "defaultValue": "JeecgBoot API文档"
+    },
+    {
+      "name": "jeecg.api-doc.description",
+      "type": "java.lang.String",
+      "description": "API文档描述",
+      "defaultValue": "JeecgBoot 企业级快速开发平台"
+    },
+    {
+      "name": "jeecg.api-doc.version",
+      "type": "java.lang.String",
+      "description": "API文档版本",
+      "defaultValue": "4.0.0"
+    },
+    {
+      "name": "jeecg.api-doc.base-package",
+      "type": "java.lang.String",
+      "description": "扫描的包路径",
+      "defaultValue": "org.jeecg"
+    },
+    {
+      "name": "jeecg.api-doc.contact.name",
+      "type": "java.lang.String",
+      "description": "联系人名称",
+      "defaultValue": "JeecgBoot Team"
+    },
+    {
+      "name": "jeecg.api-doc.contact.url",
+      "type": "java.lang.String",
+      "description": "联系人URL",
+      "defaultValue": "http://www.jeecg.com"
+    },
+    {
+      "name": "jeecg.api-doc.contact.email",
+      "type": "java.lang.String",
+      "description": "联系人邮箱",
+      "defaultValue": "jeecgos@163.com"
+    },
+    {
+      "name": "jeecg.api-doc.license.name",
+      "type": "java.lang.String",
+      "description": "许可证名称",
+      "defaultValue": "Apache License 2.0"
+    },
+    {
+      "name": "jeecg.api-doc.license.url",
+      "type": "java.lang.String",
+      "description": "许可证URL",
+      "defaultValue": "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    {
+      "name": "jeecg.api-doc.knife4j.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用Knife4j增强",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.api-doc.knife4j.production",
+      "type": "java.lang.Boolean",
+      "description": "是否开启生产环境屏蔽",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.api-doc.knife4j.basic-enable",
+      "type": "java.lang.Boolean",
+      "description": "是否开启HTTP Basic认证",
+      "defaultValue": false
+    },
+    {
+      "name": "jeecg.api-doc.knife4j.basic-username",
+      "type": "java.lang.String",
+      "description": "Basic认证用户名",
+      "defaultValue": "admin"
+    },
+    {
+      "name": "jeecg.api-doc.knife4j.basic-password",
+      "type": "java.lang.String",
+      "description": "Basic认证密码",
+      "defaultValue": "123456"
+    },
+    {
+      "name": "knife4j.enable",
+      "type": "java.lang.Boolean",
+      "description": "旧版Knife4j配置（已过时）",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.api-doc.enabled",
+        "reason": "请使用新的配置格式"
+      }
+    },
+    {
+      "name": "swagger.enable",
+      "type": "java.lang.Boolean",
+      "description": "旧版Swagger配置（已过时）",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.api-doc.enabled",
+        "reason": "请使用新的配置格式"
+      }
+    }
+  ],
+  "hints": [
+    {
+      "name": "jeecg.api-doc.type",
+      "values": [
+        {
+          "value": "swagger3",
+          "description": "使用Swagger 3.0"
+        },
+        {
+          "value": "knife4j",
+          "description": "使用Knife4j增强（推荐）"
+        },
+        {
+          "value": "springdoc",
+          "description": "使用SpringDoc OpenAPI"
+        }
+      ]
+    }
+  ]
+}

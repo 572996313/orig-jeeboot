@@ -1,0 +1,158 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.elasticsearch",
+      "type": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties",
+      "description": "Elasticsearch配置属性"
+    },
+    {
+      "name": "jeecg.elasticsearch.index",
+      "type": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties$IndexConfig",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties",
+      "sourceMethod": "getIndex()"
+    },
+    {
+      "name": "jeecg.elasticsearch.search",
+      "type": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties$SearchConfig",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties",
+      "sourceMethod": "getSearch()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.elasticsearch.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用Elasticsearch功能"
+    },
+    {
+      "name": "jeecg.elasticsearch.cluster-name",
+      "type": "java.lang.String",
+      "defaultValue": "elasticsearch",
+      "description": "Elasticsearch集群名称"
+    },
+    {
+      "name": "jeecg.elasticsearch.cluster-nodes",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Elasticsearch集群节点地址列表，格式：host:port"
+    },
+    {
+      "name": "jeecg.elasticsearch.username",
+      "type": "java.lang.String",
+      "description": "Elasticsearch认证用户名（可选）"
+    },
+    {
+      "name": "jeecg.elasticsearch.password",
+      "type": "java.lang.String",
+      "description": "Elasticsearch认证密码（可选）"
+    },
+    {
+      "name": "jeecg.elasticsearch.connection-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 5000,
+      "description": "连接超时时间（毫秒）"
+    },
+    {
+      "name": "jeecg.elasticsearch.socket-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 30000,
+      "description": "Socket超时时间（毫秒）"
+    },
+    {
+      "name": "jeecg.elasticsearch.connection-request-timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 500,
+      "description": "连接请求超时时间（毫秒）"
+    },
+    {
+      "name": "jeecg.elasticsearch.max-connections",
+      "type": "java.lang.Integer",
+      "defaultValue": 100,
+      "description": "最大连接数"
+    },
+    {
+      "name": "jeecg.elasticsearch.max-connections-per-route",
+      "type": "java.lang.Integer",
+      "defaultValue": 50,
+      "description": "每个路由的最大连接数"
+    },
+    {
+      "name": "jeecg.elasticsearch.index.number-of-shards",
+      "type": "java.lang.Integer",
+      "defaultValue": 3,
+      "description": "索引默认分片数"
+    },
+    {
+      "name": "jeecg.elasticsearch.index.number-of-replicas",
+      "type": "java.lang.Integer",
+      "defaultValue": 1,
+      "description": "索引默认副本数"
+    },
+    {
+      "name": "jeecg.elasticsearch.index.refresh-interval",
+      "type": "java.lang.Integer",
+      "defaultValue": 1,
+      "description": "索引刷新间隔（秒）"
+    },
+    {
+      "name": "jeecg.elasticsearch.index.auto-create",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否自动创建索引"
+    },
+    {
+      "name": "jeecg.elasticsearch.index.prefix",
+      "type": "java.lang.String",
+      "defaultValue": "jeecg_",
+      "description": "索引名称前缀"
+    },
+    {
+      "name": "jeecg.elasticsearch.index.date-suffix",
+      "type": "java.lang.String",
+      "description": "日期格式索引后缀（如：yyyy-MM-dd）"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.default-page-size",
+      "type": "java.lang.Integer",
+      "defaultValue": 10,
+      "description": "默认分页大小"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.max-page-size",
+      "type": "java.lang.Integer",
+      "defaultValue": 10000,
+      "description": "最大分页大小"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.highlight-pre-tag",
+      "type": "java.lang.String",
+      "defaultValue": "<em>",
+      "description": "高亮前缀标签"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.highlight-post-tag",
+      "type": "java.lang.String",
+      "defaultValue": "</em>",
+      "description": "高亮后缀标签"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.query-cache-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用查询缓存"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.min-score",
+      "type": "java.lang.Float",
+      "defaultValue": 0.0,
+      "description": "最小相似度得分"
+    },
+    {
+      "name": "jeecg.elasticsearch.search.timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": 10000,
+      "description": "搜索超时时间（毫秒）"
+    }
+  ]
+}

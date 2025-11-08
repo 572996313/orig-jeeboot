@@ -88,10 +88,23 @@
 	</properties>
 
 	<modules>
-        <module>jeecg-boot-base-core</module>
-        <module>jeecg-module-system</module>
-        <module>jeecg-boot-module</module>
-    </modules>
+		<!-- 新模块拆分架构 - Phase 1: 纯Java基础模块 -->
+		<module>jeecg-boot-base-constants</module>
+		<module>jeecg-boot-base-api</module>
+		<module>jeecg-boot-base-utils</module>
+		
+		<!-- 新模块拆分架构 - Phase 2.1: 轻量级Spring核心 -->
+		<module>jeecg-boot-base-core-lite</module>
+		
+		<!-- 新模块拆分架构 - Phase 2.2+: 功能Starter模块 -->
+		<module>jeecg-boot-starter-security</module>
+		<module>jeecg-boot-starter-datasource</module>
+		
+		<!-- 原有模块 -->
+	       <module>jeecg-boot-base-core</module>
+	       <module>jeecg-module-system</module>
+	       <module>jeecg-boot-module</module>
+	   </modules>
 
 	<repositories>
 		<repository>
@@ -192,7 +205,45 @@
 				<artifactId>jeecg-boot-common</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
-			<!-- jeecg core -->
+			
+			<!-- 新模块拆分架构 - v4.0.0 -->
+			<!-- Phase 1: 纯Java基础模块 (最小依赖) -->
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-base-constants</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-base-api</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-base-utils</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			
+			<!-- Phase 2.1: 轻量级Spring核心 -->
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-base-core-lite</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			
+			<!-- Phase 2.2+: 功能Starter模块 -->
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-security</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-datasource</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			
+			<!-- jeecg core (原模块，向后兼容) -->
 			<dependency>
 				<groupId>org.jeecgframework.boot3</groupId>
 				<artifactId>jeecg-boot-base-core</artifactId>

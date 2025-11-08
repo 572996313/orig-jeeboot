@@ -1,0 +1,155 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.excel",
+      "type": "org.jeecg.config.JeecgExcelProperties",
+      "sourceType": "org.jeecg.config.JeecgExcelProperties",
+      "description": "JeecgBoot Excel配置"
+    },
+    {
+      "name": "jeecg.excel.import-config",
+      "type": "org.jeecg.config.JeecgExcelProperties$Import",
+      "sourceType": "org.jeecg.config.JeecgExcelProperties",
+      "description": "Excel导入配置"
+    },
+    {
+      "name": "jeecg.excel.export-config",
+      "type": "org.jeecg.config.JeecgExcelProperties$Export",
+      "sourceType": "org.jeecg.config.JeecgExcelProperties",
+      "description": "Excel导出配置"
+    },
+    {
+      "name": "jeecg.excel.temp",
+      "type": "org.jeecg.config.JeecgExcelProperties$Temp",
+      "sourceType": "org.jeecg.config.JeecgExcelProperties",
+      "description": "临时文件配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.excel.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用Excel功能",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.excel.engine",
+      "type": "java.lang.String",
+      "description": "Excel引擎类型：easypoi, poi",
+      "defaultValue": "easypoi"
+    },
+    {
+      "name": "jeecg.excel.import-config.max-rows",
+      "type": "java.lang.Integer",
+      "description": "最大导入行数",
+      "defaultValue": 10000
+    },
+    {
+      "name": "jeecg.excel.import-config.max-file-size-mb",
+      "type": "java.lang.Integer",
+      "description": "最大导入文件大小(MB)",
+      "defaultValue": 10
+    },
+    {
+      "name": "jeecg.excel.import-config.allowed-extensions",
+      "type": "java.lang.String[]",
+      "description": "允许的文件扩展名",
+      "defaultValue": ["xls", "xlsx"]
+    },
+    {
+      "name": "jeecg.excel.import-config.validate-template",
+      "type": "java.lang.Boolean",
+      "description": "是否验证模板",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.excel.import-config.error-strategy",
+      "type": "java.lang.String",
+      "description": "错误数据处理策略：skip, stop, collect",
+      "defaultValue": "collect"
+    },
+    {
+      "name": "jeecg.excel.export-config.max-rows",
+      "type": "java.lang.Integer",
+      "description": "最大导出行数",
+      "defaultValue": 100000
+    },
+    {
+      "name": "jeecg.excel.export-config.default-sheet-name",
+      "type": "java.lang.String",
+      "description": "默认Sheet名称",
+      "defaultValue": "Sheet1"
+    },
+    {
+      "name": "jeecg.excel.export-config.auto-size-column",
+      "type": "java.lang.Boolean",
+      "description": "列宽度自适应",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.excel.export-config.date-format",
+      "type": "java.lang.String",
+      "description": "日期格式",
+      "defaultValue": "yyyy-MM-dd HH:mm:ss"
+    },
+    {
+      "name": "jeecg.excel.temp.path",
+      "type": "java.lang.String",
+      "description": "临时文件存储路径"
+    },
+    {
+      "name": "jeecg.excel.temp.retention-hours",
+      "type": "java.lang.Integer",
+      "description": "临时文件保留时间(小时)",
+      "defaultValue": 24
+    },
+    {
+      "name": "jeecg.excel.temp.auto-clean",
+      "type": "java.lang.Boolean",
+      "description": "是否自动清理临时文件",
+      "defaultValue": true
+    },
+    {
+      "name": "jeecg.autopoi.enable",
+      "type": "java.lang.Boolean",
+      "description": "旧版AutoPoi配置(已过时)",
+      "deprecated": true,
+      "deprecation": {
+        "replacement": "jeecg.excel.enabled",
+        "reason": "请使用新的配置格式"
+      }
+    }
+  ],
+  "hints": [
+    {
+      "name": "jeecg.excel.engine",
+      "values": [
+        {
+          "value": "easypoi",
+          "description": "使用EasyPoi引擎(推荐)"
+        },
+        {
+          "value": "poi",
+          "description": "使用Apache POI引擎"
+        }
+      ]
+    },
+    {
+      "name": "jeecg.excel.import-config.error-strategy",
+      "values": [
+        {
+          "value": "skip",
+          "description": "跳过错误数据"
+        },
+        {
+          "value": "stop",
+          "description": "遇到错误停止"
+        },
+        {
+          "value": "collect",
+          "description": "收集所有错误"
+        }
+      ]
+    }
+  ]
+}

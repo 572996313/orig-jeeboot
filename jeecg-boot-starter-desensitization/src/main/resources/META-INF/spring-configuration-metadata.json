@@ -1,0 +1,216 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.desensitization",
+      "type": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties",
+      "sourceType": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties",
+      "description": "JeecgBoot数据脱敏配置属性"
+    },
+    {
+      "name": "jeecg.desensitization.encrypt",
+      "type": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties$EncryptConfig",
+      "sourceType": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties",
+      "sourceMethod": "getEncrypt()",
+      "description": "加密配置"
+    },
+    {
+      "name": "jeecg.desensitization.mask",
+      "type": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties$MaskConfig",
+      "sourceType": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties",
+      "sourceMethod": "getMask()",
+      "description": "掩码配置"
+    },
+    {
+      "name": "jeecg.desensitization.log",
+      "type": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties$LogConfig",
+      "sourceType": "org.jeecg.common.desensitization.config.JeecgDesensitizationProperties",
+      "sourceMethod": "getLog()",
+      "description": "日志配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.desensitization.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用数据脱敏功能"
+    },
+    {
+      "name": "jeecg.desensitization.strategy",
+      "type": "java.lang.String",
+      "defaultValue": "mask",
+      "description": "脱敏策略: mask(掩码) | encrypt(加密)"
+    },
+    {
+      "name": "jeecg.desensitization.json-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用JSON序列化脱敏"
+    },
+    {
+      "name": "jeecg.desensitization.method-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用方法返回值脱敏(AOP切面)"
+    },
+    {
+      "name": "jeecg.desensitization.encrypt.algorithm",
+      "type": "java.lang.String",
+      "defaultValue": "AES",
+      "description": "加密算法: AES | DES | RSA"
+    },
+    {
+      "name": "jeecg.desensitization.encrypt.key",
+      "type": "java.lang.String",
+      "description": "加密密钥"
+    },
+    {
+      "name": "jeecg.desensitization.encrypt.iv",
+      "type": "java.lang.String",
+      "description": "加密初始化向量(IV)"
+    },
+    {
+      "name": "jeecg.desensitization.encrypt.base64-encode",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "加密结果是否使用Base64编码"
+    },
+    {
+      "name": "jeecg.desensitization.mask.phone-pattern",
+      "type": "java.lang.String",
+      "defaultValue": "^(\\\\d{3})\\\\d{4}(\\\\d{4})$",
+      "description": "手机号脱敏正则表达式"
+    },
+    {
+      "name": "jeecg.desensitization.mask.phone-replacement",
+      "type": "java.lang.String",
+      "defaultValue": "$1****$2",
+      "description": "手机号脱敏替换规则"
+    },
+    {
+      "name": "jeecg.desensitization.mask.id-card-pattern",
+      "type": "java.lang.String",
+      "defaultValue": "^(\\\\d{6})\\\\d{8}(\\\\d{4})$",
+      "description": "身份证号脱敏正则表达式"
+    },
+    {
+      "name": "jeecg.desensitization.mask.id-card-replacement",
+      "type": "java.lang.String",
+      "defaultValue": "$1********$2",
+      "description": "身份证号脱敏替换规则"
+    },
+    {
+      "name": "jeecg.desensitization.mask.email-pattern",
+      "type": "java.lang.String",
+      "defaultValue": "^(\\\\w)[\\\\w.-]*@([\\\\w-]+\\\\.)+[\\\\w-]+$",
+      "description": "邮箱脱敏正则表达式"
+    },
+    {
+      "name": "jeecg.desensitization.mask.email-replacement",
+      "type": "java.lang.String",
+      "defaultValue": "$1****@$2",
+      "description": "邮箱脱敏替换规则"
+    },
+    {
+      "name": "jeecg.desensitization.mask.bank-card-pattern",
+      "type": "java.lang.String",
+      "defaultValue": "^(\\\\d{4})\\\\d+(\\\\d{4})$",
+      "description": "银行卡号脱敏正则表达式"
+    },
+    {
+      "name": "jeecg.desensitization.mask.bank-card-replacement",
+      "type": "java.lang.String",
+      "defaultValue": "$1 **** **** $2",
+      "description": "银行卡号脱敏替换规则"
+    },
+    {
+      "name": "jeecg.desensitization.mask.name-pattern",
+      "type": "java.lang.String",
+      "defaultValue": "^([\\\\u4e00-\\\\u9fa5])([\\\\u4e00-\\\\u9fa5]+)$",
+      "description": "姓名脱敏正则表达式"
+    },
+    {
+      "name": "jeecg.desensitization.mask.name-replacement",
+      "type": "java.lang.String",
+      "defaultValue": "$1*",
+      "description": "姓名脱敏替换规则"
+    },
+    {
+      "name": "jeecg.desensitization.mask.address-pattern",
+      "type": "java.lang.String",
+      "defaultValue": "^(.{6}).*$",
+      "description": "地址脱敏正则表达式"
+    },
+    {
+      "name": "jeecg.desensitization.mask.address-replacement",
+      "type": "java.lang.String",
+      "defaultValue": "$1****",
+      "description": "地址脱敏替换规则"
+    },
+    {
+      "name": "jeecg.desensitization.log.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用脱敏日志"
+    },
+    {
+      "name": "jeecg.desensitization.log.level",
+      "type": "java.lang.String",
+      "defaultValue": "DEBUG",
+      "description": "脱敏日志级别: DEBUG | INFO | WARN | ERROR"
+    }
+  ],
+  "hints": [
+    {
+      "name": "jeecg.desensitization.strategy",
+      "values": [
+        {
+          "value": "mask",
+          "description": "掩码策略: 使用*号隐藏部分信息"
+        },
+        {
+          "value": "encrypt",
+          "description": "加密策略: 使用加密算法加密敏感信息"
+        }
+      ]
+    },
+    {
+      "name": "jeecg.desensitization.encrypt.algorithm",
+      "values": [
+        {
+          "value": "AES",
+          "description": "AES对称加密算法"
+        },
+        {
+          "value": "DES",
+          "description": "DES对称加密算法"
+        },
+        {
+          "value": "RSA",
+          "description": "RSA非对称加密算法"
+        }
+      ]
+    },
+    {
+      "name": "jeecg.desensitization.log.level",
+      "values": [
+        {
+          "value": "DEBUG",
+          "description": "调试级别"
+        },
+        {
+          "value": "INFO",
+          "description": "信息级别"
+        },
+        {
+          "value": "WARN",
+          "description": "警告级别"
+        },
+        {
+          "value": "ERROR",
+          "description": "错误级别"
+        }
+      ]
+    }
+  ]
+}

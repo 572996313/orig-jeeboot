@@ -1,0 +1,199 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.web",
+      "type": "org.jeecg.config.web.JeecgWebProperties",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "JeecgBoot Web增强配置"
+    },
+    {
+      "name": "jeecg.web.cors",
+      "type": "org.jeecg.config.web.JeecgWebProperties$CorsConfig",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "跨域配置"
+    },
+    {
+      "name": "jeecg.web.firewall",
+      "type": "org.jeecg.config.web.JeecgWebProperties$FirewallConfig",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "防火墙配置"
+    },
+    {
+      "name": "jeecg.web.log",
+      "type": "org.jeecg.config.web.JeecgWebProperties$LogConfig",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "日志配置"
+    },
+    {
+      "name": "jeecg.web.dict",
+      "type": "org.jeecg.config.web.JeecgWebProperties$DictConfig",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "字典翻译配置"
+    },
+    {
+      "name": "jeecg.web.permission",
+      "type": "org.jeecg.config.web.JeecgWebProperties$PermissionConfig",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "数据权限配置"
+    },
+    {
+      "name": "jeecg.web.undertow",
+      "type": "org.jeecg.config.web.JeecgWebProperties$UndertowConfig",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "description": "Undertow服务器配置"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.web.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.jeecg.config.web.JeecgWebProperties",
+      "defaultValue": true,
+      "description": "是否启用Web增强功能"
+    },
+    {
+      "name": "jeecg.web.cors.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用跨域"
+    },
+    {
+      "name": "jeecg.web.cors.allowed-origins",
+      "type": "java.lang.String",
+      "defaultValue": "*",
+      "description": "允许的源"
+    },
+    {
+      "name": "jeecg.web.cors.allowed-methods",
+      "type": "java.lang.String",
+      "defaultValue": "*",
+      "description": "允许的HTTP方法"
+    },
+    {
+      "name": "jeecg.web.cors.allowed-headers",
+      "type": "java.lang.String",
+      "defaultValue": "*",
+      "description": "允许的请求头"
+    },
+    {
+      "name": "jeecg.web.cors.allow-credentials",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否允许携带凭证"
+    },
+    {
+      "name": "jeecg.web.cors.max-age",
+      "type": "java.lang.Long",
+      "defaultValue": 3600,
+      "description": "预检请求有效期(秒)"
+    },
+    {
+      "name": "jeecg.web.firewall.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用防火墙"
+    },
+    {
+      "name": "jeecg.web.firewall.low-code-mode",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用低代码模式"
+    },
+    {
+      "name": "jeecg.web.firewall.sql-injection-check",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用SQL注入检查"
+    },
+    {
+      "name": "jeecg.web.firewall.xss-check",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用XSS检查"
+    },
+    {
+      "name": "jeecg.web.log.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用自动日志"
+    },
+    {
+      "name": "jeecg.web.log.log-args",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否记录请求参数"
+    },
+    {
+      "name": "jeecg.web.log.log-result",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否记录返回结果"
+    },
+    {
+      "name": "jeecg.web.log.log-time",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否记录执行时间"
+    },
+    {
+      "name": "jeecg.web.log.slow-request-threshold",
+      "type": "java.lang.Long",
+      "defaultValue": 3000,
+      "description": "慢请求阈值(毫秒)"
+    },
+    {
+      "name": "jeecg.web.dict.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用字典翻译"
+    },
+    {
+      "name": "jeecg.web.dict.async",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否异步翻译"
+    },
+    {
+      "name": "jeecg.web.dict.cache-seconds",
+      "type": "java.lang.Integer",
+      "defaultValue": 300,
+      "description": "缓存时间(秒)"
+    },
+    {
+      "name": "jeecg.web.permission.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否启用数据权限"
+    },
+    {
+      "name": "jeecg.web.permission.strict",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否启用严格模式"
+    },
+    {
+      "name": "jeecg.web.undertow.io-threads",
+      "type": "java.lang.Integer",
+      "defaultValue": 16,
+      "description": "IO线程数"
+    },
+    {
+      "name": "jeecg.web.undertow.worker-threads",
+      "type": "java.lang.Integer",
+      "defaultValue": 256,
+      "description": "工作线程数"
+    },
+    {
+      "name": "jeecg.web.undertow.buffer-size",
+      "type": "java.lang.Integer",
+      "defaultValue": 1024,
+      "description": "缓冲区大小(字节)"
+    },
+    {
+      "name": "jeecg.web.undertow.direct-buffers",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否使用直接缓冲"
+    }
+  ]
+}
