@@ -10,7 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
-import io.micrometer.prometheusmetrics.PrometheusMeterRegistry;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -46,9 +46,12 @@ import java.util.concurrent.TimeUnit;
  *
  * @Author qinfeng
  *
+ * @deprecated 此类已被 jeecg-boot-starter-web 模块中的 org.jeecg.config.web.WebMvcConfiguration 替代
+ * 保留此类仅为了兼容性，但不再作为 Spring 配置类使用
  */
 @Slf4j
-@Configuration
+//@Configuration  // 已注释：避免与 jeecg-boot-starter-web 模块中的 WebMvcConfiguration 冲突
+@Deprecated
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Resource

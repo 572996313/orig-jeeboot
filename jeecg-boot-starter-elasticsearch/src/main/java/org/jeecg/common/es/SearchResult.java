@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Elasticsearch搜索结果封装
+ * Elasticsearch 搜索结果（简化版）
  * 
- * @author JeecgBoot
- * @version 4.0.0
- * @since 2025-11-08
+ * @author jeecg-boot
  */
 @Data
 public class SearchResult implements Serializable {
@@ -25,30 +23,19 @@ public class SearchResult implements Serializable {
     private long total = 0;
 
     /**
-     * 搜索耗时（毫秒）
-     */
-    private long took = 0;
-
-    /**
      * 数据列表
      */
     private List<Map<String, Object>> data = new ArrayList<>();
 
     /**
+     * 聚合结果
+     */
+    private Map<String, Object> aggregations;
+
+    /**
      * 是否有数据
-     * 
-     * @return 是否有数据
      */
     public boolean hasData() {
         return data != null && !data.isEmpty();
-    }
-
-    /**
-     * 获取数据数量
-     * 
-     * @return 数据数量
-     */
-    public int getSize() {
-        return data == null ? 0 : data.size();
     }
 }

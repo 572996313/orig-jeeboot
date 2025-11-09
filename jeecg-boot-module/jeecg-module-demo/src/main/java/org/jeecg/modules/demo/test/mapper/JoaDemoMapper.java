@@ -1,5 +1,6 @@
 package org.jeecg.modules.demo.test.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.jeecg.modules.demo.test.entity.JoaDemo;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -10,6 +11,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Date:   2019-05-14
  * @Version: V1.0
  */
+@Mapper
 public interface JoaDemoMapper extends BaseMapper<JoaDemo> {
 
 }

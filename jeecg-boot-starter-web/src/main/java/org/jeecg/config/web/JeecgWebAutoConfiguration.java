@@ -1,8 +1,5 @@
 package org.jeecg.config.web;
 
-import org.jeecg.common.aspect.AutoLogAspect;
-import org.jeecg.common.aspect.DictAspect;
-import org.jeecg.common.aspect.PermissionDataAspect;
 import org.jeecg.common.exception.JeecgBootExceptionHandler;
 import org.jeecg.config.firewall.LowCodeModeConfiguration;
 import org.slf4j.Logger;
@@ -31,7 +28,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableConfigurationProperties(JeecgWebProperties.class)
 @Import({
     WebMvcConfiguration.class,
-    UndertowCustomizer.class,
     LowCodeModeConfiguration.class
 })
 public class JeecgWebAutoConfiguration {
@@ -57,7 +53,7 @@ public class JeecgWebAutoConfiguration {
             public void addCorsMappings(CorsRegistry registry) {
                 JeecgWebProperties.CorsConfig cors = properties.getCors();
                 registry.addMapping("/**")
-                        .allowedOrigins(cors.getAllowedOrigins().split(","))
+                        .allowedOriginPatterns(cors.getAllowedOrigins().split(","))
                         .allowedMethods(cors.getAllowedMethods().split(","))
                         .allowedHeaders(cors.getAllowedHeaders().split(","))
                         .allowCredentials(cors.isAllowCredentials())
@@ -77,39 +73,6 @@ public class JeecgWebAutoConfiguration {
         return new JeecgBootExceptionHandler();
     }
 
-    /**
-     * 自动日志切面
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "jeecg.web.log", name = "enabled", havingValue = "true", matchIfMissing = true)
-    @ConditionalOnClass(name = "org.aspectj.lang.annotation.Aspect")
-    public AutoLogAspect autoLogAspect() {
-        log.info("注册自动日志切面");
-        return new AutoLogAspect(properties.getLog());
-    }
-
-    /**
-     * 字典翻译切面
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "jeecg.web.dict", name = "enabled", havingValue = "true", matchIfMissing = true)
-    @ConditionalOnClass(name = "org.aspectj.lang.annotation.Aspect")
-    public DictAspect dictAspect() {
-        log.info("注册字典翻译切面");
-        return new DictAspect(properties.getDict());
-    }
-
-    /**
-     * 数据权限切面
-     */
-    @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "jeecg.web.permission", name = "enabled", havingValue = "true", matchIfMissing = true)
-    @ConditionalOnClass(name = "org.aspectj.lang.annotation.Aspect")
-    public PermissionDataAspect permissionDataAspect() {
-        log.info("注册数据权限切面");
-        return new PermissionDataAspect(properties.getPermission());
-    }
+    // 注意: AutoLogAspect, DictAspect, PermissionDataAspect 已通过 @Component 自动注册
+    // 它们位于 jeecg-boot-base-core 模块中，会被组件扫描自动发现
 }

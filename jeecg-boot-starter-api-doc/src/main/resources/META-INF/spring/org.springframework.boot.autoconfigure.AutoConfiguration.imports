@@ -1,3 +1,1 @@
-org.jeecg.config.Knife4jAutoConfiguration
-org.jeecg.config.Swagger2Config
-org.jeecg.config.Swagger3Config
+org.jeecg.config.JeecgApiDocAutoConfiguration

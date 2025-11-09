@@ -1,6 +1,6 @@
 package org.jeecg.common.api;
 
-import org.jeecg.common.api.dto.AiragFlowDTO;
+// import org.jeecg.common.api.dto.AiragFlowDTO;  // AI RAG 模块未安装，暂时注释
 import org.jeecg.common.system.vo.*;
 
 import java.util.List;
@@ -147,13 +147,14 @@ public interface CommonAPI {
 
     /**
      * 16 运行AIRag流程
+     * 注意：AI RAG 模块未安装，参数暂时使用 Object 类型（原为 AiragFlowDTO）
      * for  [QQYUN-13634]在baseapi里面封装方法，方便其他模块调用
      *
-     * @param airagFlowDTO
+     * @param airagFlowDTO AI RAG 流程参数对象
      * @return 流程执行结果,可能是String或者Map
      * @author chenrui
      * @date 2025/9/2 11:43
      */
-    Object runAiragFlow(AiragFlowDTO airagFlowDTO);
+    Object runAiragFlow(Object airagFlowDTO);
 
 }

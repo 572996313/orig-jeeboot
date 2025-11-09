@@ -54,6 +54,19 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- MyBatis-Plus (使用父POM中已定义的版本) -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        
         <!-- system单体 api-->
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>

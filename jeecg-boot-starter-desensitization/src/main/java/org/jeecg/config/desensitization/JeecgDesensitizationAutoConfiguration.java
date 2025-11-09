@@ -3,7 +3,6 @@ package org.jeecg.config.desensitization;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.jeecg.common.desensitization.aspect.SensitiveDataAspect;
-import org.jeecg.common.desensitization.config.JeecgDesensitizationProperties;
 import org.jeecg.common.desensitization.serializer.SensitiveJsonSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

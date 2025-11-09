@@ -16,8 +16,8 @@ public class BrowserUtils {
 
     /**
      * 判断是否是IE
-     * @param request
-     * @return
+     * @param request HTTP请求对象
+     * @return 如果是IE浏览器返回true，否则返回false
      */
 	public static boolean isIe(HttpServletRequest request) {
 		return (request.getHeader("USER-AGENT").toLowerCase().indexOf("msie") > 0 || request
@@ -27,9 +27,9 @@ public class BrowserUtils {
 
 	/**
 	 * 获取IE版本
-	 * 
-	 * @param request
-	 * @return
+	 *
+	 * @param request HTTP请求对象
+	 * @return IE版本号
 	 */
 	public static Double getIeVersion(HttpServletRequest request) {
 		Double version = 0.0;
@@ -51,9 +51,9 @@ public class BrowserUtils {
 
 	/**
 	 * 获取浏览器类型
-	 * 
-	 * @param request
-	 * @return
+	 *
+	 * @param request HTTP请求对象
+	 * @return 浏览器类型枚举
 	 */
 	public static BrowserType getBrowserType(HttpServletRequest request) {
 		BrowserType browserType = null;
@@ -99,23 +99,44 @@ public class BrowserUtils {
 				.indexOf(brosertype) > 0 ? true : false;
 	}
 
+	/** IE11浏览器标识 */
 	private final static String IE11 = "rv:11.0";
+	/** IE10浏览器标识 */
 	private final static String IE10 = "MSIE 10.0";
+	/** IE9浏览器标识 */
 	private final static String IE9 = "MSIE 9.0";
+	/** IE8浏览器标识 */
 	private final static String IE8 = "MSIE 8.0";
+	/** IE7浏览器标识 */
 	private final static String IE7 = "MSIE 7.0";
+	/** IE6浏览器标识 */
 	private final static String IE6 = "MSIE 6.0";
+	/** 傲游浏览器标识 */
 	private final static String MAXTHON = "Maxthon";
+	/** QQ浏览器标识 */
 	private final static String QQ = "QQBrowser";
+	/** 绿色浏览器标识 */
 	private final static String GREEN = "GreenBrowser";
+	/** 360浏览器标识 */
 	private final static String SE360 = "360SE";
+	/** Firefox浏览器标识 */
 	private final static String FIREFOX = "Firefox";
+	/** Opera浏览器标识 */
 	private final static String OPERA = "Opera";
+	/** Chrome浏览器标识 */
 	private final static String CHROME = "Chrome";
+	/** Safari浏览器标识 */
 	private final static String SAFARI = "Safari";
+	/** 其它浏览器标识 */
 	private final static String OTHER = "其它";
+	/** Camino浏览器标识 */
 	private final static String CAMINO = "Camino";
 
+	/**
+	 * 检查浏览器类型
+	 * @param request HTTP请求对象
+	 * @return 浏览器类型字符串
+	 */
 	public static String checkBrowse(HttpServletRequest request) {
 		String userAgent = request.getHeader("USER-AGENT");
 		if (regex(OPERA, userAgent)) {
@@ -163,6 +184,12 @@ public class BrowserUtils {
 		return OTHER;
 	}
 
+	/**
+	 * 正则表达式匹配
+	 * @param regex 正则表达式
+	 * @param str 待匹配字符串
+	 * @return 如果匹配成功返回true，否则返回false
+	 */
 	public static boolean regex(String regex, String str) {
 		Pattern p = Pattern.compile(regex, Pattern.MULTILINE);
 		Matcher m = p.matcher(str);
@@ -170,11 +197,16 @@ public class BrowserUtils {
 	}
 
 	
+	/** 语言映射表 */
 	private static Map<String, String> langMap = new HashMap<String, String>();
+	/** 中文语言代码 */
 	private final static String ZH = "zh";
+	/** 简体中文语言代码 */
 	private final static String ZH_CN = "zh-cn";
 	
+	/** 英文语言代码 */
 	private final static String EN = "en";
+	/** 美式英文语言代码 */
 	private final static String EN_US = "en";
 	
 	
@@ -184,6 +216,11 @@ public class BrowserUtils {
 		langMap.put(EN, EN_US);
 	}
 	
+	/**
+	 * 获取浏览器语言
+	 * @param request HTTP请求对象
+	 * @return 浏览器语言代码
+	 */
 	public static String getBrowserLanguage(HttpServletRequest request) {
 		
 		String browserLang = request.getLocale().getLanguage();
@@ -196,12 +233,20 @@ public class BrowserUtils {
 		return browserLangCode;
 	}
 
-    /** 判断请求是否来自电脑端 */
+    /**
+     * 判断请求是否来自电脑端
+     * @param request HTTP请求对象
+     * @return 如果来自电脑端返回true，否则返回false
+     */
     public static boolean isDesktop(HttpServletRequest request) {
         return !isMobile(request);
     }
 
-    /** 判断请求是否来自移动端 */
+    /**
+     * 判断请求是否来自移动端
+     * @param request HTTP请求对象
+     * @return 如果来自移动端返回true，否则返回false
+     */
     public static boolean isMobile(HttpServletRequest request) {
         String ua = request.getHeader("User-Agent").toLowerCase();
         String type = "(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)";

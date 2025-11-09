@@ -6,13 +6,15 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.jeecgframework.boot</groupId>
+        <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.8.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
+    <groupId>org.jeecgframework.boot3</groupId>
     <artifactId>jeecg-boot-starter-mybatis-plus</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
     <name>Jeecg Boot Starter MyBatis-Plus</name>
     <description>MyBatis-Plus增强Starter,提供多租户、动态表名、SQL拦截等功能</description>
     
@@ -21,17 +23,17 @@
         <!-- Phase 1 基础依赖 -->
         <!-- ================================ -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-constants</artifactId>
         </dependency>
         
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-api</artifactId>
         </dependency>
         
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-utils</artifactId>
         </dependency>
         
@@ -39,7 +41,7 @@
         <!-- Phase 2.1 核心依赖 -->
         <!-- ================================ -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-core-lite</artifactId>
         </dependency>
         
@@ -47,7 +49,7 @@
         <!-- Phase 2.3 数据源依赖 -->
         <!-- ================================ -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-datasource</artifactId>
         </dependency>
         

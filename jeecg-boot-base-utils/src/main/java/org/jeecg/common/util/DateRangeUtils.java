@@ -17,8 +17,8 @@ public class DateRangeUtils {
     /**
      * 根据日期范围枚举获取日期范围
      *
-     * @param rangeEnum
-     * @return Date[]
+     * @param rangeEnum 日期范围枚举类型
+     * @return 日期范围数组，包含开始和结束日期
      */
     public static Date[] getDateRangeByEnum(DateRangeEnum rangeEnum) {
         if (rangeEnum == null) {
@@ -74,6 +74,8 @@ public class DateRangeUtils {
 
     /**
      * 获得下月第一天 周日 00:00:00
+     *
+     * @return 下月第一天的日期时间
      */
     public static Date getNextMonthStartDay() {
         return DateUtil.beginOfMonth(DateUtil.nextMonth());
@@ -81,6 +83,8 @@ public class DateRangeUtils {
 
     /**
      * 获得下月最后一天 23:59:59
+     *
+     * @return 下月最后一天的日期时间
      */
     public static Date getNextMonthEndDay() {
         return DateUtil.endOfMonth(DateUtil.nextMonth());
@@ -88,6 +92,8 @@ public class DateRangeUtils {
 
     /**
      * 获得本月第一天 周日 00:00:00
+     *
+     * @return 本月第一天的日期时间
      */
     public static Date getThisMonthStartDay() {
         return DateUtil.beginOfMonth(DateUtil.date());
@@ -95,6 +101,8 @@ public class DateRangeUtils {
 
     /**
      * 获得本月最后一天 23:59:59
+     *
+     * @return 本月最后一天的日期时间
      */
     public static Date getThisMonthEndDay() {
         return DateUtil.endOfMonth(DateUtil.date());
@@ -102,6 +110,8 @@ public class DateRangeUtils {
 
     /**
      * 获得上月第一天 周日 00:00:00
+     *
+     * @return 上月第一天的日期时间
      */
     public static Date getLastMonthStartDay() {
         return DateUtil.beginOfMonth(DateUtil.lastMonth());
@@ -109,6 +119,8 @@ public class DateRangeUtils {
 
     /**
      * 获得上月最后一天 23:59:59
+     *
+     * @return 上月最后一天的日期时间
      */
     public static Date getLastMonthEndDay() {
         return DateUtil.endOfMonth(DateUtil.lastMonth());
@@ -116,6 +128,8 @@ public class DateRangeUtils {
 
     /**
      * 获得上周第一天 周一 00:00:00
+     *
+     * @return 上周第一天的日期时间
      */
     public static Date getLastWeekStartDay() {
         return DateUtil.beginOfWeek(DateUtil.lastWeek());
@@ -123,6 +137,8 @@ public class DateRangeUtils {
 
     /**
      * 获得上周最后一天 周日 23:59:59
+     *
+     * @return 上周最后一天的日期时间
      */
     public static Date getLastWeekEndDay() {
         return DateUtil.endOfWeek(DateUtil.lastWeek());
@@ -130,6 +146,8 @@ public class DateRangeUtils {
 
     /**
      * 获得本周第一天 周一 00:00:00
+     *
+     * @return 本周第一天的日期时间
      */
     public static Date getThisWeekStartDay() {
         Date today = new Date();
@@ -138,6 +156,8 @@ public class DateRangeUtils {
 
     /**
      * 获得本周最后一天 周日 23:59:59
+     *
+     * @return 本周最后一天的日期时间
      */
     public static Date getThisWeekEndDay() {
         Date today = new Date();
@@ -146,6 +166,8 @@ public class DateRangeUtils {
 
     /**
      * 获得下周第一天 周一 00:00:00
+     *
+     * @return 下周第一天的日期时间
      */
     public static Date getNextWeekStartDay() {
         return DateUtil.beginOfWeek(DateUtil.nextWeek());
@@ -153,6 +175,8 @@ public class DateRangeUtils {
 
     /**
      * 获得下周最后一天 周日 23:59:59
+     *
+     * @return 下周最后一天的日期时间
      */
     public static Date getNextWeekEndDay() {
         return DateUtil.endOfWeek(DateUtil.nextWeek());
@@ -161,7 +185,7 @@ public class DateRangeUtils {
     /**
      * 过去七天开始时间（不含今天）
      *
-     * @return
+     * @return 过去七天的开始日期时间
      */
     public static Date getLast7DaysStartTime() {
         Calendar calendar = Calendar.getInstance();
@@ -173,7 +197,7 @@ public class DateRangeUtils {
     /**
      * 过去七天结束时间（不含今天）
      *
-     * @return
+     * @return 过去七天的结束日期时间
      */
     public static Date getLast7DaysEndTime() {
         Calendar calendar = Calendar.getInstance();
@@ -185,7 +209,7 @@ public class DateRangeUtils {
     /**
      * 昨天开始时间
      *
-     * @return
+     * @return 昨天的开始日期时间
      */
     public static Date getYesterdayStartTime() {
         Calendar calendar = Calendar.getInstance();
@@ -197,7 +221,7 @@ public class DateRangeUtils {
     /**
      * 昨天结束时间
      *
-     * @return
+     * @return 昨天的结束日期时间
      */
     public static Date getYesterdayEndTime() {
         return DateUtil.endOfDay(getYesterdayStartTime());
@@ -206,7 +230,7 @@ public class DateRangeUtils {
     /**
      * 明天开始时间
      *
-     * @return
+     * @return 明天的开始日期时间
      */
     public static Date getTomorrowStartTime() {
         return DateUtil.beginOfDay(DateUtil.tomorrow());
@@ -215,7 +239,7 @@ public class DateRangeUtils {
     /**
      * 明天结束时间
      *
-     * @return
+     * @return 明天的结束日期时间
      */
     public static Date getTomorrowEndTime() {
         return DateUtil.endOfDay(DateUtil.tomorrow());
@@ -224,7 +248,7 @@ public class DateRangeUtils {
     /**
      * 今天开始时间
      *
-     * @return
+     * @return 今天的开始日期时间
      */
     public static Date getTodayStartTime() {
         return DateUtil.beginOfDay(new Date());
@@ -233,7 +257,7 @@ public class DateRangeUtils {
     /**
      * 今天结束时间
      *
-     * @return
+     * @return 今天的结束日期时间
      */
     public static Date getTodayEndTime() {
         return DateUtil.endOfDay(new Date());

@@ -11,4 +11,13 @@
 
     <artifactId>jeecg-system-local-api</artifactId>
 
+    <dependencies>
+        <!-- 依赖 base-core 模块以获取 VO 类 (LoginUser, SysCategoryModel, UserAccountInfo等) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+            <version>3.8.3</version>
+        </dependency>
+    </dependencies>
+
 </project>

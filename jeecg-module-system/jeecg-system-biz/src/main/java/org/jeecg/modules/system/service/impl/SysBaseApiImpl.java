@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.shiro.SecurityUtils;
-import org.jeecg.common.api.dto.AiragFlowDTO;
+// import org.jeecg.common.api.dto.AiragFlowDTO;  // AI RAG 模块未安装
 import org.jeecg.common.api.dto.DataLogDTO;
 import org.jeecg.common.api.dto.OnlineAuthDTO;
 import org.jeecg.common.api.dto.message.*;
@@ -40,8 +40,8 @@ import org.jeecg.common.util.*;
 import org.jeecg.common.util.dynamic.db.FreemarkerParseFactory;
 import org.jeecg.config.firewall.SqlInjection.IDictTableWhiteListHandler;
 import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
-import org.jeecg.modules.airag.flow.service.IAiragFlowService;
-import org.jeecg.modules.airag.flow.vo.api.FlowRunParams;
+// import org.jeecg.modules.airag.flow.service.IAiragFlowService;
+// import org.jeecg.modules.airag.flow.vo.api.FlowRunParams;
 import org.jeecg.modules.message.entity.SysMessageTemplate;
 import org.jeecg.modules.message.handle.impl.DdSendMsgHandle;
 import org.jeecg.modules.message.handle.impl.EmailSendMsgHandle;
@@ -143,8 +143,9 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Autowired
 	private ISysAnnouncementService sysAnnouncementService;
 
-    @Autowired
-    IAiragFlowService airagFlowService;
+    // AI RAG 模块未安装，暂时注释
+    // @Autowired(required = false)
+    // IAiragFlowService airagFlowService;
 
 	@Override
 	//@SensitiveDecode
@@ -2028,7 +2029,14 @@ public class SysBaseApiImpl implements ISysBaseAPI {
     }
 
     @Override
-    public Object runAiragFlow(AiragFlowDTO airagFlowDTO) {
+    public Object runAiragFlow(Object airagFlowDTO) {
+        // AI RAG 模块未安装，直接抛出异常提示用户
+        throw new JeecgBootException("AI RAG 流程服务未启用，请先安装 AI RAG 模块");
+        
+        /* 原始代码 - AI RAG 模块安装后可恢复
+        if(airagFlowService == null) {
+            throw new JeecgBootException("AI RAG 流程服务未启用，请检查相关模块是否已安装");
+        }
         if(oConvertUtils.isEmpty(airagFlowDTO.getFlowId())) {
             throw new JeecgBootException("流程ID不能为空");
         }
@@ -2038,6 +2046,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
         params.setResponseMode("blocking");
         Result<Object> o = (Result<Object>)airagFlowService.runFlow(params);
         return o.getResult();
+        */
     }
 
     /**

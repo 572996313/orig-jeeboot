@@ -6,15 +6,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jeecgframework.boot</groupId>
+        <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0</version>
+        <version>3.8.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>jeecg-boot-base-core</artifactId>
+    <groupId>org.jeecgframework.boot3</groupId>
+    <artifactId>jeecg-boot-base-core-aggregator</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>JeecgBoot Base Core (Aggregator)</name>
+    <name>JeecgBoot Base Core Aggregator (v4.0.0)</name>
     <description>
         JeecgBoot 核心基础模块聚合包 - 向后兼容层
         
@@ -40,7 +42,7 @@
     </description>
 
     <properties>
-        <jeecg.version>4.0.0</jeecg.version>
+        <jeecg.version>4.0.0-SNAPSHOT</jeecg.version>
     </properties>
 
     <dependencies>
@@ -50,28 +52,28 @@
         
         <!-- 常量定义模块 -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-constants</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- API接口定义模块 -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-api</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- 工具类模块 -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-utils</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- 轻量核心模块 -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-core-lite</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
@@ -82,70 +84,70 @@
 
         <!-- 安全认证Starter (Shiro + JWT) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-security</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- 数据源Starter (Druid + 动态数据源) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-datasource</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- MyBatis-Plus增强Starter -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-mybatis-plus</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- 对象存储Starter (MinIO/阿里云OSS) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-oss</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- API文档Starter (Swagger/Knife4j) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-api-doc</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- Excel处理Starter (EasyPoi) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-excel</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- 数据脱敏Starter -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-desensitization</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- 通信服务Starter (邮件/短信/WebSocket) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-communication</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- Elasticsearch Starter -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-elasticsearch</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
 
         <!-- Web增强Starter (CORS/防火墙/日志/异常处理) -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-web</artifactId>
             <version>${jeecg.version}</version>
         </dependency>
@@ -159,8 +161,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>17</source>
+                    <target>17</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

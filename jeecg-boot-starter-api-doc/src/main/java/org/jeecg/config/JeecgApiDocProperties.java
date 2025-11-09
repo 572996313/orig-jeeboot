@@ -4,206 +4,102 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * API文档配置属性
+ * Jeecg API文档配置属性
  * 
- * @author jeecg-boot
+ * @author llllxf
  * @since 4.0.0
  */
 @Data
 @ConfigurationProperties(prefix = "jeecg.api-doc")
 public class JeecgApiDocProperties {
-
+    
     /**
      * 是否启用API文档
      */
     private Boolean enabled = true;
-
+    
     /**
-     * 文档类型：swagger3, knife4j, springdoc
+     * API文档类型: swagger3, knife4j
      */
-    private String type = "knife4j";
-
+    private String type = "swagger3";
+    
     /**
-     * 是否在生产环境启用
+     * API标题
      */
-    private Boolean production = false;
-
+    private String title = "JeecgBoot 后台服务API接口文档";
+    
     /**
-     * API文档标题
+     * API版本
      */
-    private String title = "JeecgBoot API文档";
-
+    private String version = "3.8.3";
+    
     /**
-     * API文档描述
+     * API描述
      */
-    private String description = "JeecgBoot 企业级快速开发平台";
-
+    private String description = "后台API接口";
+    
     /**
-     * API文档版本
+     * 联系人姓名
      */
-    private String version = "4.0.0";
-
+    private String contactName = "北京国炬信息技术有限公司";
+    
+    /**
+     * 联系人网址
+     */
+    private String contactUrl = "www.jeecg.com";
+    
+    /**
+     * 联系人邮箱
+     */
+    private String contactEmail = "jeecgos@163.com";
+    
+    /**
+     * 许可证名称
+     */
+    private String licenseName = "Apache 2.0";
+    
+    /**
+     * 许可证URL
+     */
+    private String licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.html";
+    
     /**
      * 服务条款URL
      */
-    private String termsOfServiceUrl;
-
+    private String termsOfServiceUrl = "NO terms of service";
+    
     /**
-     * 联系人信息
-     */
-    private Contact contact = new Contact();
-
-    /**
-     * 许可证信息
-     */
-    private License license = new License();
-
-    /**
-     * 扫描的包路径（多个用逗号分隔）
+     * 扫描的包路径
      */
     private String basePackage = "org.jeecg";
-
+    
     /**
-     * 排除的路径（多个用逗号分隔）
+     * 是否自动标记类
      */
-    private String excludePaths = "/error,/actuator/**";
-
+    private Boolean autoTagClasses = false;
+    
     /**
-     * 分组配置
+     * 排除的路径（不需要Token验证）
      */
-    private Group group = new Group();
-
+    private String[] excludedPaths = {
+        "/sys/randomImage/{key}",
+        "/sys/login",
+        "/sys/phoneLogin",
+        "/sys/mLogin",
+        "/sys/sms",
+        "/sys/cas/client/validateLogin",
+        "/test/jeecgDemo/demo3",
+        "/sys/thirdLogin/**",
+        "/sys/user/register"
+    };
+    
     /**
-     * Knife4j增强配置
+     * Token参数名
      */
-    private Knife4j knife4j = new Knife4j();
-
+    private String tokenName = "X-Access-Token";
+    
     /**
-     * 联系人信息
+     * 生产环境是否启用（默认不启用）
      */
-    @Data
-    public static class Contact {
-        /**
-         * 联系人名称
-         */
-        private String name = "JeecgBoot Team";
-
-        /**
-         * 联系人URL
-         */
-        private String url = "http://www.jeecg.com";
-
-        /**
-         * 联系人邮箱
-         */
-        private String email = "jeecgos@163.com";
-    }
-
-    /**
-     * 许可证信息
-     */
-    @Data
-    public static class License {
-        /**
-         * 许可证名称
-         */
-        private String name = "Apache License 2.0";
-
-        /**
-         * 许可证URL
-         */
-        private String url = "https://www.apache.org/licenses/LICENSE-2.0";
-    }
-
-    /**
-     * 分组配置
-     */
-    @Data
-    public static class Group {
-        /**
-         * 是否启用分组
-         */
-        private Boolean enabled = false;
-
-        /**
-         * 默认分组名称
-         */
-        private String defaultName = "default";
-    }
-
-    /**
-     * Knife4j增强配置
-     */
-    @Data
-    public static class Knife4j {
-        /**
-         * 是否启用Knife4j增强
-         */
-        private Boolean enable = true;
-
-        /**
-         * 是否开启生产环境屏蔽
-         */
-        private Boolean production = false;
-
-        /**
-         * 是否开启HTTP Basic认证
-         */
-        private Boolean basicEnable = false;
-
-        /**
-         * Basic认证用户名
-         */
-        private String basicUsername = "admin";
-
-        /**
-         * Basic认证密码
-         */
-        private String basicPassword = "123456";
-
-        /**
-         * 是否开启请求参数缓存
-         */
-        private Boolean enableRequestCache = true;
-
-        /**
-         * 是否开启过滤请求参数
-         */
-        private Boolean enableFilterMultipartApis = false;
-
-        /**
-         * 是否开启swagger资源保护
-         */
-        private Boolean enableSwaggerModels = true;
-
-        /**
-         * 是否开启主页自定义
-         */
-        private Boolean enableHomeCustom = false;
-
-        /**
-         * 自定义主页路径
-         */
-        private String homeCustomPath;
-
-        /**
-         * 自定义文档位置
-         */
-        private String homeCustomLocation;
-    }
-
-    /**
-     * 获取实际的启用状态（考虑生产环境）
-     */
-    public boolean isActuallyEnabled() {
-        if (!enabled) {
-            return false;
-        }
-        // 生产环境下，如果production=false，则禁用
-        String profile = System.getProperty("spring.profiles.active", "");
-        if (profile.contains("prod") && !production) {
-            return false;
-        }
-        return true;
-    }
+    private Boolean production = false;
 }

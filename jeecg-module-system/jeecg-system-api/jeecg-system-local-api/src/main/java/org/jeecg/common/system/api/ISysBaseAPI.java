@@ -2,7 +2,7 @@ package org.jeecg.common.system.api;
 
 import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.api.CommonAPI;
-import org.jeecg.common.api.dto.AiragFlowDTO;
+// import org.jeecg.common.api.dto.AiragFlowDTO;  // AI RAG 模块未安装
 import org.jeecg.common.api.dto.DataLogDTO;
 import org.jeecg.common.api.dto.OnlineAuthDTO;
 import org.jeecg.common.api.dto.message.*;
@@ -590,12 +590,14 @@ public interface ISysBaseAPI extends CommonAPI {
      * 16 运行AIRag流程
      * for [QQYUN-13634]在baseapi里面封装方法，方便其他模块调用
      *
-     * @param airagFlowDTO
+     * 注意：AI RAG 模块未安装，调用此方法将抛出异常
+     *
+     * @param airagFlowDTO AI RAG 流程参数（暂时使用 Object 类型，待模块安装后改回 AiragFlowDTO）
      * @return 流程执行结果,可能是String或者Map
      * @author chenrui
      * @date 2025/9/2 11:43
      */
-    Object runAiragFlow(AiragFlowDTO airagFlowDTO);
+    Object runAiragFlow(Object airagFlowDTO);
 
     /**
      * 根据部门code或部门id获取部门名称(当前和上级部门)

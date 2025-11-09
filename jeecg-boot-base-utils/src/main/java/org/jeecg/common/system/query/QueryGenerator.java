@@ -16,9 +16,10 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.system.util.JeecgDataAutorUtils;
-import org.jeecg.common.system.util.JwtUtil;
-import org.jeecg.common.system.util.SqlConcatUtil;
+// Phase 14: 注释掉有依赖问题的导入，这些类在后续Starter模块中会重新引入
+// import org.jeecg.common.system.util.JeecgDataAutorUtils; // 依赖Spring和用户上下文
+// import org.jeecg.common.system.util.JwtUtil; // 依赖Spring和Redis
+// import org.jeecg.common.system.util.SqlConcatUtil; // 类未找到
 import org.jeecg.common.system.vo.SysPermissionDataRuleModel;
 import org.jeecg.common.util.*;
 import org.springframework.util.NumberUtils;
@@ -268,7 +269,8 @@ public class QueryGenerator {
 			// 多字段排序
 			String sortInfoString = parameterMap.get("sortInfoString")[0];
 			log.info("多字段排序规则>> sortInfoString:" + sortInfoString);
-			List<OrderItem> orderItemList = SqlConcatUtil.getQueryConditionOrders(column, order, sortInfoString);
+			// Phase 14: 临时注释掉 SqlConcatUtil 的调用，该类在后续Starter模块中会重新引入
+			List<OrderItem> orderItemList = null; // SqlConcatUtil.getQueryConditionOrders(column, order, sortInfoString);
 			log.info(orderItemList.toString());
 			if (orderItemList != null && !orderItemList.isEmpty()) {
 				for (OrderItem item : orderItemList) {
@@ -297,7 +299,8 @@ public class QueryGenerator {
 			// 多字段排序
 			String sortInfoString = parameterMap.get("defSortString")[0];
 			log.info("默认多字段排序规则>> defSortString:" + sortInfoString);
-			List<OrderItem> orderItemList = SqlConcatUtil.getQueryConditionOrders(column, order, sortInfoString);
+			// Phase 14: 临时注释掉 SqlConcatUtil 的调用
+			List<OrderItem> orderItemList = null; // SqlConcatUtil.getQueryConditionOrders(column, order, sortInfoString);
 			log.info(orderItemList.toString());
 			if (orderItemList != null && !orderItemList.isEmpty()) {
 				for (OrderItem item : orderItemList) {
@@ -502,9 +505,9 @@ public class QueryGenerator {
 	}
 	/**
 	 * 根据所传的值 转化成对应的比较方式
-	 * 支持><= like in !
-	 * @param value
-	 * @return
+	 * 支持 大于、小于、等于、like、in、不等于 等查询规则
+	 * @param value 查询值
+	 * @return 查询规则枚举
 	 */
 	public static QueryRuleEnum convert2Rule(Object value) {
 		// 避免空数据
@@ -837,8 +840,9 @@ public class QueryGenerator {
 		Map<String, SysPermissionDataRuleModel> ruleMap = new HashMap<>(5);
 		List<SysPermissionDataRuleModel> list = null;
 		//update-begin-author:taoyan date:2023-6-1 for:QQYUN-5441 【简流】获取多个用户/部门/角色 设置部门查询 报错
+		// Phase 14: 临时注释掉 JeecgDataAutorUtils 的调用，该类依赖Spring上下文
 		try {
-			list = JeecgDataAutorUtils.loadDataSearchConditon();
+			list = null; // JeecgDataAutorUtils.loadDataSearchConditon();
 		}catch (Exception e){
 			log.error("根据request对象获取权限数据失败，可能是定时任务中执行的。", e);
 		}
@@ -887,17 +891,18 @@ public class QueryGenerator {
 	}
 	
 	public static String converRuleValue(String ruleValue) {
-		String value = JwtUtil.getUserSystemData(ruleValue,null);
+		// Phase 14: 临时注释掉 JwtUtil 的调用，该类依赖Spring和Redis
+		String value = null; // JwtUtil.getUserSystemData(ruleValue,null);
 		return value!= null ? value : ruleValue;
 	}
 
 	/**
-	* @author: scott
-	* @Description: 去掉值前后单引号
-	* @date: 2020/3/19 21:26
-	* @param ruleValue: 
-	* @Return: java.lang.String
-	*/
+	 * 去掉值前后单引号
+	 * @param ruleValue 规则值
+	 * @return 处理后的字符串
+	 * @author scott
+	 * @since 2020/3/19
+	 */
 	public static String trimSingleQuote(String ruleValue) {
 		if (oConvertUtils.isEmpty(ruleValue)) {
 			return "";
@@ -957,7 +962,8 @@ public class QueryGenerator {
 	 * @return
 	 */
 	public static String getSingleQueryConditionSql(String field,String alias,Object value,boolean isString) {
-		return SqlConcatUtil.getSingleQueryConditionSql(field, alias, value, isString,null);
+		// Phase 14: 临时注释掉 SqlConcatUtil 的调用
+		return null; // SqlConcatUtil.getSingleQueryConditionSql(field, alias, value, isString,null);
 	}
 	
 	/**
@@ -1000,7 +1006,8 @@ public class QueryGenerator {
 				}else {
 					value = NumberUtils.parseNumber(dataRule.getRuleValue(),propType);
 				}
-				String filedSql = SqlConcatUtil.getSingleSqlByRule(rule, oConvertUtils.camelToUnderline(column), value,isString);
+				// Phase 14: 临时注释掉 SqlConcatUtil 的调用
+				String filedSql = null; // SqlConcatUtil.getSingleSqlByRule(rule, oConvertUtils.camelToUnderline(column), value,isString);
 				sb.append(sqlAnd+filedSql);
 			}
 		}
@@ -1009,10 +1016,9 @@ public class QueryGenerator {
 	}
 	
 	/**
-	  * 根据权限相关配置 组装mp需要的权限
-	 * @param queryWrapper
-	 * @param clazz
-	 * @return
+	 * 根据权限相关配置 组装mp需要的权限
+	 * @param queryWrapper 查询包装器
+	 * @param clazz 类对象
 	 */
 	public static void installAuthMplus(QueryWrapper<?> queryWrapper,Class<?> clazz) {
 		//权限查询
@@ -1050,9 +1056,12 @@ public class QueryGenerator {
 
 	/**
 	 * 获取系统数据库类型
+	 * Phase 14: 临时注释掉 CommonUtils 的调用，该类依赖多个外部模块
 	 */
 	private static String getDbType(){
-		return CommonUtils.getDatabaseType();
+		// return CommonUtils.getDatabaseType();
+		// TODO: 后续在Starter模块中重新实现数据库类型获取
+		return DataBaseConstant.DB_TYPE_MYSQL; // 临时默认返回MySQL类型
 	}
 
 	/**

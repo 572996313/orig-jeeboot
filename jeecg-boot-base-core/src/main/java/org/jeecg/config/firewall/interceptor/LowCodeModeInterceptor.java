@@ -30,15 +30,18 @@ import java.util.Set;
  * 3.online图表的所有配置功能，和sql解析
  * 4.仪表盘的在线配置功能，和sql解析
  * 5.大屏的在线配置功能，和sql解析
- * 
+ *
  * 积木的逻辑单独处理
  * 1.积木报表的在线配置功能，和sql解析
  *
  * @author qinfeng
  * @date 20230904
+ * @deprecated 此类已被 jeecg-boot-starter-web 模块管理，不再直接作为 Component 注册
+ * Bean 的创建由 jeecg-boot-starter-web 模块中的 LowCodeModeConfiguration 负责
  */
 @Slf4j
-@Component
+//@Component  // 已注释：Bean 注册由 jeecg-boot-starter-web 模块的 LowCodeModeConfiguration 管理
+@Deprecated
 public class LowCodeModeInterceptor implements HandlerInterceptor {
     /**
      * 低代码开发模式

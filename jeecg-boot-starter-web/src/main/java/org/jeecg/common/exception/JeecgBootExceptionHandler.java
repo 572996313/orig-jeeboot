@@ -3,8 +3,6 @@ package org.jeecg.common.exception;
 import org.jeecg.common.api.vo.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -16,9 +14,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import java.sql.SQLException;
 import java.util.stream.Collectors;
 
@@ -120,35 +118,9 @@ public class JeecgBootExceptionHandler {
     @ExceptionHandler(SQLException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Result<?> handleSQLException(SQLException e, HttpServletRequest request) {
-        log.error("SQL异常 - URI: {}, SQLState: {}, ErrorCode: {}, Message: {}", 
+        log.error("SQL异常 - URI: {}, SQLState: {}, ErrorCode: {}, Message: {}",
                 request.getRequestURI(), e.getSQLState(), e.getErrorCode(), e.getMessage());
         return Result.error("数据库操作失败");
-    }
-
-    /**
-     * 处理数据完整性异常
-     */
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result<?> handleDataIntegrityViolationException(DataIntegrityViolationException e, HttpServletRequest request) {
-        log.error("数据完整性异常 - URI: {}, Message: {}", request.getRequestURI(), e.getMessage());
-        
-        // 判断是否为外键约束
-        if (e.getCause() != null && e.getCause().getMessage().contains("foreign key constraint")) {
-            return Result.error("删除失败，该数据已被其他数据引用");
-        }
-        
-        return Result.error("数据操作失败，请检查数据完整性");
-    }
-
-    /**
-     * 处理重复键异常
-     */
-    @ExceptionHandler(DuplicateKeyException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result<?> handleDuplicateKeyException(DuplicateKeyException e, HttpServletRequest request) {
-        log.error("重复键异常 - URI: {}, Message: {}", request.getRequestURI(), e.getMessage());
-        return Result.error("数据已存在，请勿重复添加");
     }
 
     /**

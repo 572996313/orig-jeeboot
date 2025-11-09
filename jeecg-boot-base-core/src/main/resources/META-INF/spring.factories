@@ -1,2 +1,2 @@
-org.springframework.boot.SpringApplicationRunListener=\
-org.jeecg.config.DruidWallConfigRegister
+# Removed incorrect SpringApplicationRunListener registration
+# DruidWallConfigRegister is a BeanPostProcessor, not a SpringApplicationRunListener

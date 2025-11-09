@@ -1,0 +1,75 @@
+{
+  "groups": [
+    {
+      "name": "jeecg.elasticsearch",
+      "type": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jeecg.elasticsearch.cluster-name",
+      "type": "java.lang.String",
+      "description": "集群名称",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.cluster-nodes",
+      "type": "java.lang.String",
+      "description": "集群节点地址（逗号分隔）",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.connect-timeout",
+      "type": "java.lang.Integer",
+      "description": "连接超时时间（秒）",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.connection-request-timeout",
+      "type": "java.lang.Integer",
+      "description": "连接请求超时时间（秒）",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.max-conn-per-route",
+      "type": "java.lang.Integer",
+      "description": "每个路由的最大连接数",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.max-conn-total",
+      "type": "java.lang.Integer",
+      "description": "最大连接数",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.password",
+      "type": "java.lang.String",
+      "description": "密码",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.socket-timeout",
+      "type": "java.lang.Integer",
+      "description": "Socket超时时间（秒）",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    },
+    {
+      "name": "jeecg.elasticsearch.username",
+      "type": "java.lang.String",
+      "description": "用户名",
+      "sourceType": "org.jeecg.config.elasticsearch.JeecgElasticsearchProperties"
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

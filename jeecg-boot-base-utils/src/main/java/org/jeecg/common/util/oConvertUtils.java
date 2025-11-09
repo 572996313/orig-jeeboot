@@ -7,7 +7,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
+// TODO: Phase 14 - 移除Spring依赖的import
+// import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
 import org.springframework.beans.BeanUtils;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -238,8 +239,8 @@ public class oConvertUtils {
 
 	/**
 	 * 转义成Unicode编码
-	 * @param s
-	 * @return
+	 * @param name 待转义字符串
+	 * @return Unicode编码字符串
 	 */
 	/*public static String escapeJava(Object s) {
 		return StringEscapeUtils.escapeJava(getString(s));
@@ -500,9 +501,9 @@ public class oConvertUtils {
 
 	/**
 	 * SET转换MAP
-	 * 
-	 * @param str
-	 * @return
+	 *
+	 * @param setobj Set对象
+	 * @return Map对象
 	 */
 	public static Map<Object, Object> setToMap(Set<Object> setobj) {
 		Map<Object, Object> map = getHashMap();
@@ -548,11 +549,10 @@ public class oConvertUtils {
 	
 	/**
 	 * 将下划线大写方式命名的字符串转换为驼峰式。
-	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。</br>
+	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。<br/>
 	 * 例如：hello_world->helloWorld
-	 * 
-	 * @param name
-	 *            转换前的下划线大写方式命名的字符串
+	 *
+	 * @param name 转换前的下划线大写方式命名的字符串
 	 * @return 转换后的驼峰式命名的字符串
 	 */
 	public static String camelName(String name) {
@@ -590,11 +590,10 @@ public class oConvertUtils {
 	
 	/**
 	 * 将下划线大写方式命名的字符串转换为驼峰式。
-	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。</br>
+	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。<br/>
 	 * 例如：hello_world,test_id->helloWorld,testId
-	 * 
-	 * @param name
-	 *            转换前的下划线大写方式命名的字符串
+	 *
+	 * @param names 转换前的下划线大写方式命名的字符串
 	 * @return 转换后的驼峰式命名的字符串
 	 */
 	public static String camelNames(String names) {
@@ -613,12 +612,11 @@ public class oConvertUtils {
 	
 	//update-begin--Author:zhoujf  Date:20180503 for：TASK #2500 【代码生成器】代码生成器开发一通用模板生成功能
 	/**
-	 * 将下划线大写方式命名的字符串转换为驼峰式。(首字母写)
-	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。</br>
+	 * 将下划线大写方式命名的字符串转换为驼峰式。(首字母大写)
+	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。<br/>
 	 * 例如：hello_world->HelloWorld
-	 * 
-	 * @param name
-	 *            转换前的下划线大写方式命名的字符串
+	 *
+	 * @param name 转换前的下划线大写方式命名的字符串
 	 * @return 转换后的驼峰式命名的字符串
 	 */
 	public static String camelNameCapFirst(String name) {
@@ -808,10 +806,10 @@ public class oConvertUtils {
 	/**
 	 * 方法描述 判断一个对象是否是一个数组
 	 *
-	 * @param obj
-	 * @return
+	 * @param obj 待判断对象
+	 * @return 是否为数组
 	 * @author yaomy
-	 * @date 2018年2月5日 下午5:03:00
+	 * @since 2018年2月5日
 	 */
 	public static boolean isArray(Object obj) {
 		if (obj == null) {
@@ -1052,10 +1050,10 @@ public class oConvertUtils {
 	 * 判断对象是否为空 <br/>
 	 * 支持各种类型的对象
 	 * for for [QQYUN-10990]AIRAG
-	 * @param obj
-	 * @return
+	 * @param obj 待判断对象
+	 * @return 是否为空
 	 * @author chenrui
-	 * @date 2025/2/13 18:34
+	 * @since 2025/2/13
 	 */
 	public static boolean isObjectEmpty(Object obj) {
 		if (null == obj) {
@@ -1090,10 +1088,10 @@ public class oConvertUtils {
 	/**
 	 * 判断对象是否不为空
 	 * for for [QQYUN-10990]AIRAG
-	 * @param object
-	 * @return
+	 * @param object 待判断对象
+	 * @return 是否不为空
 	 * @author chenrui
-	 * @date 2025/2/13 18:35
+	 * @since 2025/2/13
 	 */
 	public static boolean isObjectNotEmpty(Object object) {
 		return !isObjectEmpty(object);
@@ -1102,11 +1100,11 @@ public class oConvertUtils {
 	/**
 	 * 如果src大于des返回true
 	 * for [QQYUN-10990]AIRAG
-	 * @param src
-	 * @param des
-	 * @return
-	 * @author: chenrui
-	 * @date: 2018/9/19 15:30
+	 * @param src 源数值
+	 * @param des 目标数值
+	 * @return 是否大于
+	 * @author chenrui
+	 * @since 2018/9/19
 	 */
 	public static boolean isGt(Number src, Number des) {
 		if (null == src || null == des) {
@@ -1121,11 +1119,11 @@ public class oConvertUtils {
 	/**
 	 * 如果src大于等于des返回true
 	 * for [QQYUN-10990]AIRAG
-	 * @param src
-	 * @param des
-	 * @return
-	 * @author: chenrui
-	 * @date: 2018/9/19 15:30
+	 * @param src 源数值
+	 * @param des 目标数值
+	 * @return 是否大于等于
+	 * @author chenrui
+	 * @since 2018/9/19
 	 */
 	public static boolean isGe(Number src, Number des) {
 		if (null == src || null == des) {
@@ -1141,12 +1139,12 @@ public class oConvertUtils {
 	/**
 	 * 判断是否存在
 	 * for [QQYUN-10990]AIRAG
-	 * @param obj
-	 * @param objs
-	 * @param <T>
-	 * @return
+	 * @param obj 待检查对象
+	 * @param objs 对象数组
+	 * @param <T> 泛型类型
+	 * @return 是否存在
 	 * @author chenrui
-	 * @date 2020/9/12 15:50
+	 * @since 2020/9/12
 	 */
 	public static <T> boolean isIn(T obj, T... objs) {
 		if (isEmpty(objs)) {
@@ -1160,13 +1158,18 @@ public class oConvertUtils {
 		return false;
 	}
 
+	// TODO: Phase 14 - 此方法依赖 MybatisPlusSaasConfig，应该移到 mybatis-plus-starter 模块
+	// 临时注释掉，避免编译错误
 	/**
 	 * 判断租户ID是否有效
+	 * @deprecated 此方法依赖MyBatis配置，已移至 jeecg-boot-starter-mybatis-plus 模块
 	 * @param tenantId
 	 * @return
 	 */
+	/*
 	public static boolean isEffectiveTenant(String tenantId) {
 		return MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL && isNotEmpty(tenantId) && !("0").equals(tenantId);
 	}
+	*/
 	
 }

@@ -80,15 +80,11 @@ public class PasswordUtil {
 
 	/**
 	 * 加密明文字符串
-	 * 
-	 * @param plaintext
-	 *            待加密的明文字符串
-	 * @param password
-	 *            生成密钥时所使用的密码
-	 * @param salt
-	 *            盐值
+	 *
+	 * @param plaintext 待加密的明文字符串
+	 * @param password 生成密钥时所使用的密码
+	 * @param salt 盐值
 	 * @return 加密后的密文字符串
-	 * @throws Exception
 	 */
 	public static String encrypt(String plaintext, String password, String salt) {
 
@@ -109,15 +105,11 @@ public class PasswordUtil {
 
 	/**
 	 * 解密密文字符串
-	 * 
-	 * @param ciphertext
-	 *            待解密的密文字符串
-	 * @param password
-	 *            生成密钥时所使用的密码(如需解密,该参数需要与加密时使用的一致)
-	 * @param salt
-	 *            盐值(如需解密,该参数需要与加密时使用的一致)
+	 *
+	 * @param ciphertext 待解密的密文字符串
+	 * @param password 生成密钥时所使用的密码(如需解密,该参数需要与加密时使用的一致)
+	 * @param salt 盐值(如需解密,该参数需要与加密时使用的一致)
 	 * @return 解密后的明文字符串
-	 * @throws Exception
 	 */
 	public static String decrypt(String ciphertext, String password, String salt) {
 

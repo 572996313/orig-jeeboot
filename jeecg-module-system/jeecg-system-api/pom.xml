@@ -14,13 +14,34 @@
 
     <modules>
         <module>jeecg-system-local-api</module>
-        <module>jeecg-system-cloud-api</module>
+        <!-- <module>jeecg-system-cloud-api</module> 模块不存在，已注释 -->
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-core</artifactId>
-        </dependency>
+    	<!-- 使用新的模块化架构 v4.0.0 -->
+    	<!-- 方式1: 使用聚合模块(包含所有功能,向后兼容) -->
+    	<dependency>
+    		<groupId>org.jeecgframework.boot3</groupId>
+    		<artifactId>jeecg-boot-base-core-aggregator</artifactId>
+    	</dependency>
+    	
+    	<!-- 方式2: 按需引入(推荐,更轻量)
+    	<dependency>
+    		<groupId>org.jeecgframework.boot3</groupId>
+    		<artifactId>jeecg-boot-base-core-lite</artifactId>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.jeecgframework.boot3</groupId>
+    		<artifactId>jeecg-boot-starter-security</artifactId>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.jeecgframework.boot3</groupId>
+    		<artifactId>jeecg-boot-starter-mybatis-plus</artifactId>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.jeecgframework.boot3</groupId>
+    		<artifactId>jeecg-boot-starter-web</artifactId>
+    	</dependency>
+    	-->
     </dependencies>
 </project>

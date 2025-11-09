@@ -8,15 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 /**
- * WebSocket配置类
+ * WebSocket 配置（简化版占位符）
  * 
- * 配置WebSocket端点和拦截器
- * 
- * @author JeecgBoot
- * @version 4.0.0
+ * @author jeecg-boot
  */
 @Slf4j
 @Configuration
@@ -25,20 +21,22 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
     @Autowired
-    private JeecgWebSocketHandler webSocketHandler;
+    private JeecgCommunicationProperties properties;
 
     @Autowired
-    private JeecgCommunicationProperties properties;
+    private JeecgWebSocketHandler webSocketHandler;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        String path = properties.getWebsocket().getPath();
-        String[] allowedOrigins = properties.getWebsocket().getAllowedOrigins().split(",");
-
-        registry.addHandler(webSocketHandler, path)
-                .setAllowedOrigins(allowedOrigins)
-                .addInterceptors(new HttpSessionHandshakeInterceptor());
-
-        log.info("WebSocket已注册，路径: {}, 允许的来源: {}", path, properties.getWebsocket().getAllowedOrigins());
+        log.info("========== 注册WebSocket处理器（简化版） ==========");
+        
+        String endpoint = properties.getWebsocket().getEndpoint();
+        String allowedOrigins = properties.getWebsocket().getAllowedOrigins();
+        
+        log.info("WebSocket端点: {}", endpoint);
+        log.info("允许的源: {}", allowedOrigins);
+        
+        registry.addHandler(webSocketHandler, endpoint)
+                .setAllowedOrigins(allowedOrigins);
     }
 }

@@ -1,5 +1,6 @@
 package org.jeecg.config.web;
 
+import io.undertow.Undertow;
 import io.undertow.UndertowOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,13 +12,14 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Undertow服务器定制器
+ * 仅在 Undertow 类存在时才会加载此配置
  *
  * @author JeecgBoot
  * @version 4.0.0
  * @since 2025-01-08
  */
-@Configuration
-@ConditionalOnClass(UndertowServletWebServerFactory.class)
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnClass({Undertow.class, UndertowServletWebServerFactory.class})
 @ConditionalOnProperty(prefix = "server", name = "servlet.context-path")
 public class UndertowCustomizer implements WebServerFactoryCustomizer<UndertowServletWebServerFactory> {
 

@@ -10,11 +10,48 @@
 
 	<artifactId>jeecg-system-biz</artifactId>
 
+	<properties>
+		<shiro.version>1.13.0</shiro.version>
+	</properties>
+
 	<dependencies>
+		<!-- System API (传递依赖 jeecg-boot-base-core) -->
 		<dependency>
 			<groupId>org.jeecgframework.boot3</groupId>
 			<artifactId>jeecg-system-local-api</artifactId>
 		</dependency>
+
+		<!-- ============================================ -->
+		<!-- Shiro Jakarta 显式依赖（确保运行时类路径正确） -->
+		<!-- ============================================ -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<classifier>jakarta</classifier>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<classifier>jakarta</classifier>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<classifier>jakarta</classifier>
+			<version>${shiro.version}</version>
+		</dependency>
+		
+		<!-- Jakarta Servlet API（确保 Shiro 使用正确的 Servlet API） -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -24,12 +61,14 @@
 			<artifactId>hibernate-re</artifactId>
 		</dependency>
 
-		<!-- AI大模型管理 -->
+		<!-- AI大模型管理 - 暂时注释，模块未安装 -->
+		<!--
 		<dependency>
 			<groupId>org.jeecgframework.boot3</groupId>
 			<artifactId>jeecg-boot-module-airag</artifactId>
 			<version>${jeecgboot.version}</version>
 		</dependency>
+		-->
 		<!-- 企业微信/钉钉 api -->
 		<dependency>
 			<groupId>org.jeecgframework</groupId>
@@ -67,12 +106,21 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- AI大模型管理 -->
-		<dependency>
-			<groupId>org.jeecgframework.boot3</groupId>
-			<artifactId>jeecg-boot-module-airag</artifactId>
-			<version>${jeecgboot.version}</version>
-		</dependency>
 	</dependencies>
+
+	<!-- 构建配置 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	
 </project>

@@ -307,6 +307,12 @@ knife4j:
     enable: false
     username: jeecg
     password: jeecg1314
+# 禁用 SpringDoc (与 Spring Boot 3.3.5 存在兼容性问题，项目使用 Knife4j)
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
 #第三方登录
 justauth:
   enabled: true

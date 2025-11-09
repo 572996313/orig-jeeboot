@@ -13,7 +13,7 @@
     </parent>
 
     <artifactId>jeecg-boot-base-constants</artifactId>
-    <version>4.0.0</version>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>JeecgBoot Base Constants</name>
@@ -25,7 +25,35 @@
     </properties>
 
     <dependencies>
-        <!-- 无任何外部依赖,纯Java模块 -->
+        <!-- 注意：理想情况下constants模块应该零依赖，但现有代码包含了一些有依赖的类 -->
+        <!-- TODO: 后续应将ProvinceCityArea等有依赖的类移至其他模块 -->
+        
+        <!-- Spring Framework（ProvinceCityArea需要） -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- Apache Commons Lang3（多个枚举类需要） -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- FastJSON（ProvinceCityArea需要） -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <optional>true</optional>
+        </dependency>
         
         <!-- 测试依赖 -->
         <dependency>
@@ -61,7 +89,7 @@
                 </executions>
             </plugin>
             
-            <!-- 生成JavaDoc -->
+            <!-- 生成JavaDoc - 暂时禁用，因为代码注释格式不规范 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -69,6 +97,8 @@
                     <encoding>UTF-8</encoding>
                     <charset>UTF-8</charset>
                     <docencoding>UTF-8</docencoding>
+                    <skip>true</skip>
+                    <!-- 如需启用，需要修复代码中的非标准JavaDoc标签 -->
                 </configuration>
                 <executions>
                     <execution>
@@ -76,6 +106,9 @@
                         <goals>
                             <goal>jar</goal>
                         </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

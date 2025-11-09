@@ -1,9 +1,7 @@
 package org.jeecg.common.constant.enums;
 
-import org.jeecg.common.util.oConvertUtils;
-
 /**
- * 邮件html模板配置地址美剧
+ * 邮件html模板配置地址枚举
  *
  * @author: liusq
  * @Date: 2023-10-13
@@ -56,8 +54,13 @@ public enum EmailTemplateEnum {
         this.url = url;
     }
 
+    /**
+     * 根据名称获取枚举
+     * @param name 模板名称
+     * @return EmailTemplateEnum
+     */
     public static EmailTemplateEnum getByName(String name) {
-        if (oConvertUtils.isEmpty(name)) {
+        if (name == null || name.trim().isEmpty()) {
             return null;
         }
         for (EmailTemplateEnum val : values()) {

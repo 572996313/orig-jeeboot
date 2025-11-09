@@ -3,6 +3,7 @@ package org.jeecg.modules.demo.test.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.jeecg.modules.demo.test.entity.JeecgOrderCustomer;
 
@@ -14,6 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Date:  2019-02-15
  * @Version: V1.0
  */
+@Mapper
 public interface JeecgOrderCustomerMapper extends BaseMapper<JeecgOrderCustomer> {
 	
 	/**

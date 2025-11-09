@@ -20,8 +20,7 @@ public class JdbcSecurityUtil {
 
     /**
      * 校验sql是否有特定的key
-     * @param jdbcUrl
-     * @return
+     * @param jdbcUrl JDBC连接URL
      */
     public static void validate(String jdbcUrl){
         if(oConvertUtils.isEmpty(jdbcUrl)){

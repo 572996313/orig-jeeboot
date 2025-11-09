@@ -87,11 +87,11 @@ public class SqlInjectionUtil {
 
 	/**
 	 * 校验比较严格
-	 * 
+	 *
 	 * sql注入过滤处理，遇到注入关键字抛异常
 	 *
-	 * @param value
-	 * @return
+	 * @param value 待校验的值
+	 * @param customXssString 自定义XSS字符串
 	 */
 	public static void filterContent(String value, String customXssString) {
 		if (value == null || "".equals(value)) {
@@ -197,9 +197,9 @@ public class SqlInjectionUtil {
 
 	/**
 	 * sql注入过滤处理，遇到注入关键字抛异常
-	 * 
-	 * @param values
-	 * @return
+	 *
+	 * @param values 待校验的值数组
+	 * @param customXssString 自定义XSS字符串
 	 */
 	public static void filterContent(String[] values, String customXssString) {
 		for (String val : values) {
@@ -215,8 +215,7 @@ public class SqlInjectionUtil {
 	 * 【提醒：不通用】
 	 * 仅用于字典条件SQL参数，注入过滤
 	 *
-	 * @param value
-	 * @return
+	 * @param value 待校验的值
 	 */
 	public static void specialFilterContentForDictSql(String value) {
 		String[] xssArr = specialDictSqlXssStr.split("\\|");
@@ -257,12 +256,11 @@ public class SqlInjectionUtil {
 	}
 
     /**
-	 * 【提醒：不通用】
-     *  仅用于Online报表SQL解析，注入过滤
-     * @param value
-     * @return
+  * 【提醒：不通用】
+     * 仅用于Online报表SQL解析，注入过滤
+     * @param value 待校验的值
      */
-	public static void specialFilterContentForOnlineReport(String value) {
+ public static void specialFilterContentForOnlineReport(String value) {
 		String[] xssArr = specialReportXssStr.split("\\|");
 		if (value == null || "".equals(value)) {
 			return;
@@ -302,8 +300,8 @@ public class SqlInjectionUtil {
 
 
 	/**
-	 * 校验是否有sql注释 
-	 * @return
+	 * 校验是否有sql注释
+	 * @param str 待校验的字符串
 	 */
 	public static void checkSqlAnnotation(String str){
 		if(str.contains(SQL_ANNOTATION2)){

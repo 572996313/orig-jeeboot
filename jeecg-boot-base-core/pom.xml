@@ -102,16 +102,14 @@
 			<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
 			<version>${mybatis-plus.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-jsqlparser-4.9</artifactId>
-			<version>${mybatis-plus.version}</version>
-		</dependency>
-		<!-- minidao -->
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>minidao-spring-boot-starter-jsqlparser-4.9</artifactId>
-        </dependency>
+		<!-- MyBatis-Plus 3.5.5 使用内置的 JSQLParser，无需单独引入 -->
+		<!-- minidao：暂时注释，等待兼容版本 -->
+		<!--
+		      <dependency>
+		          <groupId>org.jeecgframework.boot3</groupId>
+		          <artifactId>minidao-spring-boot-starter-jsqlparser-4.9</artifactId>
+		      </dependency>
+		-->
 
 		<!-- druid -->
 		<dependency>

@@ -21,11 +21,11 @@
 	</scm>
 	
   	<parent>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-starter-parent</artifactId>
-	    <version>3.5.5</version>
-	    <relativePath/>
-	</parent>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-parent</artifactId>
+  		<version>3.1.12</version>
+  		<relativePath/>
+  	</parent>
 
 	<properties>
 		<jeecgboot.version>3.8.3</jeecgboot.version>
@@ -44,6 +44,7 @@
 		<pegdown.version>1.6.0</pegdown.version>
 		<commonmark.version>0.17.0</commonmark.version>
 		<knife4j-spring-boot-starter.version>4.5.0</knife4j-spring-boot-starter.version>
+		<springdoc.version>2.6.0</springdoc.version>
 		<!-- 数据库驱动 -->
 		<postgresql.version>42.2.25</postgresql.version>
 		<ojdbc6.version>11.2.0.3</ojdbc6.version>
@@ -63,9 +64,10 @@
 		<jimubi-spring-boot-starter.version>2.1.5</jimubi-spring-boot-starter.version>
 		<minidao.version>1.10.14</minidao.version>
 		<autopoi-web.version>1.4.18</autopoi-web.version>
+		<easypoi.version>4.4.0</easypoi.version>
 		
 		<!-- 持久层 -->
-		<mybatis-plus.version>3.5.12</mybatis-plus.version>
+		<mybatis-plus.version>3.5.5</mybatis-plus.version>
 		<dynamic-datasource-spring-boot-starter.version>4.3.1</dynamic-datasource-spring-boot-starter.version>
 		<druid.version>1.2.24</druid.version>
 
@@ -88,23 +90,37 @@
 	</properties>
 
 	<modules>
-		<!-- 新模块拆分架构 - Phase 1: 纯Java基础模块 -->
+		<!-- 新模块拆分架构 - Phase 1: 纯Java基础模块 (零依赖) -->
 		<module>jeecg-boot-base-constants</module>
 		<module>jeecg-boot-base-api</module>
+		<!-- utils模块 - Phase 14: 正在修复92个编译错误 -->
 		<module>jeecg-boot-base-utils</module>
 		
 		<!-- 新模块拆分架构 - Phase 2.1: 轻量级Spring核心 -->
+		<!-- Phase 15: 取消注释core-lite模块,尝试构建 -->
 		<module>jeecg-boot-base-core-lite</module>
 		
-		<!-- 新模块拆分架构 - Phase 2.2+: 功能Starter模块 -->
+		<!-- 新模块拆分架构 - Phase 2.2+: 功能Starter模块 (按需引入) -->
 		<module>jeecg-boot-starter-security</module>
 		<module>jeecg-boot-starter-datasource</module>
+		<module>jeecg-boot-starter-mybatis-plus</module>
+		<module>jeecg-boot-starter-oss</module>
+		<module>jeecg-boot-starter-api-doc</module>
+		<module>jeecg-boot-starter-excel</module>
+		<module>jeecg-boot-starter-desensitization</module>
+		<module>jeecg-boot-starter-communication</module>
+		<module>jeecg-boot-starter-elasticsearch</module>
+		<module>jeecg-boot-starter-web</module>
+		
+		<!-- 新模块拆分架构 - Phase 3: 向后兼容聚合模块 -->
+		<module>jeecg-boot-base-core-aggregator</module>
 		
 		<!-- 原有模块 -->
-	       <module>jeecg-boot-base-core</module>
-	       <module>jeecg-module-system</module>
-	       <module>jeecg-boot-module</module>
-	   </modules>
+		<!-- 旧的base-core模块：包含VO类，jeecg-system-local-api仍然依赖它 -->
+		<module>jeecg-boot-base-core</module>
+		<module>jeecg-module-system</module>
+		<module>jeecg-boot-module</module>
+	</modules>
 
 	<repositories>
 		<repository>
@@ -231,7 +247,7 @@
 				<version>4.0.0-SNAPSHOT</version>
 			</dependency>
 			
-			<!-- Phase 2.2+: 功能Starter模块 -->
+			<!-- Phase 2.2+: 功能Starter模块 (10个按需引入的功能模块) -->
 			<dependency>
 				<groupId>org.jeecgframework.boot3</groupId>
 				<artifactId>jeecg-boot-starter-security</artifactId>
@@ -240,6 +256,53 @@
 			<dependency>
 				<groupId>org.jeecgframework.boot3</groupId>
 				<artifactId>jeecg-boot-starter-datasource</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-mybatis-plus</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-oss</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-api-doc</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-excel</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-desensitization</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-communication</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-web</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</dependency>
+			
+			<!-- Phase 3: 向后兼容聚合模块 -->
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-base-core-aggregator</artifactId>
 				<version>4.0.0-SNAPSHOT</version>
 			</dependency>
 			
@@ -415,6 +478,51 @@
 				<artifactId>okhttp</artifactId>
 				<version>4.4.1</version>
 			</dependency>
+			
+			<!-- ========== Phase 8: 为utils模块添加的缺失依赖版本 ========== -->
+			<!-- commons-io -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<!-- commons-beanutils -->
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.4</version>
+			</dependency>
+			<!-- java-jwt -->
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>java-jwt</artifactId>
+				<version>${java-jwt.version}</version>
+			</dependency>
+			<!-- shiro-core -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<!-- guava -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>31.1-jre</version>
+			</dependency>
+			<!-- netty-common (用于YouBianCodeUtil) -->
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-common</artifactId>
+				<version>4.1.94.Final</version>
+			</dependency>
+			<!-- commons-lang3 (Apache Commons Lang 3.x) -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.12.0</version>
+			</dependency>
+			
 			<!-- hutool工具类-->
 			<dependency>
 				<groupId>cn.hutool</groupId>
@@ -425,6 +533,52 @@
 				<groupId>cn.hutool</groupId>
 				<artifactId>hutool-crypto</artifactId>
 				<version>${hutool.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
+			<!-- MyBatis-Plus -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-core</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+			<!-- SQL解析器 - MyBatis-Plus 3.5.5 兼容版本 -->
+			<dependency>
+				<groupId>com.github.jsqlparser</groupId>
+				<artifactId>jsqlparser</artifactId>
+				<version>4.5</version>
+			</dependency>
+			<!-- Servlet API -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>4.0.1</version>
+			</dependency>
+			<!-- FastJSON -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<!-- EasyPoi -->
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>easypoi-base</artifactId>
+				<version>${easypoi.version}</version>
+			</dependency>
+			<!-- MySQL驱动 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
 			</dependency>
 			<!--minio-->
 			<dependency>

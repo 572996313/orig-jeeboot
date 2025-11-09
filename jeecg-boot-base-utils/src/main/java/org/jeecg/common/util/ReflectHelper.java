@@ -44,7 +44,7 @@ public class ReflectHelper {
     }
 
     /**
-     * @desc 初始化
+     * 初始化方法
      */
     public void initMethods() {
         getMethods = new Hashtable<String, Method>();
@@ -75,7 +75,10 @@ public class ReflectHelper {
     }
 
     /**
-     * @desc 调用set方法
+     * 调用set方法
+     * @param property 属性名
+     * @param object 属性值
+     * @return 是否设置成功
      */
     public boolean setMethodValue(String property, Object object) {
         Method m = setMethods.get(property.toLowerCase());
@@ -93,7 +96,9 @@ public class ReflectHelper {
     }
 
     /**
-     * @desc 调用set方法
+     * 调用get方法
+     * @param property 属性名
+     * @return 属性值
      */
     public Object getMethodValue(String property) {
         Object value = null;

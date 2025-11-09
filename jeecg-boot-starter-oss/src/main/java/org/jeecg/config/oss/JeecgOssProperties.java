@@ -4,173 +4,141 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * OSS配置属性
- *
+ * OSS配置属性（简化版）
+ * 
  * @author jeecg-boot
  * @since 4.0.0
  */
 @Data
 @ConfigurationProperties(prefix = "jeecg.oss")
 public class JeecgOssProperties {
-
+    
     /**
-     * 是否启用OSS
+     * 是否启用OSS功能
      */
     private Boolean enabled = true;
-
+    
     /**
-     * 存储类型: minio, aliyun, local
+     * OSS类型：minio, aliyun, local
      */
-    private String type = "minio";
-
+    private String type = "local";
+    
     /**
-     * 服务端点
-     * MinIO示例: http://localhost:9000
-     * 阿里云示例: https://oss-cn-beijing.aliyuncs.com
+     * OSS服务端点
      */
     private String endpoint;
-
+    
     /**
      * 访问密钥ID
      */
     private String accessKey;
-
+    
     /**
      * 访问密钥Secret
      */
     private String secretKey;
-
+    
     /**
-     * 桶名称（默认桶）
+     * 默认存储桶名称
      */
-    private String bucketName = "jeecg-bucket";
-
+    private String bucketName;
+    
     /**
-     * 静态访问域名（用于替换endpoint）
-     * 例如: https://cdn.example.com
+     * 静态资源域名（CDN域名）
      */
     private String staticDomain;
-
+    
     /**
-     * 本地存储路径（type=local时使用）
+     * 本地存储路径
      */
     private String localPath = "./upload";
-
+    
     /**
-     * 是否自动创建桶
+     * 是否自动创建存储桶
      */
     private Boolean autoCreateBucket = true;
-
-    /**
-     * MinIO专用配置
-     */
-    private MinioProperties minio = new MinioProperties();
-
-    /**
-     * 阿里云OSS专用配置
-     */
-    private AliyunProperties aliyun = new AliyunProperties();
-
+    
     /**
      * MinIO配置
      */
-    @Data
-    public static class MinioProperties {
-        /**
-         * MinIO URL (兼容旧配置)
-         */
-        private String minioUrl;
-
-        /**
-         * MinIO用户名 (兼容旧配置)
-         */
-        private String minioName;
-
-        /**
-         * MinIO密码 (兼容旧配置)
-         */
-        private String minioPass;
-
-        /**
-         * 桶名称 (兼容旧配置)
-         */
-        private String bucketName;
-    }
-
+    private MinioProperties minio = new MinioProperties();
+    
     /**
      * 阿里云OSS配置
      */
+    private AliyunProperties aliyun = new AliyunProperties();
+    
+    /**
+     * MinIO配置属性
+     */
+    @Data
+    public static class MinioProperties {
+        private String endpoint;
+        private String accessKey;
+        private String secretKey;
+        private String bucketName;
+    }
+    
+    /**
+     * 阿里云OSS配置属性
+     */
     @Data
     public static class AliyunProperties {
-        /**
-         * 地域节点
-         */
-        private String region;
-
-        /**
-         * 是否使用内网访问
-         */
-        private Boolean internal = false;
-
-        /**
-         * 是否使用HTTPS
-         */
-        private Boolean secure = true;
+        private String endpoint;
+        private String accessKeyId;
+        private String accessKeySecret;
+        private String bucketName;
     }
-
+    
     /**
-     * 获取实际的endpoint（优先使用统一配置）
+     * 获取实际端点（优先使用具体配置，其次使用通用配置）
      */
     public String getActualEndpoint() {
-        if (endpoint != null && !endpoint.isEmpty()) {
-            return endpoint;
+        if ("minio".equals(type) && minio.getEndpoint() != null) {
+            return minio.getEndpoint();
         }
-        // 兼容旧配置
-        if (minio.getMinioUrl() != null && !minio.getMinioUrl().isEmpty()) {
-            return minio.getMinioUrl();
+        if ("aliyun".equals(type) && aliyun.getEndpoint() != null) {
+            return aliyun.getEndpoint();
         }
-        return null;
+        return endpoint;
     }
-
+    
     /**
-     * 获取实际的accessKey（优先使用统一配置）
+     * 获取实际访问密钥
      */
     public String getActualAccessKey() {
-        if (accessKey != null && !accessKey.isEmpty()) {
-            return accessKey;
+        if ("minio".equals(type) && minio.getAccessKey() != null) {
+            return minio.getAccessKey();
         }
-        // 兼容旧配置
-        if (minio.getMinioName() != null && !minio.getMinioName().isEmpty()) {
-            return minio.getMinioName();
+        if ("aliyun".equals(type) && aliyun.getAccessKeyId() != null) {
+            return aliyun.getAccessKeyId();
         }
-        return null;
+        return accessKey;
     }
-
+    
     /**
-     * 获取实际的secretKey（优先使用统一配置）
+     * 获取实际访问密钥Secret
      */
     public String getActualSecretKey() {
-        if (secretKey != null && !secretKey.isEmpty()) {
-            return secretKey;
+        if ("minio".equals(type) && minio.getSecretKey() != null) {
+            return minio.getSecretKey();
         }
-        // 兼容旧配置
-        if (minio.getMinioPass() != null && !minio.getMinioPass().isEmpty()) {
-            return minio.getMinioPass();
+        if ("aliyun".equals(type) && aliyun.getAccessKeySecret() != null) {
+            return aliyun.getAccessKeySecret();
         }
-        return null;
+        return secretKey;
     }
-
+    
     /**
-     * 获取实际的桶名称（优先使用统一配置）
+     * 获取实际存储桶名称
      */
     public String getActualBucketName() {
-        if (bucketName != null && !bucketName.isEmpty()) {
-            return bucketName;
-        }
-        // 兼容旧配置
-        if (minio.getBucketName() != null && !minio.getBucketName().isEmpty()) {
+        if ("minio".equals(type) && minio.getBucketName() != null) {
             return minio.getBucketName();
         }
-        return "jeecg-bucket";
+        if ("aliyun".equals(type) && aliyun.getBucketName() != null) {
+            return aliyun.getBucketName();
+        }
+        return bucketName;
     }
 }

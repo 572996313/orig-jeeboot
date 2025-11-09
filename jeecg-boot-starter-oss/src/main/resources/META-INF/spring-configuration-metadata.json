@@ -22,8 +22,7 @@
       "name": "jeecg.minio",
       "type": "org.jeecg.config.oss.MinioConfig",
       "sourceType": "org.jeecg.config.oss.MinioConfig",
-      "description": "MinIO配置（已过时，请使用jeecg.oss.minio）",
-      "deprecated": true
+      "description": "MinIO配置（已过时，请使用jeecg.oss.minio）"
     }
   ],
   "properties": [

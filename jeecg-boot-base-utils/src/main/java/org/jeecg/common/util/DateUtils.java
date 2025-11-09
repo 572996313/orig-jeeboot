@@ -81,8 +81,8 @@ public class DateUtils extends PropertyEditorSupport {
 
     /**
      * 指定模式的时间格式
-     * @param pattern
-     * @return
+     * @param pattern 时间格式模式字符串
+     * @return 指定模式的SimpleDateFormat对象
      */
     private static SimpleDateFormat getSdFormat(String pattern) {
         return new SimpleDateFormat(pattern);
@@ -148,8 +148,8 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 时间戳转换为字符串
      *
-     * @param time
-     * @return
+     * @param time 时间戳对象
+     * @return 转换后的字符串
      */
     public static String timestamptoStr(Timestamp time) {
         Date date = null;
@@ -162,8 +162,8 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 字符串转换时间戳
      *
-     * @param str
-     * @return
+     * @param str 字符串日期
+     * @return 转换后的时间戳对象
      */
     public static Timestamp str2Timestamp(String str) {
         Date date = str2Date(str, date_sdf.get());
@@ -173,9 +173,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 字符串转换成日期
      *
-     * @param str
-     * @param sdf
-     * @return
+     * @param str 字符串日期
+     * @param sdf 日期格式化对象
+     * @return 转换后的日期对象
      */
     public static Date str2Date(String str, SimpleDateFormat sdf) {
         if (null == str || "".equals(str)) {
@@ -210,9 +210,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 格式化时间
      *
-     * @param date
-     * @param format
-     * @return
+     * @param date 字符串日期
+     * @param format 格式化模式
+     * @return 格式化后的字符串
      */
     public static String dateformat(String date, String format) {
         SimpleDateFormat sformat = new SimpleDateFormat(format);
@@ -691,8 +691,8 @@ public class DateUtils extends PropertyEditorSupport {
 
     /**
      * 将字符串转成时间
-     * @param str
-     * @return
+     * @param str 字符串日期时间
+     * @return 转换后的日期对象
      */
     public static Date parseDatetime(String str){
         try {
@@ -705,9 +705,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 判断两个时间是否是同一天
      *
-     * @param date1
-     * @param date2
-     * @return
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果是同一天返回true，否则返回false
      */
     public static boolean isSameDay(Date date1, Date date2) {
         if (date1 == null || date2 == null) {
@@ -725,8 +725,8 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 计算与当前日期的时间差
      *
-     * @param targetDate
-     * @return
+     * @param targetDate 目标日期
+     * @return 时间差的毫秒数
      */
     public static long calculateTimeDifference(Date targetDate) {
         // 获取当前时间
@@ -747,8 +747,8 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 计算与当前日期的日期天数差
      *
-     * @param targetDate
-     * @return
+     * @param targetDate 目标日期
+     * @return 日期天数差
      */
     public static long calculateDaysDifference(Date targetDate) {
         // 获取当前日期
@@ -763,9 +763,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 判断两个时间是否是同一周
      *
-     * @param date1
-     * @param date2
-     * @return
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果是同一周返回true，否则返回false
      */
     public static boolean isSameWeek(Date date1, Date date2) {
         if (date1 == null || date2 == null) {
@@ -782,9 +782,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 判断两个时间是否是同一月
      *
-     * @param date1
-     * @param date2
-     * @return
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果是同一月返回true，否则返回false
      */
     public static boolean isSameMonth(Date date1, Date date2) {
         if (date1 == null || date2 == null) {
@@ -801,9 +801,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 判断两个时间是否是同一年
      *
-     * @param date1
-     * @param date2
-     * @return
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果是同一年返回true，否则返回false
      */
     public static boolean isSameYear(Date date1, Date date2) {
         if (date1 == null || date2 == null) {
@@ -819,9 +819,9 @@ public class DateUtils extends PropertyEditorSupport {
     /**
      * 获取两个日期之间的所有日期列表，包含开始和结束日期
      *
-     * @param begin
-     * @param end
-     * @return
+     * @param begin 开始日期
+     * @param end 结束日期
+     * @return 日期列表
      */
     public static List<Date> getDateRangeList(Date begin, Date end) {
         List<Date> dateList = new ArrayList<>();

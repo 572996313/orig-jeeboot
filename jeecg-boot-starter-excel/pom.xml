@@ -6,14 +6,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jeecgframework.boot</groupId>
+        <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0</version>
+        <version>3.8.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>org.jeecgframework.boot3</groupId>
     <artifactId>jeecg-boot-starter-excel</artifactId>
-    <version>4.0.0</version>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>jeecg-boot-starter-excel</name>
@@ -27,21 +28,18 @@
     <dependencies>
         <!-- JeecgBoot 基础模块 -->
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-constants</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-utils</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Spring Boot -->

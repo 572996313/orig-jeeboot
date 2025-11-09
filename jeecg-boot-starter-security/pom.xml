@@ -8,10 +8,11 @@
     <parent>
         <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.8.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>org.jeecgframework.boot3</groupId>
     <artifactId>jeecg-boot-starter-security</artifactId>
     <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -143,11 +144,35 @@
         </dependency>
 
         <!-- ============================================ -->
-        <!-- Servlet API -->
+        <!-- Apache Commons Lang3 (StringUtils等工具类) -->
+        <!-- ============================================ -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- ============================================ -->
+        <!-- Google Guava -->
+        <!-- ============================================ -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <!-- ============================================ -->
+        <!-- Servlet API (Jakarta) -->
         <!-- ============================================ -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- javax.servlet兼容支持 (用于Shiro 1.13.0兼容性) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -1,0 +1,27 @@
+# Datasource Starter 备份文件清单
+
+## 备份原因：编译依赖复杂，采用渐进式策略
+
+### 1. 包路径重复的文件（需要移除）
+- src/main/java/org/jeecg/config/datasource/DruidConfig.java
+- src/main/java/org/jeecg/config/datasource/DruidWallConfigRegister.java
+- src/main/java/org/jeecg/config/datasource/CorsFilterCondition.java
+
+### 2. 依赖复杂的动态数据源文件
+- src/main/java/org/jeecg/common/util/dynamic/db/DataSourceCachePool.java (依赖Redis/CommonAPI)
+- src/main/java/org/jeecg/common/util/dynamic/db/DynamicDBUtil.java (356行，依赖JdbcTemplate)
+- src/main/java/org/jeecg/common/util/dynamic/db/FreemarkerParseFactory.java (依赖代码生成模块)
+- src/main/java/org/jeecg/util/dynamic/db/DataSourceCachePool.java (重复)
+
+### 3. 依赖外部sign模块的过滤器
+- src/main/java/org/jeecg/config/filter/RequestBodyReserveFilter.java
+
+## 保留的文件（简化版）
+- src/main/java/org/jeecg/config/DruidConfig.java (修复后)
+- src/main/java/org/jeecg/config/DruidWallConfigRegister.java (修复后)
+- src/main/java/org/jeecg/config/CorsFilterCondition.java (修复后)
+- src/main/java/org/jeecg/config/datasource/JeecgDatasourceAutoConfiguration.java (简化后)
+- src/main/java/org/jeecg/config/datasource/JeecgDatasourceProperties.java (简化后)
+
+## 恢复计划
+Phase 20 统一恢复所有备份文件并解决依赖问题。
