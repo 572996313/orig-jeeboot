@@ -41,11 +41,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import jakarta.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
+
 
 
 /**
@@ -157,20 +159,22 @@ public class AiragChatServiceImpl implements IAiragChatService {
             // 发送完成事件
             emitter.send(SseEmitter.event().data(eventData));
         } catch (Exception e) {
-            if(!e.getMessage().contains("ResponseBodyEmitter has already completed")){
+            if (!e.getMessage().contains("ResponseBodyEmitter has already completed")) {
                 log.error("终止会话时发生错误", e);
             }
             try {
                 // 防止异常冒泡
                 emitter.completeWithError(e);
-            } catch (Exception ignore) {}
+            } catch (Exception ignore) {
+            }
         } finally {
             // 从缓存中移除emitter
             AiragLocalCache.remove(AiragConsts.CACHE_TYPE_SSE, eventData.getRequestId());
             // 关闭emitter
             try {
                 emitter.complete();
-            } catch (Exception ignore) {}
+            } catch (Exception ignore) {
+            }
         }
     }
 
@@ -263,12 +267,12 @@ public class AiragChatServiceImpl implements IAiragChatService {
 
     @Override
     public SseEmitter receiveByRequestId(String requestId) {
-        AssertUtils.assertNotEmpty("请选择会话",requestId);
-        if(AiragLocalCache.get(AiragConsts.CACHE_TYPE_SSE, requestId) == null){
+        AssertUtils.assertNotEmpty("请选择会话", requestId);
+        if (AiragLocalCache.get(AiragConsts.CACHE_TYPE_SSE, requestId) == null) {
             return null;
         }
         List<EventData> datas = AiragLocalCache.get(AiragConsts.CACHE_TYPE_SSE_HISTORY_MSG, requestId);
-        if(null == datas){
+        if (null == datas) {
             return null;
         }
         SseEmitter emitter = createSSE(requestId);
@@ -280,7 +284,7 @@ public class AiragChatServiceImpl implements IAiragChatService {
             long lastActiveTime = System.currentTimeMillis();
             try {
                 while (true) {
-                    if(lastIndex < datas.size()) {
+                    if (lastIndex < datas.size()) {
                         try {
                             EventData eventData = datas.get(lastIndex++);
                             String eventStr = JSONObject.toJSONString(eventData);
@@ -319,12 +323,14 @@ public class AiragChatServiceImpl implements IAiragChatService {
                     try {
                         // 防止异常冒泡
                         emitter.completeWithError(e);
-                    } catch (Exception ignore) {}
+                    } catch (Exception ignore) {
+                    }
                 } finally {
                     // 关闭emitter
                     try {
                         emitter.complete();
-                    } catch (Exception ignore) {}
+                    } catch (Exception ignore) {
+                    }
                 }
             }
         });
@@ -333,6 +339,7 @@ public class AiragChatServiceImpl implements IAiragChatService {
 
     /**
      * 创建SSE
+     *
      * @param requestId
      * @return
      * @author chenrui
@@ -346,7 +353,8 @@ public class AiragChatServiceImpl implements IAiragChatService {
             AiragLocalCache.remove(AiragConsts.CACHE_TYPE_SSE_SEND_TIME, requestId);
             try {
                 emitter.complete();
-            } catch (Exception ignore) {}
+            } catch (Exception ignore) {
+            }
         });
         return emitter;
     }
@@ -711,7 +719,7 @@ public class AiragChatServiceImpl implements IAiragChatService {
                 // 已经执行完了,删除时间缓存
                 AiragLocalCache.remove(AiragConsts.CACHE_TYPE_SSE_SEND_TIME, requestId);
                 EventFlowData data = (EventFlowData) eventData.getData();
-                if(data.isSuccess()) {
+                if (data.isSuccess()) {
                     Object outputs = data.getOutputs();
                     if (oConvertUtils.isObjectNotEmpty(outputs)) {
                         AiMessage aiMessage;
@@ -732,7 +740,7 @@ public class AiragChatServiceImpl implements IAiragChatService {
                         // 保存会话
                         saveChatConversation(chatConversation, false, httpRequest);
                     }
-                }else{
+                } else {
                     //update-begin---author:chenrui ---date:20250425  for：[QQYUN-12203]AI 聊天，超时或者服务器报错，给个友好提示------------
                     // 失败
                     String message = data.getMessage();
@@ -823,7 +831,7 @@ public class AiragChatServiceImpl implements IAiragChatService {
             aiChatParams = new AIChatParams();
         }
         // 如果是默认app,加载系统默认工具
-        if(chatConversation.getApp().getId().equals(AiAppConsts.DEFAULT_APP_ID)){
+        if (chatConversation.getApp().getId().equals(AiAppConsts.DEFAULT_APP_ID)) {
             aiChatParams.setTools(jeecgToolsProvider.getDefaultTools());
         }
         aiChatParams.setKnowIds(chatConversation.getApp().getKnowIds());
@@ -847,7 +855,7 @@ public class AiragChatServiceImpl implements IAiragChatService {
                 return;
             }
             String errMsg = "调用大模型接口失败，详情请查看后台日志。";
-            if(e instanceof JeecgBootException){
+            if (e instanceof JeecgBootException) {
                 errMsg = e.getMessage();
             }
             EventData eventData = new EventData(requestId, null, EventData.EVENT_FLOW_ERROR, chatConversation.getId(), topicId);
@@ -1093,12 +1101,13 @@ public class AiragChatServiceImpl implements IAiragChatService {
 
     /**
      * 打印耗时
+     *
      * @param requestId
      * @param message
      * @author chenrui
      * @date 2025/4/28 15:15
      */
-    private static void printChatDuration(String requestId,String message) {
+    private static void printChatDuration(String requestId, String message) {
         Long beginTime = AiragLocalCache.get(AiragConsts.CACHE_TYPE_SSE_SEND_TIME, requestId);
         if (null != beginTime) {
             log.info("[AI-CHAT]{},requestId:{},耗时:{}s", message, requestId, (System.currentTimeMillis() - beginTime) / 1000);

@@ -1,0 +1,2 @@
+# Removed incorrect SpringApplicationRunListener registration
+# DruidWallConfigRegister is a BeanPostProcessor, not a SpringApplicationRunListener

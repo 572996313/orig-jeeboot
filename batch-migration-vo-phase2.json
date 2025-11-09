@@ -1,0 +1,63 @@
+{
+  "batch_name": "VO类迁移 - 第2批（中等引用次数6-13次）",
+  "description": "迁移引用次数6-13次的VO类到jeecg-boot-base-api模块",
+  "target_module": "jeecg-boot-base-api",
+  "classes": [
+    {
+      "name": "DictQuery",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 6,
+      "note": "字典查询VO"
+    },
+    {
+      "name": "SysPermissionDataRuleModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 7,
+      "note": "权限数据规则模型"
+    },
+    {
+      "name": "SysDepartModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 8,
+      "note": "部门模型"
+    },
+    {
+      "name": "Elasticsearch",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 8,
+      "note": "Elasticsearch配置"
+    },
+    {
+      "name": "SysUserCacheInfo",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 10,
+      "note": "用户缓存信息"
+    },
+    {
+      "name": "Shiro",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 11,
+      "note": "Shiro配置"
+    },
+    {
+      "name": "DynamicDataSourceModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 12,
+      "note": "动态数据源模型"
+    },
+    {
+      "name": "Firewall",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 13,
+      "note": "防火墙配置"
+    }
+  ]
+}

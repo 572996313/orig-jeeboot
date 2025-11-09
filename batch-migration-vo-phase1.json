@@ -1,0 +1,84 @@
+{
+  "batch_name": "VO类迁移 - 第1批（高优先级，0-4次引用）",
+  "description": "迁移引用次数少于5次的VO类到jeecg-boot-base-api模块",
+  "target_module": "jeecg-boot-base-api",
+  "classes": [
+    {
+      "name": "SelectTreeModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 1,
+      "note": "树形选择模型"
+    },
+    {
+      "name": "QueryRuleVo",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 1,
+      "note": "查询规则VO"
+    },
+    {
+      "name": "BaiduApi",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 1,
+      "note": "百度API配置"
+    },
+    {
+      "name": "WeiXinPay",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 1,
+      "note": "微信支付配置"
+    },
+    {
+      "name": "SysFilesModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 2,
+      "note": "系统文件模型"
+    },
+    {
+      "name": "DictModelMany",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 3,
+      "note": "多字典模型"
+    },
+    {
+      "name": "DomainUrl",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 3,
+      "note": "域名URL配置"
+    },
+    {
+      "name": "ComboModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 4,
+      "note": "组合模型"
+    },
+    {
+      "name": "SysCategoryModel",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 4,
+      "note": "系统分类模型"
+    },
+    {
+      "name": "UserAccountInfo",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 4,
+      "note": "用户账号信息"
+    },
+    {
+      "name": "SelectSqlInfo",
+      "target": "jeecg-boot-base-api",
+      "subpackage": "vo",
+      "references": 4,
+      "note": "SQL查询信息"
+    }
+  ]
+}

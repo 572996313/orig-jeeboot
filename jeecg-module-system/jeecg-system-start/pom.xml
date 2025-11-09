@@ -48,7 +48,7 @@
      <!--  <dependency>
            <groupId>org.jeecgframework.boot3</groupId>
            <artifactId>jeecg-cloud-test-shardingsphere</artifactId>
-           <version>3.8.3</version>
+           <version>4.0.0-SNAPSHOT</version>
        </dependency>-->
     </dependencies>
 

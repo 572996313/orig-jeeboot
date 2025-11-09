@@ -1,0 +1,57 @@
+ M jeecg-boot-base-api/pom.xml
+ M jeecg-boot-base-constants/pom.xml
+ M jeecg-boot-base-core-aggregator/pom.xml
+ M jeecg-boot-base-core-lite/pom.xml
+ M jeecg-boot-base-core/pom.xml
+ M jeecg-boot-base-utils/pom.xml
+ M jeecg-boot-module/jeecg-boot-module-airag/pom.xml
+ M jeecg-boot-module/pom.xml
+ M jeecg-boot-starter-api-doc/pom.xml
+ M jeecg-boot-starter-communication/pom.xml
+ M jeecg-boot-starter-datasource/pom.xml
+ M jeecg-boot-starter-desensitization/pom.xml
+ M jeecg-boot-starter-elasticsearch/pom.xml
+ M jeecg-boot-starter-excel/pom.xml
+ M jeecg-boot-starter-mybatis-plus/pom.xml
+ M jeecg-boot-starter-oss/pom.xml
+ M jeecg-boot-starter-security/pom.xml
+ M jeecg-boot-starter-web/pom.xml
+ M jeecg-module-system/jeecg-system-api/jeecg-system-local-api/pom.xml
+ M jeecg-module-system/jeecg-system-api/pom.xml
+ M jeecg-module-system/jeecg-system-biz/pom.xml
+ M jeecg-module-system/jeecg-system-start/pom.xml
+ M jeecg-module-system/pom.xml
+ M out/production/jeecg-boot-starter-elasticsearch/META-INF/spring-configuration-metadata.json
+ M out/production/jeecg-boot-starter-elasticsearch/org/jeecg/common/es/JeecgElasticsearchTemplate.class
+ M out/production/jeecg-boot-starter-elasticsearch/org/jeecg/common/es/QueryStringBuilder.class
+ M out/production/jeecg-boot-starter-elasticsearch/org/jeecg/common/es/SearchResult.class
+ M out/production/jeecg-boot-starter-elasticsearch/org/jeecg/config/elasticsearch/JeecgElasticsearchAutoConfiguration.class
+ M out/production/jeecg-boot-starter-elasticsearch/org/jeecg/config/elasticsearch/JeecgElasticsearchProperties.class
+?? BASE-CORE-MIGRATION-README.md
+?? BASE-CORE-MIGRATION-TOOLKIT-SUMMARY.md
+?? "POM\344\274\230\345\214\226P3\344\273\273\345\212\241\346\211\247\350\241\214\346\212\245\345\221\212.md"
+?? "POM\344\274\230\345\214\226\346\211\247\350\241\214\346\212\245\345\221\212-\346\234\200\347\273\210\347\211\210.md"
+?? "POM\344\274\230\345\214\226\346\211\247\350\241\214\346\212\245\345\221\212.md"
+?? "POM\344\274\230\345\214\226\350\241\214\345\212\250\350\256\241\345\210\222.md"
+?? "POM\344\276\235\350\265\226\344\274\230\345\214\226\345\273\272\350\256\256\346\212\245\345\221\212.md"
+?? "POM\344\276\235\350\265\226\345\210\206\346\236\220\344\270\216\344\274\230\345\214\226-\346\234\200\347\273\210\345\256\214\346\225\264\346\212\245\345\221\212.md"
+?? "POM\344\276\235\350\265\226\345\210\206\346\236\220\344\270\216\344\274\230\345\214\226\346\200\273\347\273\223\346\212\245\345\221\212-\346\234\200\347\273\210\347\211\210.md"
+?? "POM\344\276\235\350\265\226\345\210\206\346\236\220\346\212\245\345\221\212.md"
+?? "README-\344\276\235\350\265\226\345\210\206\346\236\220\346\200\273\347\273\223.md"
+?? analyze-base-core-references.py
+?? base-core-migration-backup-20251109_123935/
+?? base-core-migration-backup-20251109_124006/
+?? base-core-migration-plan.md
+?? base-core-migration-start.sh
+?? "jeecg-boot-base-core-\347\247\273\351\231\244\345\244\261\350\264\245\345\210\206\346\236\220\346\212\245\345\221\212.md"
+?? migrate-base-core-backup.py
+?? migrate-base-core-class.py
+?? optimize-pom-scope-and-redundancy.py
+?? optimize-pom-to-4.0.0.py
+?? optimize-third-party-versions.py
+?? remove-base-core-module.py
+?? restore-base-core-module.sh
+?? update-class-references.py
+?? "\344\276\235\350\265\226\345\205\263\347\263\273\345\217\257\350\247\206\345\214\226\345\233\276.md"
+?? "\344\276\235\350\265\226\345\210\206\346\236\220\345\217\257\350\247\206\345\214\226\346\200\273\350\247\210.md"
+?? "\360\237\223\232-\346\226\207\346\241\243\345\257\274\350\210\252\347\264\242\345\274\225.md"

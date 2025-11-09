@@ -1,0 +1,30 @@
+{
+  "batch_name": "VO类第3批迁移 - 高引用次数",
+  "target_module": "jeecg-boot-base-api",
+  "target_subpackage": "vo",
+  "classes": [
+    {
+      "name": "LoginUser",
+      "old_package": "org.jeecg.common.system.vo",
+      "references": 13,
+      "priority": "high",
+      "note": "用户登录信息VO，影响面较大"
+    },
+    {
+      "name": "ComboModel",
+      "old_package": "org.jeecg.common.system.vo",
+      "references": 12,
+      "priority": "high",
+      "note": "下拉框数据模型，使用广泛"
+    }
+  ],
+  "execution_order": [
+    "LoginUser",
+    "ComboModel"
+  ],
+  "notes": [
+    "这是VO类迁移的最后一批",
+    "这两个类引用次数较多，需要谨慎处理",
+    "迁移后需要全量编译验证"
+  ]
+}
