@@ -91,6 +91,7 @@
         <module>jeecg-boot-base-core</module>
         <module>jeecg-module-system</module>
         <module>jeecg-boot-module</module>
+        <module>jeecg-boot-starter-elasticsearch</module>
     </modules>
 
 	<repositories>
@@ -530,6 +531,12 @@
 				<groupId>org.jeecgframework.boot3</groupId>
 				<artifactId>jeecg-boot-starter-chatgpt</artifactId>
 				<version>3.8.3.2</version>
+			</dependency>
+			<!-- elasticsearch -->
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!--flyway 支持 mysql5.7+、MariaDB10.3.16-->
 			<!--mysql5.6，需要把版本号改成5.2.1-->

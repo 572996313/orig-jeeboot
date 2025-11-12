@@ -60,10 +60,6 @@ public class JeecgBaseConfig {
      * 文件预览
      */
     private String fileViewDomain;
-     /**
-     * ES配置
-     */
-    private Elasticsearch elasticsearch;
 
     /**
      * 微信支付
@@ -82,14 +78,6 @@ public class JeecgBaseConfig {
 
     public void setCustomResourcePrefixPath(String customResourcePrefixPath) {
         this.customResourcePrefixPath = customResourcePrefixPath;
-    }
-
-    public Elasticsearch getElasticsearch() {
-        return elasticsearch;
-    }
-
-    public void setElasticsearch(Elasticsearch elasticsearch) {
-        this.elasticsearch = elasticsearch;
     }
 
     public Firewall getFirewall() {
