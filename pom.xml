@@ -88,11 +88,12 @@
 	</properties>
 
 	<modules>
-        <module>jeecg-boot-base-core</module>
-        <module>jeecg-module-system</module>
-        <module>jeecg-boot-module</module>
-        <module>jeecg-boot-starter-elasticsearch</module>
-    </modules>
+	       <module>jeecg-boot-base-core</module>
+	       <module>jeecg-module-system</module>
+	       <module>jeecg-boot-module</module>
+	       <module>jeecg-boot-starter-elasticsearch</module>
+	       <module>jeecg-boot-starter-excel</module>
+	   </modules>
 
 	<repositories>
 		<repository>
@@ -536,6 +537,12 @@
 			<dependency>
 				<groupId>org.jeecgframework.boot3</groupId>
 				<artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+				<version>${jeecgboot.version}</version>
+			</dependency>
+			<!-- Excel Starter -->
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-excel</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!--flyway 支持 mysql5.7+、MariaDB10.3.16-->

@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.system.entity.SysCheckRule;
 import org.jeecg.modules.system.service.ISysCheckRuleService;
@@ -33,7 +33,7 @@ import java.util.Arrays;
 @Tag(name = "编码校验规则")
 @RestController
 @RequestMapping("/sys/checkRule")
-public class SysCheckRuleController extends JeecgController<SysCheckRule, ISysCheckRuleService> {
+public class SysCheckRuleController extends JeecgExcelController<SysCheckRule, ISysCheckRuleService> {
 
     @Autowired
     private ISysCheckRuleService sysCheckRuleService;

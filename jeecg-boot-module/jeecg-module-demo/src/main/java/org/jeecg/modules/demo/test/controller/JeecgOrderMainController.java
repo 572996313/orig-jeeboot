@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.common.util.oConvertUtils;
@@ -58,7 +58,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/test/jeecgOrderMain")
 @Slf4j
-public class JeecgOrderMainController extends JeecgController<JeecgOrderMain, IJeecgOrderMainService> {
+public class JeecgOrderMainController extends JeecgExcelController<JeecgOrderMain, IJeecgOrderMainService> {
 
     @Autowired
     private IJeecgOrderMainService jeecgOrderMainService;

@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.message.entity.SysMessage;
 import org.jeecg.modules.message.service.ISysMessageService;
@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/sys/message/sysMessage")
-public class SysMessageController extends JeecgController<SysMessage, ISysMessageService> {
+public class SysMessageController extends JeecgExcelController<SysMessage, ISysMessageService> {
 	@Autowired
 	private ISysMessageService sysMessageService;
 

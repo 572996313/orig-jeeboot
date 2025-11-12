@@ -32,17 +32,16 @@
             <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-common</artifactId>
         </dependency>
+        <!-- jeecg-boot-common -->
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+        </dependency>
 
         <!-- Apache Commons Lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <!-- Fastjson -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
         </dependency>
 
         <!-- Lombok -->

@@ -1,13 +1,13 @@
 package org.jeecg.modules.system.controller;
 
 
-import java.util.Arrays;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jakarta.servlet.http.HttpServletRequest;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysLog;
@@ -18,13 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
 
 /**
  * <p>
@@ -37,7 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/sys/log")
 @Slf4j
-public class SysLogController extends JeecgController<SysLog, ISysLogService> {
+public class SysLogController extends JeecgExcelController<SysLog, ISysLogService> {
 	
 	@Autowired
 	private ISysLogService sysLogService;

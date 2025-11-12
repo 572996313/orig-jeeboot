@@ -54,6 +54,17 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-excel</artifactId>
+        </dependency>
+
         <!-- system单体 api-->
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>

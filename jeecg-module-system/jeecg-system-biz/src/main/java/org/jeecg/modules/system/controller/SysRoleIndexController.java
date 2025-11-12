@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.util.RedisUtil;
@@ -40,7 +40,7 @@ import java.util.Arrays;
 @Tag(name = "角色首页配置")
 @RestController
 @RequestMapping("/sys/sysRoleIndex")
-public class SysRoleIndexController extends JeecgController<SysRoleIndex, ISysRoleIndexService> {
+public class SysRoleIndexController extends JeecgExcelController<SysRoleIndex, ISysRoleIndexService> {
     @Autowired
     private ISysRoleIndexService sysRoleIndexService;
 

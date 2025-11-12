@@ -16,7 +16,7 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.aspect.annotation.PermissionData;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.DateUtils;
 import org.jeecg.common.util.RedisUtil;
@@ -46,7 +46,7 @@ import java.util.List;
 @Tag(name = "单表DEMO")
 @RestController
 @RequestMapping("/test/jeecgDemo")
-public class JeecgDemoController extends JeecgController<JeecgDemo, IJeecgDemoService> {
+public class JeecgDemoController extends JeecgExcelController<JeecgDemo, IJeecgDemoService> {
     @Autowired
     private IJeecgDemoService jeecgDemoService;
 

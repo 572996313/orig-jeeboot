@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.openapi.entity.OpenApiAuth;
 import org.jeecg.modules.openapi.generator.AKSKGenerator;
@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 @RestController
 @RequestMapping("/openapi/auth")
-public class OpenApiAuthController extends JeecgController<OpenApiAuth, OpenApiAuthService> {
+public class OpenApiAuthController extends JeecgExcelController<OpenApiAuth, OpenApiAuthService> {
     
     /**
      * 分页列表查询

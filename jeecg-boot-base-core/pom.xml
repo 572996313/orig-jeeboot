@@ -290,17 +290,22 @@
 			</exclusions>
 		</dependency>
 
-		<!-- AutoPoi Excel工具类-->
-		<dependency>
-			<groupId>org.jeecgframework.boot3</groupId>
-			<artifactId>autopoi-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.12.2</version>
-			<optional>true</optional>
-		</dependency>
+		<!-- Excel 功能支持 -->
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>autopoi-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.12.2</version>
+            <optional>true</optional>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.jeecgframework.boot3</groupId>-->
+<!--            <artifactId>jeecg-boot-starter-excel</artifactId>-->
+<!--        </dependency>-->
 
 		<!-- mini文件存储服务 -->
 		<dependency>

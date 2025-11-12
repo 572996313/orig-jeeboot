@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.jeecg.common.api.dto.message.MessageDTO;
 import org.jeecg.common.api.vo.Result;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.api.ISysBaseAPI;
-import org.jeecg.common.system.base.controller.JeecgController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.message.entity.MsgParams;
@@ -43,7 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/sys/message/sysMessageTemplate")
-public class SysMessageTemplateController extends JeecgController<SysMessageTemplate, ISysMessageTemplateService> {
+public class SysMessageTemplateController extends JeecgExcelController<SysMessageTemplate, ISysMessageTemplateService> {
 	@Autowired
 	private ISysMessageTemplateService sysMessageTemplateService;
 	@Autowired

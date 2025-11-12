@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.common.collect.Lists;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.util.RedisUtil;
@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/openapi")
-public class OpenApiController extends JeecgController<OpenApi, OpenApiService> {
+public class OpenApiController extends JeecgExcelController<OpenApi, OpenApiService> {
 
     @Autowired
     private RestTemplate restTemplate;
