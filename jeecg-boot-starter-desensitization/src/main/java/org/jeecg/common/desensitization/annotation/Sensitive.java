@@ -1,6 +1,9 @@
 package org.jeecg.common.desensitization.annotation;
 
 
+import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.jeecg.common.desensitization.SensitiveSerialize;
 import org.jeecg.common.desensitization.enums.SensitiveEnum;
 
 import java.lang.annotation.*;
@@ -11,7 +14,9 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface SensitiveField {
+@JacksonAnnotationsInside
+@JsonSerialize(using = SensitiveSerialize.class)
+public @interface Sensitive {
 
     /**
      * 不同类型处理不同

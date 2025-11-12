@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.desensitization.annotation.Sensitive;
 import org.jeecg.common.desensitization.enums.SensitiveEnum;
 import org.jeecg.common.desensitization.util.SensitiveInfoUtil;
-import org.jeecg.common.util.encryption.AesEncryptUtil;
+import org.jeecg.common.desensitization.util.encryption.AesEncryptUtil;
 
 import java.io.IOException;
 import java.util.Objects;

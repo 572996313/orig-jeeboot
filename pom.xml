@@ -93,6 +93,7 @@
 	       <module>jeecg-boot-module</module>
 	       <module>jeecg-boot-starter-elasticsearch</module>
 	       <module>jeecg-boot-starter-excel</module>
+	       <module>jeecg-boot-starter-desensitization</module>
 	   </modules>
 
 	<repositories>
@@ -213,12 +214,7 @@
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
-            <!--微服务启动依赖-->
-            <dependency>
-                <groupId>org.jeecgframework.boot3</groupId>
-                <artifactId>jeecg-boot-starter-cloud</artifactId>
-                <version>${jeecgboot.version}</version>
-            </dependency>
+
 			<!--xxl-job定时任务-->
 			<dependency>
 				<groupId>org.jeecgframework.boot3</groupId>
@@ -243,6 +239,26 @@
 				<artifactId>jeecg-boot-starter-rocketmq</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-desensitization</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-excel</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+
 			<!--分库分表shardingsphere-->
 			<dependency>
 				<groupId>org.jeecgframework.boot3</groupId>
@@ -532,18 +548,6 @@
 				<groupId>org.jeecgframework.boot3</groupId>
 				<artifactId>jeecg-boot-starter-chatgpt</artifactId>
 				<version>3.8.3.2</version>
-			</dependency>
-			<!-- elasticsearch -->
-			<dependency>
-				<groupId>org.jeecgframework.boot3</groupId>
-				<artifactId>jeecg-boot-starter-elasticsearch</artifactId>
-				<version>${jeecgboot.version}</version>
-			</dependency>
-			<!-- Excel Starter -->
-			<dependency>
-				<groupId>org.jeecgframework.boot3</groupId>
-				<artifactId>jeecg-boot-starter-excel</artifactId>
-				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!--flyway 支持 mysql5.7+、MariaDB10.3.16-->
 			<!--mysql5.6，需要把版本号改成5.2.1-->

@@ -3,8 +3,7 @@ package org.jeecg.common.desensitization.util;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.desensitization.annotation.SensitiveField;
 import org.jeecg.common.desensitization.enums.SensitiveEnum;
-import org.jeecg.common.util.encryption.AesEncryptUtil;
-import org.jeecg.common.util.oConvertUtils;
+import org.jeecg.common.desensitization.util.encryption.AesEncryptUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
