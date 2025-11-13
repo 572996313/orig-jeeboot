@@ -9,7 +9,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.util.filter.SsrfFileTypeFilter;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
 
 import java.io.*;
 import java.net.HttpURLConnection;

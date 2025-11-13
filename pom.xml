@@ -94,6 +94,7 @@
 	       <module>jeecg-boot-starter-elasticsearch</module>
 	       <module>jeecg-boot-starter-excel</module>
 	       <module>jeecg-boot-starter-desensitization</module>
+	       <module>jeecg-boot-starter-oss</module>
 	   </modules>
 
 	<repositories>
@@ -255,6 +256,12 @@
             <dependency>
                 <groupId>org.jeecgframework.boot3</groupId>
                 <artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-oss</artifactId>
                 <version>${jeecgboot.version}</version>
             </dependency>
 

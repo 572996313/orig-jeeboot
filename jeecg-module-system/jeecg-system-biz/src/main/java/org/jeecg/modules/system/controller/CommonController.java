@@ -6,8 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
 import org.jeecg.common.util.CommonUtils;
-import org.jeecg.common.util.filter.SsrfFileTypeFilter;
+import org.jeecg.common.util.OSSCommonUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.AntPathMatcher;
@@ -77,7 +78,7 @@ public class CommonController {
         if(CommonConstant.UPLOAD_TYPE_LOCAL.equals(uploadType)){
             savePath = this.uploadLocal(file,bizPath);
         }else{
-            savePath = CommonUtils.upload(file, bizPath, uploadType);
+            savePath = OSSCommonUtils.upload(file, bizPath, uploadType);
         }
         if(oConvertUtils.isNotEmpty(savePath)){
             result.setMessage(savePath);

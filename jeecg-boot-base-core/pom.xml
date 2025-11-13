@@ -307,16 +307,29 @@
 <!--            <artifactId>jeecg-boot-starter-excel</artifactId>-->
 <!--        </dependency>-->
 
-		<!-- mini文件存储服务 -->
+		<!-- OSS 文件存储 Starter (包含 MinIO 和阿里云 OSS) -->
+<!--		<dependency>-->
+<!--			<groupId>org.jeecgframework.boot3</groupId>-->
+<!--			<artifactId>jeecg-boot-starter-oss</artifactId>-->
+<!--		</dependency>-->
+
+		<!-- mini文件存储服务 (已迁移到 jeecg-boot-starter-oss) -->
+<!--		<dependency>-->
+<!--			<groupId>io.minio</groupId>-->
+<!--			<artifactId>minio</artifactId>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<artifactId>checker-qual</artifactId>-->
+<!--					<groupId>org.checkerframework</groupId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+
+		<!--   -->
 		<dependency>
-			<groupId>io.minio</groupId>
-			<artifactId>minio</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>checker-qual</artifactId>
-					<groupId>org.checkerframework</groupId>
-				</exclusion>
-			</exclusions>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.18.0</version>
 		</dependency>
 
 		<!-- 阿里云短信 -->
@@ -325,12 +338,17 @@
 			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
 			<version>${aliyun-java-sdk-dysmsapi.version}</version>
 		</dependency>
-		<!-- aliyun oss -->
 		<dependency>
-			<groupId>com.aliyun.oss</groupId>
-			<artifactId>aliyun-sdk-oss</artifactId>
-			<version>${aliyun.oss.version}</version>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.5.10</version>
 		</dependency>
+		<!-- aliyun oss (已迁移到 jeecg-boot-starter-oss) -->
+<!--		<dependency>-->
+<!--			<groupId>com.aliyun.oss</groupId>-->
+<!--			<artifactId>aliyun-sdk-oss</artifactId>-->
+<!--			<version>${aliyun.oss.version}</version>-->
+<!--		</dependency>-->
 		<!-- 第三方登录  -->
 		<dependency>
 			<groupId>com.xkcoding.justauth</groupId>

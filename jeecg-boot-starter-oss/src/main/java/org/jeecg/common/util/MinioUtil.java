@@ -4,7 +4,7 @@ import io.minio.*;
 import io.minio.http.Method;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.common.util.filter.SsrfFileTypeFilter;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
 import org.jeecg.common.util.filter.StrAttackFilter;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -55,10 +55,10 @@ public class MinioUtil {
      */
     public static String upload(MultipartFile file, String bizPath, String customBucket) throws Exception {
         String fileUrl = "";
-        // 业务路径过滤，防止攻击
+        // 业务路径过滤,防止攻击
         bizPath = StrAttackFilter.filter(bizPath);
 
-        // 文件安全校验，防止上传漏洞文件
+        // 文件安全校验,防止上传漏洞文件
         SsrfFileTypeFilter.checkUploadFileType(file, bizPath);
 
         String newBucket = bucketName;
@@ -81,7 +81,7 @@ public class MinioUtil {
             if("".equals(orgName)){
                 orgName=file.getName();
             }
-            orgName = CommonUtils.getFileName(orgName);
+            orgName = OSSCommonUtils.getFileName(orgName);
             String objectName = bizPath+"/"
                                 +( orgName.indexOf(".")==-1
                                    ?orgName + "_" + System.currentTimeMillis()
@@ -161,11 +161,11 @@ public class MinioUtil {
     public static String getObjectUrl(String bucketName, String objectName, Integer expires) {
         initMinio(minioUrl, minioName,minioPass);
         try{
-            //update-begin---author:liusq  Date:20220121  for：获取文件外链报错提示method不能为空，导致文件下载和预览失败----
+            //update-begin---author:liusq  Date:20220121  for:获取文件外链报错提示method不能为空,导致文件下载和预览失败----
             GetPresignedObjectUrlArgs objectArgs = GetPresignedObjectUrlArgs.builder().object(objectName)
                     .bucket(bucketName)
                     .expiry(expires).method(Method.GET).build();
-            //update-begin---author:liusq  Date:20220121  for：获取文件外链报错提示method不能为空，导致文件下载和预览失败----
+            //update-begin---author:liusq  Date:20220121  for:获取文件外链报错提示method不能为空,导致文件下载和预览失败----
             String url = minioClient.getPresignedObjectUrl(objectArgs);
             return URLDecoder.decode(url,"UTF-8");
         }catch (Exception e){

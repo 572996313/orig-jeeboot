@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.util.CommonUtils;
+import org.jeecg.common.util.OSSCommonUtils;
 import org.jeecg.config.shiro.IgnoreAuth;
 import org.jeecg.modules.airag.app.service.IAiragChatService;
 import org.jeecg.modules.airag.app.vo.ChatConversation;
@@ -207,9 +207,9 @@ public class AiragChatController {
         MultipartFile file = multipartRequest.getFile("file");
         String savePath;
         if (CommonConstant.UPLOAD_TYPE_LOCAL.equals(uploadType)) {
-            savePath = CommonUtils.uploadLocal(file, bizPath, uploadpath);
+            savePath = OSSCommonUtils.uploadLocal(file, bizPath, uploadpath);
         } else {
-            savePath = CommonUtils.upload(file, bizPath, uploadType);
+            savePath = OSSCommonUtils.upload(file, bizPath, uploadType);
         }
         Result<?> result = new Result<>();
         result.setMessage(savePath);

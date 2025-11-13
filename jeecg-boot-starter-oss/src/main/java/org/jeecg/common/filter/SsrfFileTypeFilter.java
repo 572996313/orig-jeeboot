@@ -1,4 +1,4 @@
-package org.jeecg.common.util.filter;
+package org.jeecg.common.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -24,7 +24,7 @@ public class SsrfFileTypeFilter {
      * 允许操作文件类型白名单
      */
     private final static List<String> FILE_TYPE_WHITE_LIST = new ArrayList<>();
-    /**初始化文件头类型，不够的自行补充*/
+    /**初始化文件头类型,不够的自行补充*/
     final static HashMap<String, String> FILE_TYPE_MAP = new HashMap<>();
     static {
         //图片文件

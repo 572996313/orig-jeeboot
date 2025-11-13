@@ -1,21 +1,20 @@
-package org.jeecg.config.oss;
+package org.jeecg.config;
 
 import jakarta.annotation.PostConstruct;
 import org.jeecg.common.util.oss.OssBootUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
 /**
- * 云存储 配置
+ * 阿里云OSS 配置
  * @author: jeecg-boot
  */
 @Lazy(false)
 @Configuration
 @ConditionalOnProperty(prefix = "jeecg.oss", name = "endpoint")
-public class OssConfiguration {
+public class AliOssConfiguration {
 
     @Value("${jeecg.oss.endpoint}")
     private String endpoint;

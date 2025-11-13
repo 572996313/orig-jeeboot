@@ -65,6 +65,11 @@
             <artifactId>jeecg-boot-starter-excel</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-oss</artifactId>
+        </dependency>
+
         <!-- system单体 api-->
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>

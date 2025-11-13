@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.fileupload.FileItemStream;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.common.util.CommonUtils;
-import org.jeecg.common.util.filter.SsrfFileTypeFilter;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
+import org.jeecg.common.util.OSSCommonUtils;
 import org.jeecg.common.util.filter.StrAttackFilter;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +20,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.Date;
 import java.util.UUID;
 
@@ -97,7 +96,7 @@ public class OssBootUtil {
      * @return oss 中的相对文件路径
      */
     public static String upload(MultipartFile file, String fileDir,String customBucket) throws Exception {
-        // 文件安全校验，防止上传漏洞文件
+        // 文件安全校验,防止上传漏洞文件
         SsrfFileTypeFilter.checkUploadFileType(file);
 
         String filePath = null;
@@ -117,16 +116,16 @@ public class OssBootUtil {
             if("" == orgName){
               orgName=file.getName();
             }
-            orgName = CommonUtils.getFileName(orgName);
+            orgName = OSSCommonUtils.getFileName(orgName);
             String fileName = orgName.indexOf(".")==-1
                               ?orgName + "_" + System.currentTimeMillis()
                               :orgName.substring(0, orgName.lastIndexOf(".")) + "_" + System.currentTimeMillis() + orgName.substring(orgName.lastIndexOf("."));
             if (!fileDir.endsWith(SymbolConstant.SINGLE_SLASH)) {
                 fileDir = fileDir.concat(SymbolConstant.SINGLE_SLASH);
             }
-            //update-begin-author:wangshuai date:20201012 for: 过滤上传文件夹名特殊字符，防止攻击
+            //update-begin-author:wangshuai date:20201012 for: 过滤上传文件夹名特殊字符,防止攻击
             fileDir=StrAttackFilter.filter(fileDir);
-            //update-end-author:wangshuai date:20201012 for: 过滤上传文件夹名特殊字符，防止攻击
+            //update-end-author:wangshuai date:20201012 for: 过滤上传文件夹名特殊字符,防止攻击
             fileUrl = fileUrl.append(fileDir + fileName);
 
             if (oConvertUtils.isNotEmpty(staticDomain) && staticDomain.toLowerCase().startsWith(CommonConstant.STR_HTTP)) {
@@ -263,9 +262,9 @@ public class OssBootUtil {
                 newBucket = bucket;
             }
             initOss(endPoint, accessKeyId, accessKeySecret);
-            //update-begin---author:liusq  Date:20220120  for：替换objectName前缀，防止key不一致导致获取不到文件----
+            //update-begin---author:liusq  Date:20220120  for:替换objectName前缀,防止key不一致导致获取不到文件----
             objectName = OssBootUtil.replacePrefix(objectName,bucket);
-            //update-end---author:liusq  Date:20220120  for：替换objectName前缀，防止key不一致导致获取不到文件----
+            //update-end---author:liusq  Date:20220120  for:替换objectName前缀,防止key不一致导致获取不到文件----
             OSSObject ossObject = ossClient.getObject(newBucket,objectName);
             inputStream = new BufferedInputStream(ossObject.getObjectContent());
         }catch (Exception e){
@@ -293,14 +292,14 @@ public class OssBootUtil {
     public static String getObjectUrl(String bucketName, String objectName, Date expires) {
         initOss(endPoint, accessKeyId, accessKeySecret);
         try{
-            //update-begin---author:liusq  Date:20220120  for：替换objectName前缀，防止key不一致导致获取不到文件----
+            //update-begin---author:liusq  Date:20220120  for:替换objectName前缀,防止key不一致导致获取不到文件----
             objectName = OssBootUtil.replacePrefix(objectName,bucketName);
-            //update-end---author:liusq  Date:20220120  for：替换objectName前缀，防止key不一致导致获取不到文件----
+            //update-end---author:liusq  Date:20220120  for:替换objectName前缀,防止key不一致导致获取不到文件----
             if(ossClient.doesObjectExist(bucketName,objectName)){
                 URL url = ossClient.generatePresignedUrl(bucketName,objectName,expires);
                 //log.info("原始url : {}", url.toString());
                 //log.info("decode url : {}", URLDecoder.decode(url.toString(), "UTF-8"));
-                //【issues/4023】问题 oss外链经过转编码后，部分无效，大概在三分一；无需转编码直接返回即可 #4023
+                //【issues/4023】问题 oss外链经过转编码后,部分无效,大概在三分一;无需转编码直接返回即可 #4023
                 return url.toString();
             }
         }catch (Exception e){
@@ -349,7 +348,7 @@ public class OssBootUtil {
     }
 
     /**
-     * 替换前缀，防止key不一致导致获取不到文件
+     * 替换前缀,防止key不一致导致获取不到文件
      * @param objectName 文件上传路径 key
      * @param customBucket 自定义桶
      * @date 2022-01-20

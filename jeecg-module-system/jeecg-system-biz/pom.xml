@@ -16,6 +16,10 @@
 			<artifactId>jeecg-system-local-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-oss</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 		</dependency>

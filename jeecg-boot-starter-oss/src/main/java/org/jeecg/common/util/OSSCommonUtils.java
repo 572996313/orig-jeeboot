@@ -12,6 +12,8 @@ import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.constant.ServiceNameConstants;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.exception.JeecgBootException;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
+import org.jeecg.common.util.oss.OssBootUtil;
 import org.jeecgframework.poi.util.PoiPublicUtil;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.util.FileCopyUtils;
@@ -38,7 +40,7 @@ import java.util.regex.Pattern;
  * @author: jeecg-boot
  */
 @Slf4j
-public class CommonUtils {
+public class OSSCommonUtils {
 
     /**
      * 中文正则
@@ -50,6 +52,35 @@ public class CommonUtils {
      * 文件名支持的字符串：字母数字中文.-_()（） 除此之外的字符将被删除
      */
     private static String FILE_NAME_REGEX = "[^A-Za-z\\.\\(\\)\\-（）\\_0-9\\u4e00-\\u9fa5]";
+
+    public static String uploadOnlineImage(byte[] data,String basePath,String bizPath,String uploadType){
+        String dbPath = null;
+        String fileName = "image" + Math.round(Math.random() * 100000000000L);
+        fileName += "." + PoiPublicUtil.getFileExtendName(data);
+        try {
+            if(CommonConstant.UPLOAD_TYPE_LOCAL.equals(uploadType)){
+                File file = new File(basePath + File.separator + bizPath + File.separator );
+                if (!file.exists()) {
+                    file.mkdirs();// 创建文件根目录
+                }
+                String savePath = file.getPath() + File.separator + fileName;
+                File savefile = new File(savePath);
+                FileCopyUtils.copy(data, savefile);
+                dbPath = bizPath + File.separator + fileName;
+            }else {
+                InputStream in = new ByteArrayInputStream(data);
+                String relativePath = bizPath+"/"+fileName;
+                if(CommonConstant.UPLOAD_TYPE_MINIO.equals(uploadType)){
+                    dbPath = MinioUtil.upload(in,relativePath);
+                }else if(CommonConstant.UPLOAD_TYPE_OSS.equals(uploadType)){
+                    dbPath = OssBootUtil.upload(in,relativePath);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dbPath;
+    }
 
     /**
      * 判断文件名是否带盘符，重新处理
@@ -96,10 +127,91 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * 统一全局上传
+     * @Return: java.lang.String
+     */
+    public static String upload(MultipartFile file, String bizPath, String uploadType) {
+        String url = "";
+        try {
+            if (CommonConstant.UPLOAD_TYPE_MINIO.equals(uploadType)) {
+                url = MinioUtil.upload(file, bizPath);
+            } else {
+                url = OssBootUtil.upload(file, bizPath);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new JeecgBootException(e.getMessage());
+        }
+        return url;
+    }
+    /**
+     * 本地文件上传
+     * @param mf 文件
+     * @param bizPath  自定义路径
+     * @return
+     */
+    public static String uploadLocal(MultipartFile mf,String bizPath,String uploadpath){
+        try {
+            // 文件安全校验，防止上传漏洞文件
+            SsrfFileTypeFilter.checkUploadFileType(mf, bizPath);
 
+            String fileName = null;
+            File file = new File(uploadpath + File.separator + bizPath + File.separator );
+            if (!file.exists()) {
+                // 创建文件根目录
+                file.mkdirs();
+            }
+            // 获取文件名
+            String orgName = mf.getOriginalFilename();
+            // 无中文情况下进行转码
+            if (orgName != null && !OSSCommonUtils.ifContainChinese(orgName)) {
+                orgName = new String(orgName.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+            }
+            orgName = OSSCommonUtils.getFileName(orgName);
+            if(orgName.indexOf(SymbolConstant.SPOT)!=-1){
+                fileName = orgName.substring(0, orgName.lastIndexOf(".")) + "_" + System.currentTimeMillis() + orgName.substring(orgName.lastIndexOf("."));
+            }else{
+                fileName = orgName+ "_" + System.currentTimeMillis();
+            }
+            String savePath = file.getPath() + File.separator + fileName;
+            File savefile = new File(savePath);
+            FileCopyUtils.copy(mf.getBytes(), savefile);
+            String dbpath = null;
+            if(oConvertUtils.isNotEmpty(bizPath)){
+                dbpath = bizPath + File.separator + fileName;
+            }else{
+                dbpath = fileName;
+            }
+            if (dbpath.contains(SymbolConstant.DOUBLE_BACKSLASH)) {
+                dbpath = dbpath.replace("\\", "/");
+            }
+            return dbpath;
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        }catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return "";
+    }
 
-
-
+    /**
+     * 统一全局上传 带桶
+     * @Return: java.lang.String
+     */
+    public static String upload(MultipartFile file, String bizPath, String uploadType, String customBucket) {
+        String url = "";
+        try {
+            if (CommonConstant.UPLOAD_TYPE_MINIO.equals(uploadType)) {
+                url = MinioUtil.upload(file, bizPath, customBucket);
+            } else {
+                url = OssBootUtil.upload(file, bizPath, customBucket);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+        }
+        return url;
+    }
 
     /** 当前系统数据库类型 */
     private static String DB_TYPE = "";
@@ -249,7 +361,7 @@ public class CommonUtils {
         int httpPort = 80;
         int httpsPort = 443;
         if(httpPort == serverPort || httpsPort == serverPort){
-        //update-end---author:wangshuai---date:2024-03-15---for:【QQYUN-8561】企业微信登陆请求接口设置上下文不一致，导致接口404---~
+            //update-end---author:wangshuai---date:2024-03-15---for:【QQYUN-8561】企业微信登陆请求接口设置上下文不一致，导致接口404---~
             baseDomainPath = scheme + "://" + serverName  + contextPath ;
         }else{
             baseDomainPath = scheme + "://" + serverName + ":" + serverPort + contextPath ;
@@ -266,7 +378,7 @@ public class CommonUtils {
      */
     public static JSONObject mergeJSON(JSONObject target, JSONObject... sources) {
         for (JSONObject source : sources) {
-            CommonUtils.mergeJSON(target, source);
+            OSSCommonUtils.mergeJSON(target, source);
         }
         return target;
     }
@@ -286,7 +398,7 @@ public class CommonUtils {
                 if (target.containsKey(key)) {
                     // 两个都是 JSONObject，继续合并
                     if (target.get(key) instanceof Map) {
-                        CommonUtils.mergeJSON(target.getJSONObject(key), source.getJSONObject(key));
+                        OSSCommonUtils.mergeJSON(target.getJSONObject(key), source.getJSONObject(key));
                         continue;
                     }
                 }
@@ -309,7 +421,7 @@ public class CommonUtils {
         }
         return "";
     }
- 
+
     /**
      * 通过table的条件SQL
      *
@@ -320,7 +432,7 @@ public class CommonUtils {
         if(oConvertUtils.isEmpty(tableSql)){
             return null;
         }
-        
+
         if (tableSql.toLowerCase().indexOf(DataBaseConstant.SQL_WHERE) > 0) {
             String[] arr = tableSql.split(" (?i)where ");
             if (arr != null && oConvertUtils.isNotEmpty(arr[1])) {
@@ -340,7 +452,7 @@ public class CommonUtils {
         if(oConvertUtils.isEmpty(tableSql)){
             return null;
         }
-        
+
         if (tableSql.toLowerCase().indexOf(DataBaseConstant.SQL_WHERE) > 0) {
             String[] arr = tableSql.split(" (?i)where ");
             return arr[0].trim();
@@ -359,7 +471,7 @@ public class CommonUtils {
         if (set1 == null) {
             return false;
         }
-        
+
         if(set1.size()>0){
             for (String str : arr2) {
                 if (set1.contains(str)) {
