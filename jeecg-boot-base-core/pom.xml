@@ -51,15 +51,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- websocket -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
@@ -332,17 +323,12 @@
             <version>1.18.0</version>
 		</dependency>
 
-		<!-- 阿里云短信 -->
-		<dependency>
-			<groupId>com.aliyun</groupId>
-			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-			<version>${aliyun-java-sdk-dysmsapi.version}</version>
-		</dependency>
-		<dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>4.5.10</version>
-		</dependency>
+		<!-- jeecg-boot-starter-communication -->
+<!--		<dependency>-->
+<!--			<groupId>org.jeecgframework.boot3</groupId>-->
+<!--			<artifactId>jeecg-boot-starter-communication</artifactId>-->
+<!--			<version>${project.version}</version>-->
+<!--		</dependency>-->
 		<!-- aliyun oss (已迁移到 jeecg-boot-starter-oss) -->
 <!--		<dependency>-->
 <!--			<groupId>com.aliyun.oss</groupId>-->

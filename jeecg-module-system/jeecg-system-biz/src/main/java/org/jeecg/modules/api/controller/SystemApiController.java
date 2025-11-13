@@ -7,7 +7,7 @@ import org.jeecg.common.api.dto.DataLogDTO;
 import org.jeecg.common.api.dto.OnlineAuthDTO;
 import org.jeecg.common.api.dto.message.*;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.constant.enums.DySmsEnum;
+import org.jeecg.common.communication.sms.enums.DySmsEnum;
 import org.jeecg.common.constant.enums.EmailTemplateEnum;
 import org.jeecg.common.desensitization.util.SensitiveInfoUtil;
 import org.jeecg.common.system.vo.*;

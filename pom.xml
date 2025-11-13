@@ -95,6 +95,7 @@
 	       <module>jeecg-boot-starter-excel</module>
 	       <module>jeecg-boot-starter-desensitization</module>
 	       <module>jeecg-boot-starter-oss</module>
+	       <module>jeecg-boot-starter-communication</module>
 	   </modules>
 
 	<repositories>
@@ -265,6 +266,11 @@
                 <version>${jeecgboot.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-communication</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
 
 			<!--分库分表shardingsphere-->
 			<dependency>

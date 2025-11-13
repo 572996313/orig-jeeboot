@@ -27,6 +27,9 @@ import org.jeecg.common.api.dto.OnlineAuthDTO;
 import org.jeecg.common.api.dto.message.*;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.UrlMatchEnum;
+import org.jeecg.common.communication.sms.enums.DySmsEnum;
+import org.jeecg.common.communication.sms.util.DySmsHelper;
+import org.jeecg.common.communication.websocket.constant.WebsocketConst;
 import org.jeecg.common.constant.*;
 import org.jeecg.common.constant.enums.*;
 import org.jeecg.common.desensitization.util.SensitiveInfoUtil;
@@ -1445,7 +1448,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	 * @param dySmsEnum 短信模版
 	 */
 	@Override
-	public void sendSmsMsg(String phone, JSONObject param,DySmsEnum dySmsEnum) {
+	public void sendSmsMsg(String phone, JSONObject param, DySmsEnum dySmsEnum) {
         try {
 			log.info(" 发送短信消息 phone = {}", phone);
 			log.info(" 发送短信消息 param = {}", param);

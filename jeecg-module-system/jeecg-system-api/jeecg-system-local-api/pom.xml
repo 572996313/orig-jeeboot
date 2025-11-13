@@ -11,4 +11,16 @@
 
     <artifactId>jeecg-system-local-api</artifactId>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-communication</artifactId>
+        </dependency>
+    </dependencies>
 </project>
