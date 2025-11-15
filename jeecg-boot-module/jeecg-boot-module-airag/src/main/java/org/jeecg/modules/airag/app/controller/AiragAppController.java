@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
-import org.jeecg.common.system.query.QueryGenerator;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.util.AssertUtils;
 import org.jeecg.common.util.TokenUtils;
 import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
@@ -17,12 +16,12 @@ import org.jeecg.modules.airag.app.entity.AiragApp;
 import org.jeecg.modules.airag.app.service.IAiragAppService;
 import org.jeecg.modules.airag.app.service.IAiragChatService;
 import org.jeecg.modules.airag.app.vo.AppDebugParams;
+import org.jeecg.common.system.query.QueryGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import jakarta.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 
 /**
  * @Description: AI应用
@@ -33,7 +32,7 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("/airag/app")
 @Slf4j
-public class AiragAppController extends JeecgController<AiragApp, IAiragAppService> {
+public class AiragAppController extends JeecgExcelController<AiragApp, IAiragAppService> {
     @Autowired
     private IAiragAppService airagAppService;
 

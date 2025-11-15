@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.openapi.entity.OpenApiLog;
 import org.jeecg.modules.openapi.service.OpenApiLogService;
@@ -18,7 +18,7 @@ import java.util.Arrays;
  */
 @RestController
 @RequestMapping("/openapi/record")
-public class OpenApiLogController extends JeecgController<OpenApiLog, OpenApiLogService> {
+public class OpenApiLogController extends JeecgExcelController<OpenApiLog, OpenApiLogService> {
 
     /**
      * 分页列表查询

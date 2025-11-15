@@ -4,18 +4,19 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
 import org.jeecg.common.api.dto.message.MessageDTO;
 import org.jeecg.common.config.TenantContext;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.constant.enums.FileTypeEnum;
 import org.jeecg.common.constant.enums.MessageTypeEnum;
 import org.jeecg.common.exception.JeecgBootException;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
 import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.vo.SysFilesModel;
-import org.jeecg.common.util.CommonUtils;
+import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.OSSCommonUtils;
 import org.jeecg.common.util.RedisUtil;
-import org.jeecg.common.util.filter.SsrfFileTypeFilter;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysComment;
 import org.jeecg.modules.system.entity.SysFormFile;
@@ -27,14 +28,12 @@ import org.jeecg.modules.system.vo.SysCommentVO;
 import org.jeecg.modules.system.vo.UserAvatar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -142,7 +141,7 @@ public class SysCommentServiceImpl extends ServiceImpl<SysCommentMapper, SysComm
             if (CommonConstant.UPLOAD_TYPE_LOCAL.equals(uploadType)) {
                 savePath = this.uploadLocal(file, bizPath);
             } else {
-                savePath = CommonUtils.upload(file, bizPath, uploadType);
+                savePath = OSSCommonUtils.upload(file, bizPath, uploadType);
             }
 
             String orgName = file.getOriginalFilename();

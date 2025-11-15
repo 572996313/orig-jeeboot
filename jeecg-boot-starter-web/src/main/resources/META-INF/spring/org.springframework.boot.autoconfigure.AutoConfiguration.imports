@@ -1,0 +1,6 @@
+org.jeecg.config.WebMvcConfiguration
+org.jeecg.config.Swagger3Config
+org.jeecg.config.RestTemplateConfig
+org.jeecg.config.AutoPoiConfig
+org.jeecg.common.exception.JeecgBootExceptionHandler
+org.jeecg.common.util.SpringContextUtils

@@ -13,7 +13,6 @@ import org.jeecg.modules.aop.TenantLog;
 import org.jeecg.modules.system.entity.SysPackPermission;
 import org.jeecg.modules.system.entity.SysTenantPack;
 import org.jeecg.modules.system.entity.SysTenantPackUser;
-import org.jeecg.modules.system.entity.SysUserTenant;
 import org.jeecg.modules.system.mapper.*;
 import org.jeecg.modules.system.service.ISysTenantPackService;
 import org.springframework.beans.BeanUtils;

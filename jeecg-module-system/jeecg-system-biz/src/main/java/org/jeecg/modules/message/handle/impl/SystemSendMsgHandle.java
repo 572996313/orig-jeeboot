@@ -2,8 +2,8 @@ package org.jeecg.modules.message.handle.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.api.dto.message.MessageDTO;
+import org.jeecg.common.communication.websocket.constant.WebsocketConst;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.constant.WebsocketConst;
 import org.jeecg.common.constant.enums.NoticeTypeEnum;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.system.api.ISysBaseAPI;

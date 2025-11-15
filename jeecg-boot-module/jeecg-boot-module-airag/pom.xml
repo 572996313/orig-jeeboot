@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-module</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.8.3</version>
     </parent>
 
     <artifactId>jeecg-boot-module-airag</artifactId>
@@ -54,19 +54,22 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Lombok -->
+
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
         </dependency>
-        
-        <!-- MyBatis-Plus (使用父POM中已定义的版本) -->
+
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-excel</artifactId>
         </dependency>
-        
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-oss</artifactId>
+        </dependency>
+
         <!-- system单体 api-->
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>

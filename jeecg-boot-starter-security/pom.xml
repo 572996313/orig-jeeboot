@@ -1,84 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>3.8.3</version>
     </parent>
-
-    <groupId>org.jeecgframework.boot3</groupId>
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>jeecg-boot-starter-security</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    
-    <name>Jeecg Boot Starter Security</name>
-    <description>Jeecg Boot 安全认证 Starter - 提供 Shiro + JWT 集成</description>
-
-    <properties>
-        <shiro.version>1.13.0</shiro.version>
-        <shiro-redis.version>3.3.1</shiro-redis.version>
-        <java-jwt.version>4.4.0</java-jwt.version>
-    </properties>
 
     <dependencies>
-        <!-- ============================================ -->
-        <!-- Phase 1: 基础模块依赖 -->
-        <!-- ============================================ -->
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-constants</artifactId>
+            <artifactId>jeecg-boot-starter-web</artifactId>
+            <version>${project.version}</version>
         </dependency>
+        <!--        <dependency>-->
+<!--            <groupId>org.jeecgframework.boot3</groupId>-->
+<!--            <artifactId>jeecg-boot-base-core</artifactId>-->
+<!--        </dependency>-->
+        <!--JWT-->
         <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-utils</artifactId>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java-jwt.version}</version>
         </dependency>
 
-        <!-- ============================================ -->
-        <!-- Phase 2: 核心lite模块依赖 -->
-        <!-- ============================================ -->
         <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-core-lite</artifactId>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
-
-        <!-- ============================================ -->
-        <!-- Spring Boot 依赖 -->
-        <!-- ============================================ -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-                    <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <!-- ============================================ -->
-        <!-- Apache Shiro 安全框架 -->
-        <!-- ============================================ -->
+        <!--shiro-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring-boot-web-starter</artifactId>
+            <artifactId>shiro-spring-boot-starter</artifactId>
+            <classifier>jakarta</classifier>
             <version>${shiro.version}</version>
             <exclusions>
                 <exclusion>
@@ -90,22 +49,44 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
+            <classifier>jakarta</classifier>
             <version>${shiro.version}</version>
+            <!-- 排除仍使用了javax.servlet的依赖 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.shiro</groupId>
+                    <artifactId>shiro-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.shiro</groupId>
+                    <artifactId>shiro-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!-- 引入适配jakarta的依赖包 -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
+            <classifier>jakarta</classifier>
             <version>${shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
+            <classifier>jakarta</classifier>
             <version>${shiro.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.shiro</groupId>
+                    <artifactId>shiro-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
-        <!-- ============================================ -->
-        <!-- Shiro Redis 缓存 -->
-        <!-- ============================================ -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
+        <!-- shiro-redis -->
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis</artifactId>
@@ -115,81 +96,23 @@
                     <groupId>org.apache.shiro</groupId>
                     <artifactId>shiro-core</artifactId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>checkstyle</artifactId>
+                    <groupId>com.puppycrawl.tools</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
-
-        <!-- ============================================ -->
-        <!-- JWT 依赖 -->
-        <!-- ============================================ -->
         <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>${java-jwt.version}</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-crypto</artifactId>
         </dependency>
-
-        <!-- ============================================ -->
-        <!-- Apache Commons Pool2 (Redis连接池) -->
-        <!-- ============================================ -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
         </dependency>
-
-        <!-- ============================================ -->
-        <!-- Lombok -->
-        <!-- ============================================ -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-                    <scope>provided</scope>
-        </dependency>
-
-        <!-- ============================================ -->
-        <!-- Apache Commons Lang3 (StringUtils等工具类) -->
-        <!-- ============================================ -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <!-- ============================================ -->
-        <!-- Google Guava -->
-        <!-- ============================================ -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-
-        <!-- ============================================ -->
-        <!-- Servlet API (Jakarta) -->
-        <!-- ============================================ -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <!-- javax.servlet兼容支持 (用于Shiro 1.13.0兼容性) -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-desensitization</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

@@ -1,82 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <parent>
         <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.8.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.jeecgframework.boot3</groupId>
     <artifactId>jeecg-boot-starter-excel</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>3.8.3</version>
     <packaging>jar</packaging>
 
     <name>jeecg-boot-starter-excel</name>
-    <description>JeecgBoot Excel导入导出 Starter，提供基于EasyPoi的Excel处理能力</description>
+    <description>JeecgBoot Excel导入导出功能模块</description>
 
     <properties>
-        <easypoi.version>4.4.0</easypoi.version>
-        <poi.version>5.2.3</poi.version>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <!-- JeecgBoot 基础模块 -->
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-constants</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-utils</artifactId>
-        </dependency>
-
-        <!-- Spring Boot -->
+        <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <scope>provided</scope>
         </dependency>
 
+        <!-- Spring Boot Configuration Processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-                    <scope>provided</scope>
         </dependency>
 
-        <!-- EasyPoi (可选依赖) -->
+        <!-- AutoPoi Excel工具 -->
         <dependency>
-            <groupId>cn.afterturn</groupId>
-            <artifactId>easypoi-spring-boot-starter</artifactId>
-            <version>${easypoi.version}</version>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Apache POI (可选依赖，用于不使用EasyPoi的场景) -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Servlet API -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>autopoi-web</artifactId>
         </dependency>
 
         <!-- Lombok -->
@@ -84,14 +48,34 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-                    <scope>provided</scope>
         </dependency>
 
-        <!-- 日志 -->
+        <!-- JeecgBoot Common (需要基础工具类支持) -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-common</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring</artifactId>
+            <version>3.5.14</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
@@ -100,14 +84,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

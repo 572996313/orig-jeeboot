@@ -1,37 +1,50 @@
 package org.jeecg.config;
 
-import com.alibaba.druid.wall.WallConfig;
-import com.alibaba.druid.wall.WallFilter;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringApplicationRunListener;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.MutablePropertySources;
+import org.springframework.core.env.PropertySource;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Druid Wall配置注册器
- * <p>允许SELECT语句的WHERE子句中存在永真条件</p>
- *
- * @author jeecg
+ * @author eightmonth@qq.com
+ * 启动程序修改DruidWallConfig配置
+ * 允许SELECT语句的WHERE子句是一个永真条件
+ * @author eightmonth
+ * @date 2024/4/8 11:37
  */
-@Slf4j
-@Component
-@ConditionalOnProperty(prefix = "spring.datasource.druid", name = "enable", havingValue = "true", matchIfMissing = true)
-public class DruidWallConfigRegister implements BeanPostProcessor {
+public class DruidWallConfigRegister implements SpringApplicationRunListener {
+
+    public SpringApplication application;
+
+    private String[] args;
+
+
+    /**
+     * 必备，否则启动报错
+     * @param application
+     * @param args
+     */
+    public DruidWallConfigRegister(SpringApplication application, String[] args) {
+        this.application = application;
+        this.args = args;
+    }
 
     @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if (bean instanceof WallFilter) {
-            WallFilter wallFilter = (WallFilter) bean;
-            WallConfig wallConfig = wallFilter.getConfig();
-            if (wallConfig != null) {
-                // 允许一次执行多条语句
-                wallConfig.setMultiStatementAllow(true);
-                // 允许SELECT语句WHERE子句永真条件（用于动态查询）
-                wallConfig.setSelectWhereAlwayTrueCheck(false);
-                log.info("Druid Wall配置已更新: multiStatementAllow=true, selectWhereAlwayTrueCheck=false");
-            }
-        }
-        return bean;
+    public void contextLoaded(ConfigurableApplicationContext context) {
+        ConfigurableEnvironment env = context.getEnvironment();
+        Map<String, Object> props = new HashMap<>();
+        props.put("spring.datasource.dynamic.druid.wall.selectWhereAlwayTrueCheck", false);
+
+        MutablePropertySources propertySources = env.getPropertySources();
+
+        PropertySource<Map<String, Object>> propertySource = new MapPropertySource("jeecg-datasource-config", props);
+
+        propertySources.addLast(propertySource);
     }
 }

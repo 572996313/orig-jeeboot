@@ -11,7 +11,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.jeecg.ai.factory.AiModelFactory;
 import org.jeecg.ai.factory.AiModelOptions;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.AssertUtils;
 import org.jeecg.common.util.TokenUtils;
@@ -28,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.Arrays;
+
 import java.util.Collections;
 
 /**
@@ -41,7 +41,7 @@ import java.util.Collections;
 @RestController
 @RequestMapping("/airag/airagModel")
 @Slf4j
-public class AiragModelController extends JeecgController<AiragModel, IAiragModelService> {
+public class AiragModelController extends JeecgExcelController<AiragModel, IAiragModelService> {
     @Autowired
     private IAiragModelService airagModelService;
 

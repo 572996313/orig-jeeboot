@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.modules.demo.test.entity.JeecgDemo;
 import org.jeecg.modules.demo.test.service.IJeecgDemoService;
 import org.jeecg.modules.demo.test.service.IJeecgDynamicDataService;
@@ -26,7 +26,7 @@ import java.util.List;
 @Tag(name = "动态数据源测试")
 @RestController
 @RequestMapping("/test/dynamic")
-public class JeecgDynamicDataController extends JeecgController<JeecgDemo, IJeecgDemoService> {
+public class JeecgDynamicDataController extends JeecgExcelController<JeecgDemo, IJeecgDemoService> {
 
     @Autowired
     private IJeecgDynamicDataService jeecgDynamicDataService;

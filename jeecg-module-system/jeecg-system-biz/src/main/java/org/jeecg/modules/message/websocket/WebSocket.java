@@ -8,7 +8,7 @@ import jakarta.websocket.server.ServerEndpoint;
 
 import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.base.BaseMap;
-import org.jeecg.common.constant.WebsocketConst;
+import org.jeecg.common.communication.websocket.constant.WebsocketConst;
 import org.jeecg.common.modules.redis.client.JeecgRedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

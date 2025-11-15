@@ -12,8 +12,8 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.config.TenantContext;
 import org.jeecg.common.config.mqtoken.UserTokenContext;
 import org.jeecg.common.exception.JeecgBootException;
+import org.jeecg.common.filter.SsrfFileTypeFilter;
 import org.jeecg.common.util.*;
-import org.jeecg.common.util.filter.SsrfFileTypeFilter;
 import org.jeecg.modules.airag.llm.consts.LLMConsts;
 import org.jeecg.modules.airag.llm.entity.AiragKnowledge;
 import org.jeecg.modules.airag.llm.entity.AiragKnowledgeDoc;
@@ -308,7 +308,7 @@ public class AiragKnowledgeDocServiceImpl extends ServiceImpl<AiragKnowledgeDocM
             if (null == fileExt || !fileExt.equalsIgnoreCase("zip")) {
                 throw new JeecgBootException("请上传zip压缩包");
             }
-            String uploadedZipPath = CommonUtils.uploadLocal(zipFile, bizPath, uploadpath);
+            String uploadedZipPath = OSSCommonUtils.uploadLocal(zipFile, bizPath, uploadpath);
             // 解压缩文件
             List<AiragKnowledgeDoc> docList = new ArrayList<>();
             AtomicInteger fileCount = new AtomicInteger(0);

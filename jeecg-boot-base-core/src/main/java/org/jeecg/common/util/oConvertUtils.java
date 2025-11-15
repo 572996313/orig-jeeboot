@@ -1,16 +1,14 @@
 package org.jeecg.common.util;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson2.util.BeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
-import org.springframework.beans.BeanUtils;
+//import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -238,7 +236,7 @@ public class oConvertUtils {
 
 	/**
 	 * 转义成Unicode编码
-	 * @param s
+	 * @param object
 	 * @return
 	 */
 	/*public static String escapeJava(Object s) {
@@ -339,24 +337,24 @@ public class oConvertUtils {
 	}
 	
 	
-	/**
-	 * @param request
-	 *            IP
-	 * @return IP Address
-	 */
-	public static String getIpAddrByRequest(HttpServletRequest request) {
-		String ip = request.getHeader("x-forwarded-for");
-		if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
-			ip = request.getHeader("Proxy-Client-IP");
-		}
-		if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
-			ip = request.getHeader("WL-Proxy-Client-IP");
-		}
-		if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
-			ip = request.getRemoteAddr();
-		}
-		return ip;
-	}
+//	/**
+//	 * @param request
+//	 *            IP
+//	 * @return IP Address
+//	 */
+//	public static String getIpAddrByRequest(HttpServletRequest request) {
+//		String ip = request.getHeader("x-forwarded-for");
+//		if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
+//			ip = request.getHeader("Proxy-Client-IP");
+//		}
+//		if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
+//			ip = request.getHeader("WL-Proxy-Client-IP");
+//		}
+//		if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
+//			ip = request.getRemoteAddr();
+//		}
+//		return ip;
+//	}
 
 	/**
 	 * @return 本机IP
@@ -593,7 +591,7 @@ public class oConvertUtils {
 	 * 如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。</br>
 	 * 例如：hello_world,test_id->helloWorld,testId
 	 * 
-	 * @param name
+	 * @param names
 	 *            转换前的下划线大写方式命名的字符串
 	 * @return 转换后的驼峰式命名的字符串
 	 */
@@ -718,44 +716,6 @@ public class oConvertUtils {
 			 select.add(resultMap);
 		}
 		return select;
-	}
-
-	/**
-	 * 将entityList转换成modelList
-	 * @param fromList
-	 * @param tClass
-	 * @param <F>
-	 * @param <T>
-	 * @return
-	 */
-	public static<F,T> List<T> entityListToModelList(List<F> fromList, Class<T> tClass){
-		if(fromList == null || fromList.isEmpty()){
-			return null;
-		}
-		List<T> tList = new ArrayList<>();
-		for(F f : fromList){
-			T t = entityToModel(f, tClass);
-			tList.add(t);
-		}
-		return tList;
-	}
-
-	public static<F,T> T entityToModel(F entity, Class<T> modelClass) {
-		log.debug("entityToModel : Entity属性的值赋值到Model");
-		Object model = null;
-		if (entity == null || modelClass ==null) {
-			return null;
-		}
-
-		try {
-			model = modelClass.newInstance();
-		} catch (InstantiationException e) {
-			log.error("entityToModel : 实例化异常", e);
-		} catch (IllegalAccessException e) {
-			log.error("entityToModel : 安全权限异常", e);
-		}
-		BeanUtils.copyProperties(entity, model);
-		return (T)model;
 	}
 
 	/**
@@ -929,17 +889,7 @@ public class oConvertUtils {
 	 * @param url
 	 * @return
 	 */
-	public static String readStatic(String url) {
-		String json = "";
-		try {
-			//换个写法，解决springboot读取jar包中文件的问题
-			InputStream stream = oConvertUtils.class.getClassLoader().getResourceAsStream(url.replace("classpath:", ""));
-			json = IOUtils.toString(stream,"UTF-8");
-		} catch (IOException e) {
-			log.error(e.getMessage(),e);
-		}
-		return json;
-	}
+
 
 	/**
 	 * 将List 转成 JSONArray
@@ -1165,8 +1115,8 @@ public class oConvertUtils {
 	 * @param tenantId
 	 * @return
 	 */
-	public static boolean isEffectiveTenant(String tenantId) {
-		return MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL && isNotEmpty(tenantId) && !("0").equals(tenantId);
-	}
+//	public static boolean isEffectiveTenant(String tenantId) {
+//		return MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL && isNotEmpty(tenantId) && !("0").equals(tenantId);
+//	}
 	
 }

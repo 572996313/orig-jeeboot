@@ -1,94 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://www.apache.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <parent>
         <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.8.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.jeecgframework.boot3</groupId>
     <artifactId>jeecg-boot-starter-desensitization</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>3.8.3</version>
     <packaging>jar</packaging>
-    <name>Jeecg Boot Starter Desensitization</name>
-    <description>数据脱敏 Starter 模块，提供敏感数据自动脱敏功能</description>
+
+    <name>jeecg-boot-starter-desensitization</name>
+    <description>JeecgBoot 数据脱敏功能模块</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <!-- Jeecg 基础模块 -->
-        <!-- 传递依赖：jackson-databind 由其他依赖提供，可考虑移除 -->
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-constants</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-utils</artifactId>
-        </dependency>
-
-        <!-- Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <!-- Spring AOP (必选，用于切面) -->
+        <!-- Spring Boot Starter AOP -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- Jackson (用于JSON序列化脱敏) -->
+        <!-- Spring Boot Configuration Processor -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+
+        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!-- Hutool (加密工具) -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-crypto</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Spring Boot Configuration Processor -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-                    <scope>provided</scope>
-        </dependency>
-
-        <!-- Lombok (可选) -->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-                    <scope>provided</scope>
         </dependency>
 
-        <!-- Test -->
+        <!-- Apache Shiro (用于加密工具类) -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
         </dependency>
+
+        <!-- JeecgBoot Common (需要加密工具类和基础工具类支持) -->
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-common</artifactId>
+            <version>${jeecgboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -96,7 +74,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

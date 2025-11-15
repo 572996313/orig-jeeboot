@@ -4,18 +4,18 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysGatewayRoute;
 import org.jeecg.modules.system.service.ISysGatewayRouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +29,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/sys/gatewayRoute")
 @Slf4j
-public class SysGatewayRouteController extends JeecgController<SysGatewayRoute, ISysGatewayRouteService> {
+public class SysGatewayRouteController extends JeecgExcelController<SysGatewayRoute, ISysGatewayRouteService> {
 
 	@Autowired
 	private ISysGatewayRouteService sysGatewayRouteService;

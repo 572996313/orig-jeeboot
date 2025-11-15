@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.jeecg.config.elasticsearch.JeecgElasticsearchAutoConfiguration
+org.jeecg.config.ElasticsearchAutoConfiguration

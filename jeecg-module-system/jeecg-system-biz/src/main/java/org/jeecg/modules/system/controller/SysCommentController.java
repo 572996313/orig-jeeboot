@@ -10,8 +10,8 @@ import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.dto.DataLogDTO;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.api.ISysBaseAPI;
-import org.jeecg.common.system.base.controller.JeecgController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.modules.system.entity.SysComment;
@@ -38,7 +38,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/sys/comment")
 @Slf4j
-public class SysCommentController extends JeecgController<SysComment, ISysCommentService> {
+public class SysCommentController extends JeecgExcelController<SysComment, ISysCommentService> {
 
     @Autowired
     private ISysCommentService sysCommentService;

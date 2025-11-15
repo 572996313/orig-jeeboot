@@ -1,7 +1,7 @@
 package org.jeecg.modules.demo.test.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.common.system.base.controller.JeecgController;
+import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.modules.demo.test.entity.JeecgDemo;
 import org.jeecg.modules.demo.test.service.IJeecgDemoService;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @RequestMapping("/test/bigScreen/templat")
-public class BigScreenTemplatController extends JeecgController<JeecgDemo, IJeecgDemoService> {
+public class BigScreenTemplatController extends JeecgExcelController<JeecgDemo, IJeecgDemoService> {
 
     /**
      * @param modelAndView
