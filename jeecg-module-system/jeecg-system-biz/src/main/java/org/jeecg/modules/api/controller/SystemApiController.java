@@ -9,7 +9,7 @@ import org.jeecg.common.api.dto.message.*;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.communication.sms.enums.DySmsEnum;
 import org.jeecg.common.constant.enums.EmailTemplateEnum;
-import org.jeecg.common.desensitization.util.SensitiveInfoUtil;
+import org.jeecg.common.util.SensitiveInfoUtil;
 import org.jeecg.common.system.vo.*;
 import org.jeecg.modules.system.service.ISysUserService;
 import org.jeecg.modules.system.service.impl.SysBaseApiImpl;

@@ -58,6 +58,10 @@
             <artifactId>hutool-core</artifactId>
             <version>${hutool.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -18,5 +18,9 @@
             <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-communication</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-bundle</artifactId>
+        </dependency>
     </dependencies>
 </project>

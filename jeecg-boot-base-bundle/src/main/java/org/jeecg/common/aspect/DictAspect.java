@@ -1,7 +1,6 @@
 package org.jeecg.common.aspect;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
@@ -17,7 +16,7 @@ import org.jeecg.common.api.CommonAPI;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.Dict;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.vo.DictModel;
+import org.jeecg.common.system.vo.DictModel;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

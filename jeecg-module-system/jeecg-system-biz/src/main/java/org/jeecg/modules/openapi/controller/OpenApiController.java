@@ -13,7 +13,7 @@ import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.util.RedisUtil;
-import org.jeecg.common.util.RestUtil;
+import org.jeecg.common.system.util.RestUtil;
 import org.jeecg.modules.openapi.entity.OpenApi;
 import org.jeecg.modules.openapi.entity.OpenApiAuth;
 import org.jeecg.modules.openapi.entity.OpenApiHeader;

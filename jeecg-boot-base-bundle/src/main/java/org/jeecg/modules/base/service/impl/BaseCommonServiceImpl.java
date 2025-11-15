@@ -6,7 +6,7 @@ import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.dto.LogDTO;
 import org.jeecg.common.constant.enums.ClientTerminalTypeEnum;
 import org.jeecg.common.util.BrowserUtils;
-import org.jeecg.common.vo.LoginUser;
+import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.modules.base.mapper.BaseCommonMapper;
 import org.jeecg.modules.base.service.BaseCommonService;
 import org.jeecg.common.util.IpUtils;

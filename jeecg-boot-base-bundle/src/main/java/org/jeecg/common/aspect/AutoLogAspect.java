@@ -16,7 +16,7 @@ import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.enums.ModuleType;
 import org.jeecg.common.constant.enums.OperateTypeEnum;
-import org.jeecg.common.vo.LoginUser;
+import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.modules.base.service.BaseCommonService;
 import org.jeecg.common.util.IpUtils;
 import org.jeecg.common.util.SpringContextUtils;

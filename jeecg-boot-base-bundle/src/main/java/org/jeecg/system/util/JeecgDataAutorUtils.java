@@ -1,7 +1,7 @@
 package org.jeecg.system.util;
 
-import org.jeecg.common.vo.SysPermissionDataRuleModel;
-import org.jeecg.common.vo.SysUserCacheInfo;
+import org.jeecg.common.system.vo.SysPermissionDataRuleModel;
+import org.jeecg.common.system.vo.SysUserCacheInfo;
 import org.jeecg.common.util.SpringContextUtils;
 import org.springframework.util.StringUtils;
 

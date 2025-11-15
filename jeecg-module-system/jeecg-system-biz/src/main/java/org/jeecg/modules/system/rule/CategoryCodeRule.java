@@ -1,11 +1,10 @@
 package org.jeecg.modules.system.rule;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.handler.IFillRuleHandler;
-import org.jeecg.config.util.SpringContextUtils;
+import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.YouBianCodeUtil;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysCategory;

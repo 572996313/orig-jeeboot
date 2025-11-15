@@ -6,8 +6,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.jeecg.common.constant.CommonConstant;
+import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.config.mybatis.DynamicTable;
-import org.jeecg.config.mybatis.SpringContextUtils;
 import org.jeecg.config.mybatis.ThreadLocalDataHelper;
 import org.springframework.stereotype.Component;
 

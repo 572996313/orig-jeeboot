@@ -2,7 +2,7 @@ package org.jeecg.modules.oss.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.util.CommonUtils;
+import org.jeecg.common.system.util.CommonUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.common.util.oss.OssBootUtil;
 import org.jeecg.modules.oss.entity.OssFile;
@@ -10,8 +10,6 @@ import org.jeecg.modules.oss.mapper.OssFileMapper;
 import org.jeecg.modules.oss.service.IOssFileService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 /**
  * @Description: OSS云存储实现类

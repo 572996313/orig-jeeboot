@@ -1,7 +1,7 @@
 package org.jeecg.common.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.constant.SymbolConstant;
-import org.springframework.util.StringUtils;
 
 import java.beans.PropertyEditorSupport;
 import java.sql.Timestamp;
@@ -13,11 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 /**
  * 类描述：时间操作定义类
@@ -662,7 +658,7 @@ public class DateUtils extends PropertyEditorSupport {
      */
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
-        if (StringUtils.hasText(text)) {
+        if (StringUtils.isNotBlank(text)) {
             try {
                 int length10 = 10;
                 int length19 = 19;

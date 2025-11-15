@@ -141,6 +141,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-web</artifactId>
+        </dependency>
+        <!--        <dependency>-->
+<!--            <groupId>org.jeecgframework.boot3</groupId>-->
+<!--            <artifactId>jeecg-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
 
     </dependencies>
 

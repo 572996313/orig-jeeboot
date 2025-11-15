@@ -19,6 +19,7 @@ import org.jeecg.common.constant.FillRuleConstant;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.constant.enums.DepartCategoryEnum;
 import org.jeecg.common.exception.JeecgBootBizTipException;
+import org.jeecg.common.system.util.FillRuleUtil;
 import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.common.util.*;
 import org.jeecg.config.mybatis.MybatisPlusSaasConfig;

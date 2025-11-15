@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.jeecg.common.vo.*;
+import org.jeecg.common.system.vo.*;
 
 /**
  * 通用api

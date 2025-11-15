@@ -1,7 +1,6 @@
 package org.jeecg.modules.system.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -34,8 +33,8 @@ import org.jeecg.common.constant.enums.MessageTypeEnum;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.util.PasswordUtil;
-import org.jeecg.common.util.RestUtil;
-import org.jeecg.config.util.SpringContextUtils;
+import org.jeecg.common.system.util.RestUtil;
+import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.config.JeecgBaseConfig;
 import org.jeecg.config.mybatis.MybatisPlusSaasConfig;

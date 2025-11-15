@@ -14,7 +14,7 @@ import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.filter.SsrfFileTypeFilter;
 import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.vo.SysFilesModel;
-import org.jeecg.common.util.CommonUtils;
+import org.jeecg.common.system.util.CommonUtils;
 import org.jeecg.common.util.OSSCommonUtils;
 import org.jeecg.common.util.RedisUtil;
 import org.jeecg.common.util.oConvertUtils;

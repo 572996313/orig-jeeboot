@@ -179,12 +179,6 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- Spring Boot Configuration Processor -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-configuration-processor</artifactId>
-				<version>${project.parent.version}</version>
-				<optional>true</optional>
-			</dependency>
 			<!-- spring-cloud-->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -351,6 +345,11 @@
 				<artifactId>jeecg-boot-starter-mongon</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot3</groupId>
+				<artifactId>jeecg-boot-starter-security</artifactId>
+				<version>${jeecgboot.version}</version>
+			</dependency>
 			<!--人大金仓驱动 版本号V008R006C005B0013 -->
 			<dependency>
 				<groupId>org.jeecgframework</groupId>
@@ -426,6 +425,10 @@
 						<artifactId>fastjson</artifactId>
 						<groupId>com.alibaba</groupId>
 					</exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-configuration-processor</artifactId>
+                    </exclusion>
 				</exclusions>
 			</dependency>
 			<dependency>

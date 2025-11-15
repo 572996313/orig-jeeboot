@@ -32,6 +32,7 @@ import org.jeecg.common.constant.enums.MessageTypeEnum;
 import org.jeecg.common.exception.JeecgBootBizTipException;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.system.util.JwtUtil;
+import org.jeecg.common.system.util.RestUtil;
 import org.jeecg.common.util.*;
 import org.jeecg.config.JeecgBaseConfig;
 import org.jeecg.config.mybatis.MybatisPlusSaasConfig;

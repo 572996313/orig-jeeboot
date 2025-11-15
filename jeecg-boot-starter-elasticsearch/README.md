@@ -72,7 +72,7 @@ JSONObject result = elasticsearchTemplate.getDataById("my_index", "my_type", "1"
 ## 迁移说明
 
 该模块从 `jeecg-boot-base-core` 模块迁移而来,原来的类路径保持不变:
-- `org.jeecg.common.es.JeecgElasticsearchTemplate`
+- `org.jeecg.config.es.JeecgElasticsearchTemplate`
 - `org.jeecg.common.es.QueryStringBuilder`
 - `org.jeecg.config.vo.Elasticsearch`
 

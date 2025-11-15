@@ -32,7 +32,7 @@ import org.jeecg.common.communication.sms.util.DySmsHelper;
 import org.jeecg.common.communication.websocket.constant.WebsocketConst;
 import org.jeecg.common.constant.*;
 import org.jeecg.common.constant.enums.*;
-import org.jeecg.common.desensitization.util.SensitiveInfoUtil;
+import org.jeecg.common.util.SensitiveInfoUtil;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.query.QueryCondition;
@@ -56,6 +56,7 @@ import org.jeecg.modules.system.entity.*;
 import org.jeecg.modules.system.mapper.*;
 import org.jeecg.modules.system.service.*;
 import org.jeecg.modules.system.util.SecurityUtil;
+import org.jeecg.modules.system.util.oConvertUtils4;
 import org.jeecg.modules.system.vo.lowapp.SysDictVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -247,7 +248,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 				List<SysPermissionDataRule> temp = sysPermissionDataRuleService.queryPermissionDataRules(username, sysPermission.getId());
 				if(temp!=null && temp.size()>0) {
 					//dataRules.addAll(temp);
-					dataRules = oConvertUtils.entityListToModelList(temp,SysPermissionDataRuleModel.class);
+					dataRules = oConvertUtils4.entityListToModelList(temp,SysPermissionDataRuleModel.class);
 				}
 				// update-end--Author:scott Date:20191119 for：数据权限规则编码不规范，项目存在相同包名和类名 #722
 			}
@@ -728,7 +729,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	@Override
 	public List<SysCategoryModel> queryAllSysCategory() {
 		List<SysCategory> ls = categoryMapper.selectList(null);
-		List<SysCategoryModel> res = oConvertUtils.entityListToModelList(ls,SysCategoryModel.class);
+		List<SysCategoryModel> res = oConvertUtils4.entityListToModelList(ls,SysCategoryModel.class);
 		return res;
 	}
 

@@ -8,10 +8,10 @@ import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.util.CommonUtils;
+import org.jeecg.common.system.util.CommonUtils;
 import org.jeecg.common.util.oConvertUtils;
-import org.jeecg.system.query.QueryGenerator;
-import org.jeecg.system.query.QueryRuleEnum;
+import org.jeecg.common.system.query.QueryGenerator;
+import org.jeecg.common.system.query.QueryRuleEnum;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

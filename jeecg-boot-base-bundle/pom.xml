@@ -75,7 +75,17 @@
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-starter-security</artifactId>
-            <version>${project.version}</version>
+
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-communication</artifactId>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-datasource</artifactId>
         </dependency>
 
 
@@ -233,6 +243,14 @@
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-boot-base-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-starter-excel</artifactId>
         </dependency>
     </dependencies>
 

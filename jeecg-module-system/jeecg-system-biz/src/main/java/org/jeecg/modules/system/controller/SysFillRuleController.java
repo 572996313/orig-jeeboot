@@ -14,7 +14,7 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.aspect.annotation.AutoLog;
 import org.jeecg.common.controller.JeecgExcelController;
 import org.jeecg.common.system.query.QueryGenerator;
-import org.jeecg.common.util.FillRuleUtil;
+import org.jeecg.common.system.util.FillRuleUtil;
 import org.jeecg.modules.system.entity.SysFillRule;
 import org.jeecg.modules.system.service.ISysFillRuleService;
 import org.springframework.beans.factory.annotation.Autowired;

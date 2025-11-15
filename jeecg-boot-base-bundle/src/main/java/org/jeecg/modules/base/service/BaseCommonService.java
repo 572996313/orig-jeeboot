@@ -1,7 +1,7 @@
 package org.jeecg.modules.base.service;
 
 import org.jeecg.common.api.dto.LogDTO;
-import org.jeecg.common.vo.LoginUser;
+import org.jeecg.common.system.vo.LoginUser;
 
 /**
  * common接口
