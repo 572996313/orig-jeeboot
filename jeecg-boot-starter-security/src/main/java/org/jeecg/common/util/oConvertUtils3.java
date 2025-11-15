@@ -1,5 +1,6 @@
 package org.jeecg.common.util;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.constant.CommonConstant;
 
@@ -9,12 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 
+ *
  * @Author  张代浩
  *
  */
 @Slf4j
-public class oConvertUtils {
+public class oConvertUtils3 {
 
 	/**
 	 * 将驼峰命名转化成下划线
@@ -24,19 +25,19 @@ public class oConvertUtils {
 	public static String camelToUnderline(String para){
 	    int length = 3;
         if(para.length()<length){
-        	return para.toLowerCase(); 
+        	return para.toLowerCase();
         }
         StringBuilder sb=new StringBuilder(para);
         //定位
         int temp=0;
-        //从第三个字符开始 避免命名不规范 
+        //从第三个字符开始 避免命名不规范
         for(int i=2;i<para.length();i++){
             if(Character.isUpperCase(para.charAt(i))){
                 sb.insert(i+temp, "_");
                 temp+=1;
             }
         }
-        return sb.toString().toLowerCase(); 
+        return sb.toString().toLowerCase();
 	}
     public static String getString(String s) {
         return (getString(s, ""));
@@ -107,5 +108,19 @@ public class oConvertUtils {
             return (true);
         }
         return (false);
+    }
+
+    public static String getIpAddrByRequest(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || CommonConstant.UNKNOWN.equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
     }
 }
