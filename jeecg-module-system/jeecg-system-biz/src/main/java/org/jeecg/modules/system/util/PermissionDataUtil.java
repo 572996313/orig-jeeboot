@@ -2,7 +2,7 @@ package org.jeecg.modules.system.util;
 
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.common.util.SpringContextUtils;
+import org.jeecg.config.util.SpringContextUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysPermission;
 import org.jeecg.modules.system.entity.SysRoleIndex;

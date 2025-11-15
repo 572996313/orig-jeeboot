@@ -22,7 +22,7 @@ import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.common.util.DateUtils;
 import org.jeecg.common.util.PasswordUtil;
-import org.jeecg.common.util.SpringContextUtils;
+import org.jeecg.config.util.SpringContextUtils;
 import org.jeecg.common.constant.enums.SysAnnmentTypeEnum;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.aop.TenantLog;

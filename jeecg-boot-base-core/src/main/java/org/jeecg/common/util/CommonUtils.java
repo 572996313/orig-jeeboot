@@ -1,8 +1,8 @@
 package org.jeecg.common.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
-import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
+//import com.baomidou.dynamic.datasource.creator.DataSourceProperty;
+//import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.toolkit.JdbcUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -151,12 +151,12 @@ public class CommonUtils {
      * @param sourceKey
      * @return
      */
-    public static DataSourceProperty getDataSourceProperty(String sourceKey){
-        DynamicDataSourceProperties prop = SpringContextUtils.getApplicationContext().getBean(DynamicDataSourceProperties.class);
-        Map<String, DataSourceProperty> map = prop.getDatasource();
-        DataSourceProperty db = (DataSourceProperty)map.get(sourceKey);
-        return db;
-    }
+//    public static DataSourceProperty getDataSourceProperty(String sourceKey){
+//        DynamicDataSourceProperties prop = SpringContextUtils.getApplicationContext().getBean(DynamicDataSourceProperties.class);
+//        Map<String, DataSourceProperty> map = prop.getDatasource();
+//        DataSourceProperty db = (DataSourceProperty)map.get(sourceKey);
+//        return db;
+//    }
 
     /**
      * 根据sourceKey 获取数据源连接
@@ -164,23 +164,23 @@ public class CommonUtils {
      * @return
      * @throws SQLException
      */
-    public static Connection getDataSourceConnect(String sourceKey) throws SQLException {
-        if (oConvertUtils.isEmpty(sourceKey)) {
-            sourceKey = "master";
-        }
-        DynamicDataSourceProperties prop = SpringContextUtils.getApplicationContext().getBean(DynamicDataSourceProperties.class);
-        Map<String, DataSourceProperty> map = prop.getDatasource();
-        DataSourceProperty db = (DataSourceProperty)map.get(sourceKey);
-        if(db==null){
-            return null;
-        }
-        DriverManagerDataSource ds = new DriverManagerDataSource ();
-        ds.setDriverClassName(db.getDriverClassName());
-        ds.setUrl(db.getUrl());
-        ds.setUsername(db.getUsername());
-        ds.setPassword(db.getPassword());
-        return ds.getConnection();
-    }
+//    public static Connection getDataSourceConnect(String sourceKey) throws SQLException {
+//        if (oConvertUtils.isEmpty(sourceKey)) {
+//            sourceKey = "master";
+//        }
+//        DynamicDataSourceProperties prop = SpringContextUtils.getApplicationContext().getBean(DynamicDataSourceProperties.class);
+//        Map<String, DataSourceProperty> map = prop.getDatasource();
+//        DataSourceProperty db = (DataSourceProperty)map.get(sourceKey);
+//        if(db==null){
+//            return null;
+//        }
+//        DriverManagerDataSource ds = new DriverManagerDataSource ();
+//        ds.setDriverClassName(db.getDriverClassName());
+//        ds.setUrl(db.getUrl());
+//        ds.setUsername(db.getUsername());
+//        ds.setPassword(db.getPassword());
+//        return ds.getConnection();
+//    }
 
     /**
      * 获取数据库类型

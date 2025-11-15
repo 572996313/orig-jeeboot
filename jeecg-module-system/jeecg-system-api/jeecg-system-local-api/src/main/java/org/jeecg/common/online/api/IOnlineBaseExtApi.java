@@ -1,7 +1,7 @@
 package org.jeecg.common.online.api;
 
 import com.alibaba.fastjson.JSONObject;
-import org.jeecg.common.system.vo.DictModel;
+import org.jeecg.common.vo.DictModel;
 
 import java.util.List;
 import java.util.Map;

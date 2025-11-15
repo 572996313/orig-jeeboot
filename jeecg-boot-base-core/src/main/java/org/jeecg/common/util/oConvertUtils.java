@@ -7,7 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
-import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
+//import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
 import org.springframework.beans.BeanUtils;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -1165,8 +1165,8 @@ public class oConvertUtils {
 	 * @param tenantId
 	 * @return
 	 */
-	public static boolean isEffectiveTenant(String tenantId) {
-		return MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL && isNotEmpty(tenantId) && !("0").equals(tenantId);
-	}
+//	public static boolean isEffectiveTenant(String tenantId) {
+//		return MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL && isNotEmpty(tenantId) && !("0").equals(tenantId);
+//	}
 	
 }

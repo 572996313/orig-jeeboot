@@ -6,7 +6,7 @@ import java.util.List;
 import jakarta.annotation.Resource;
 
 import org.jeecg.common.api.CommonAPI;
-import org.jeecg.common.system.vo.DictModel;
+import org.jeecg.common.vo.DictModel;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecgframework.dict.service.AutoPoiDictServiceI;
 import org.springframework.context.annotation.Lazy;

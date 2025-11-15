@@ -14,6 +14,7 @@
 
     <modules>
         <module>jeecg-system-local-api</module>
+        <module>jeecg-system-api-interface</module>
     </modules>
 
     <dependencies>

@@ -1,7 +1,7 @@
 package org.jeecg.common.communication.enums;
 
 import org.jeecg.common.system.annotation.EnumDict; // 暂时保留，后续需要处理依赖
-import org.jeecg.common.system.vo.DictModel; // 暂时保留，后续需要处理依赖
+import org.jeecg.common.vo.DictModel; // 暂时保留，后续需要处理依赖
 
 import java.util.ArrayList;
 import java.util.List;
