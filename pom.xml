@@ -89,18 +89,9 @@
 	</properties>
 
 	<modules>
-	       <module>jeecg-boot-base-core</module>
-	       <module>jeecg-boot-base-bundle</module>
-	       <module>jeecg-module-system</module>
-	       <module>jeecg-boot-module</module>
-	       <module>jeecg-boot-starter-elasticsearch</module>
-	       <module>jeecg-boot-starter-excel</module>
-	       <module>jeecg-boot-starter-desensitization</module>
-	       <module>jeecg-boot-starter-oss</module>
-	       <module>jeecg-boot-starter-communication</module>
-	       <module>jeecg-boot-starter-datasource</module>
-	       <module>jeecg-boot-starter-security</module>
-	       <module>jeecg-boot-starter-web</module>
+	       <module>jeecg-boot-base</module>
+	       <module>jeecg-boot-starters</module>
+	       <module>jeecg-boot-modules</module>
 	   </modules>
 
 	<repositories>

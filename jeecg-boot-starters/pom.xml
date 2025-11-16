@@ -14,14 +14,14 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>../jeecg-boot-starter-api-doc</module>
-        <module>../jeecg-boot-starter-communication</module>
-        <module>../jeecg-boot-starter-datasource</module>
-        <module>../jeecg-boot-starter-desensitization</module>
-        <module>../jeecg-boot-starter-elasticsearch</module>
-        <module>../jeecg-boot-starter-excel</module>
-        <module>../jeecg-boot-starter-oss</module>
-        <module>../jeecg-boot-starter-security</module>
-        <module>../jeecg-boot-starter-web</module>
+<!--        <module>jeecg-boot-starter-api-doc</module>-->
+        <module>jeecg-boot-starter-communication</module>
+        <module>jeecg-boot-starter-datasource</module>
+        <module>jeecg-boot-starter-desensitization</module>
+        <module>jeecg-boot-starter-elasticsearch</module>
+        <module>jeecg-boot-starter-excel</module>
+        <module>jeecg-boot-starter-oss</module>
+        <module>jeecg-boot-starter-security</module>
+        <module>jeecg-boot-starter-web</module>
     </modules>
 </project>
