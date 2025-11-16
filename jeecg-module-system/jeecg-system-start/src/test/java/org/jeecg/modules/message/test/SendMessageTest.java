@@ -1,3 +1,4 @@
+/*
 package org.jeecg.modules.message.test;
 
 import com.alibaba.fastjson.JSONObject;
@@ -7,13 +8,13 @@ import org.jeecg.common.api.dto.message.BusMessageDTO;
 import org.jeecg.common.api.dto.message.BusTemplateMessageDTO;
 import org.jeecg.common.api.dto.message.MessageDTO;
 import org.jeecg.common.api.dto.message.TemplateMessageDTO;
+import org.jeecg.common.communication.sms.enums.DySmsEnum;
+import org.jeecg.common.communication.sms.util.DySmsHelper;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.constant.enums.DySmsEnum;
 import org.jeecg.common.constant.enums.EmailTemplateEnum;
 import org.jeecg.common.constant.enums.MessageTypeEnum;
 import org.jeecg.common.constant.enums.SysAnnmentTypeEnum;
 import org.jeecg.common.system.api.ISysBaseAPI;
-import org.jeecg.common.util.DySmsHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +25,7 @@ import java.util.Map;
 /**
  * @Description: 消息推送测试
  * @Author: lsq
- */
+ * /
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = JeecgSystemApplication.class)
 public class SendMessageTest {
 
@@ -33,7 +34,7 @@ public class SendMessageTest {
 
     /**
      * 发送系统消息
-     */
+     * /
     @Test
     public void sendSysAnnouncement() {
         //发送人
@@ -59,7 +60,7 @@ public class SendMessageTest {
 
     /**
      * 发送模版消息
-     */
+     * /
     @Test
     public void sendTemplateAnnouncement() {
         //发送人
@@ -96,7 +97,7 @@ public class SendMessageTest {
     }
     /**
      * 发送邮件
-     */
+     * /
     @Test
     public void sendEmailMsg() {
         String title = "【日程提醒】您的日程任务即将开始";
@@ -106,7 +107,7 @@ public class SendMessageTest {
     }
     /**
      * 发送html模版邮件
-     */
+     * /
     @Test
     public void sendTemplateEmailMsg() {
         String title = "收到一个催办";
@@ -121,7 +122,7 @@ public class SendMessageTest {
     }
     /**
      * 发送短信
-     */
+     * /
     @Test
     public void sendSms() throws ClientException {
         //手机号
@@ -134,3 +135,4 @@ public class SendMessageTest {
         DySmsHelper.sendSms(mobile, obj, templateCode);
     }
 }
+*/

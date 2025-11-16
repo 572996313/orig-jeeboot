@@ -48,10 +48,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>autopoi</artifactId>
             <version>1.4.18</version>
@@ -64,6 +60,10 @@
 <!--            <artifactId>jeecg-system-api-interface</artifactId>-->
 <!--            <version>${project.version}</version>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
