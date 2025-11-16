@@ -8,6 +8,7 @@ import jakarta.annotation.Resource;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils1116;
 import org.jeecg.modules.system.entity.SysLog;
 import org.jeecg.modules.system.mapper.SysLogMapper;
 import org.jeecg.modules.system.service.ISysLogService;
@@ -56,7 +57,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
 
 	@Override
 	public List<Map<String,Object>> findVisitCount(Date dayStart, Date dayEnd) {
-		DbType dbType = CommonUtils.getDatabaseTypeEnum();
+		DbType dbType = CommonUtils1116.getDatabaseTypeEnum();
 		return sysLogMapper.findVisitCount(dayStart, dayEnd,dbType.getDb());
 	}
 }

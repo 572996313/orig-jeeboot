@@ -1054,7 +1054,7 @@ public class QueryGenerator {
 	 * 获取系统数据库类型
 	 */
 	private static String getDbType(){
-		return CommonUtils.getDatabaseType();
+		return CommonUtils1116.getDatabaseType();
 	}
 
 	/**

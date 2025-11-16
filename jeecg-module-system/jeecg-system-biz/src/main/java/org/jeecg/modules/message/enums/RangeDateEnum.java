@@ -1,7 +1,6 @@
 package org.jeecg.modules.message.enums;
 
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.common.constant.enums.MessageTypeEnum;
 import org.jeecg.common.system.annotation.EnumDict;
 import org.jeecg.common.system.vo.DictModel;
 

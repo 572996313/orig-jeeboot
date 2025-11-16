@@ -13,7 +13,7 @@ import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.constant.ServiceNameConstants;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.jeecg.common.util.SpringContextUtils;
+//import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.oConvertUtils;
 
 import javax.sql.DataSource;
@@ -100,10 +100,10 @@ public class CommonUtils {
     private static String DB_TYPE = "";
     private static DbType dbTypeEnum = null;
 
-    /**
+/*    *//**
      * 全局获取平台数据库类型（作废了）
      * @return
-     */
+     *//*
     @Deprecated
     public static String getDatabaseType() {
         if(oConvertUtils.isNotEmpty(DB_TYPE)){
@@ -119,10 +119,10 @@ public class CommonUtils {
         }
     }
 
-    /**
+    *//**
      * 全局获取平台数据库类型（对应mybaisPlus枚举）
      * @return
-     */
+     *//*
     public static DbType getDatabaseTypeEnum() {
         if (oConvertUtils.isNotEmpty(dbTypeEnum)) {
             return dbTypeEnum;
@@ -139,7 +139,7 @@ public class CommonUtils {
             log.warn(e.getMessage(), e);
             return null;
         }
-    }
+    }*/
 
     /**
      * 根据数据源key获取DataSourceProperty
@@ -177,42 +177,42 @@ public class CommonUtils {
 //        return ds.getConnection();
 //    }
 
-    /**
-     * 获取数据库类型
-     * @param dataSource
-     * @return
-     * @throws SQLException
-     */
-    private static String getDatabaseTypeByDataSource(DataSource dataSource) throws SQLException{
-        if("".equals(DB_TYPE)) {
-            Connection connection = dataSource.getConnection();
-            try {
-                DatabaseMetaData md = connection.getMetaData();
-                String dbType = md.getDatabaseProductName().toUpperCase();
-                String sqlserver= "SQL SERVER";
-                if(dbType.indexOf(DataBaseConstant.DB_TYPE_MYSQL)>=0) {
-                    DB_TYPE = DataBaseConstant.DB_TYPE_MYSQL;
-                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_ORACLE)>=0 ||dbType.indexOf(DataBaseConstant.DB_TYPE_DM)>=0) {
-                    DB_TYPE = DataBaseConstant.DB_TYPE_ORACLE;
-                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_SQLSERVER)>=0||dbType.indexOf(sqlserver)>=0) {
-                    DB_TYPE = DataBaseConstant.DB_TYPE_SQLSERVER;
-                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_POSTGRESQL)>=0 || dbType.indexOf(DataBaseConstant.DB_TYPE_KINGBASEES)>=0) {
-                    DB_TYPE = DataBaseConstant.DB_TYPE_POSTGRESQL;
-                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_MARIADB)>=0) {
-                    DB_TYPE = DataBaseConstant.DB_TYPE_MARIADB;
-                }else {
-                    log.error("数据库类型:[" + dbType + "]不识别!");
-                    //throw new JeecgBootException("数据库类型:["+dbType+"]不识别!");
-                }
-            } catch (Exception e) {
-                log.error(e.getMessage(), e);
-            }finally {
-                connection.close();
-            }
-        }
-        return DB_TYPE;
-
-    }
+//    /**
+//     * 获取数据库类型
+//     * @param dataSource
+//     * @return
+//     * @throws SQLException
+//     */
+//    private static String getDatabaseTypeByDataSource(DataSource dataSource) throws SQLException{
+//        if("".equals(DB_TYPE)) {
+//            Connection connection = dataSource.getConnection();
+//            try {
+//                DatabaseMetaData md = connection.getMetaData();
+//                String dbType = md.getDatabaseProductName().toUpperCase();
+//                String sqlserver= "SQL SERVER";
+//                if(dbType.indexOf(DataBaseConstant.DB_TYPE_MYSQL)>=0) {
+//                    DB_TYPE = DataBaseConstant.DB_TYPE_MYSQL;
+//                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_ORACLE)>=0 ||dbType.indexOf(DataBaseConstant.DB_TYPE_DM)>=0) {
+//                    DB_TYPE = DataBaseConstant.DB_TYPE_ORACLE;
+//                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_SQLSERVER)>=0||dbType.indexOf(sqlserver)>=0) {
+//                    DB_TYPE = DataBaseConstant.DB_TYPE_SQLSERVER;
+//                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_POSTGRESQL)>=0 || dbType.indexOf(DataBaseConstant.DB_TYPE_KINGBASEES)>=0) {
+//                    DB_TYPE = DataBaseConstant.DB_TYPE_POSTGRESQL;
+//                }else if(dbType.indexOf(DataBaseConstant.DB_TYPE_MARIADB)>=0) {
+//                    DB_TYPE = DataBaseConstant.DB_TYPE_MARIADB;
+//                }else {
+//                    log.error("数据库类型:[" + dbType + "]不识别!");
+//                    //throw new JeecgBootException("数据库类型:["+dbType+"]不识别!");
+//                }
+//            } catch (Exception e) {
+//                log.error(e.getMessage(), e);
+//            }finally {
+//                connection.close();
+//            }
+//        }
+//        return DB_TYPE;
+//
+//    }
     /**
      * 获取服务器地址
      *

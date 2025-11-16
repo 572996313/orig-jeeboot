@@ -3,7 +3,7 @@ package org.jeecg.common.util;
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.common.CommonConstant;
+import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.exception.JeecgSqlInjectionException;
 import org.jeecg.common.SymbolConstant;
 

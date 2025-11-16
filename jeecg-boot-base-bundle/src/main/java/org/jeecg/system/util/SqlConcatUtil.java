@@ -8,10 +8,11 @@ import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.DataBaseConstant;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.system.util.CommonUtils;
-import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.query.QueryRuleEnum;
+import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils1116;
+import org.jeecg.common.util.oConvertUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -246,7 +247,7 @@ public class SqlConcatUtil {
      * 获取系统数据库类型
      */
     private static String getDbType() {
-        return CommonUtils.getDatabaseType();
+        return CommonUtils1116.getDatabaseType();
     }
 
     /**
