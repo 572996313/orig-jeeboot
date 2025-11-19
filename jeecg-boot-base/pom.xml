@@ -6,7 +6,7 @@
         <groupId>org.jeecgframework.boot3</groupId>
         <artifactId>jeecg-boot-parent</artifactId>
         <version>3.8.3</version>
-        <relativePath>../../pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,8 +18,244 @@
         <module>jeecg-boot-base-bundle</module>
 <!--        <module>jeecg-boot-base-constants</module>-->
         <module>jeecg-boot-base-core</module>
+        <module>jeecg-boot-base-web</module>
+        <module>jeecg-boot-base-persistence</module>
+        <module>jeecg-boot-base-tools</module>
 <!--        <module>jeecg-boot-base-core-aggregator</module>-->
 <!--        <module>jeecg-boot-base-core-lite</module>-->
 <!--        <module>jeecg-boot-base-utils</module>-->
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-base-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-base-bundle</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-base-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-base-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-base-persistence</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-base-tools</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            
+            <!--jeecg-tools-->
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-common</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+            <!--集成springmvc框架并实现自动配置 -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-web</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-aop</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--            </dependency>-->
+            <!--springboot2.3+ 需引入validation对应的包-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-validation</artifactId>-->
+<!--            </dependency>-->
+            <!--springboot2.6+解决metrics端点不显示jvm信息的问题-->
+<!--            <dependency>-->
+<!--                <groupId>io.micrometer</groupId>-->
+<!--                <artifactId>micrometer-registry-prometheus</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- commons -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
+            <!-- freemarker -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-freemarker</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- minidao -->
+<!--            <dependency>-->
+<!--                <groupId>org.jeecgframework.boot3</groupId>-->
+<!--                <artifactId>minidao-spring-boot-starter-jsqlparser-4.9</artifactId>-->
+<!--                <version>${jeecgboot.version}</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-security</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-communication</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-datasource</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- Quartz定时任务 -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-quartz</artifactId>-->
+<!--            </dependency>-->
+            
+            <!-- knife4j 升级springboot3.4.5报错 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-ui</artifactId>
+                <version>${knife4j-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>2.7.0</version>
+            </dependency>
+
+            <!-- 代码生成器 -->
+            <dependency>
+                <groupId>org.jeecgframework.boot</groupId>
+                <artifactId>codegenerate</artifactId>
+                <version>${codegenerate.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-io</artifactId>
+                        <groupId>commons-io</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <groupId>mysql</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Excel 功能支持 -->
+<!--            <dependency>-->
+<!--                <groupId>org.jeecgframework.boot3</groupId>-->
+<!--                <artifactId>autopoi-web</artifactId>-->
+<!--                <version>${jeecgboot.version}</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>2.12.2</version>
+                <optional>true</optional>
+            </dependency>
+            
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.18.0</version>
+            </dependency>
+
+            <!-- 第三方登录  -->
+<!--            <dependency>-->
+<!--                <groupId>com.xkcoding.justauth</groupId>-->
+<!--                <artifactId>justauth-spring-boot-starter</artifactId>-->
+<!--                <version>${justauth.version}</version>-->
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>org.springframework.boot</groupId>-->
+<!--                        <artifactId>spring-boot-autoconfigure</artifactId>-->
+<!--                    </exclusion>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>org.springframework.boot</groupId>-->
+<!--                        <artifactId>spring-boot-configuration-processor</artifactId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.squareup.okhttp3</groupId>-->
+<!--                <artifactId>okhttp</artifactId>-->
+<!--                <version>${okhttp3.version}</version>-->
+<!--            </dependency>-->
+            <!-- 解决okhttp引用了kotlin,应用启动有警告日志问题 -->
+<!--            <dependency>-->
+<!--                <groupId>com.fasterxml.jackson.module</groupId>-->
+<!--                <artifactId>jackson-module-kotlin</artifactId>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <!--加载hutool-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-crypto</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!-- chatgpt -->
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-chatgpt</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-desensitization</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-elasticsearch</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeecgframework.boot3</groupId>
+                <artifactId>jeecg-boot-starter-excel</artifactId>
+                <version>${jeecgboot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

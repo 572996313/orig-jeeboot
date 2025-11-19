@@ -29,7 +29,7 @@ import org.jeecg.common.system.vo.SysUserCacheInfo;
 import org.jeecg.common.util.DateUtils;
 import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.oConvertUtils;
-import org.jeecg.system.util.JeecgDataAutorUtils;
+import org.jeecg.JeecgDataAutorUtils;
 
 /**
  * @Author Scott

@@ -4,33 +4,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.jeecgframework.boot3</groupId>
-        <artifactId>jeecg-boot-parent</artifactId>
+        <artifactId>jeecg-boot-base</artifactId>
         <version>3.8.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jeecg-boot-base-bundle</artifactId>
+    <artifactId>jeecg-boot-base-tools</artifactId>
 
     <dependencies>
-        <!--jeecg-tools-->
-        <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-persistence</artifactId>
-            <version>${jeecgboot.version}</version>
-        </dependency>
 
         <dependency>
-            <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-tools</artifactId>
-            <version>${jeecgboot.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>
-            <artifactId>jeecg-boot-base-web</artifactId>
-            <version>${jeecgboot.version}</version>
+            <artifactId>jeecg-boot-base-core</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>codegenerate</artifactId>
+        </dependency>
 
     </dependencies>
 

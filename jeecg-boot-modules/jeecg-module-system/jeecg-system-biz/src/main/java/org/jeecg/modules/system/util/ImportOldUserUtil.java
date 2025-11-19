@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.util.ImportExcelUtil;
+import org.jeecg.common.excel.ImportExcelUtil;
 import org.jeecg.common.util.PasswordUtil;
 import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.oConvertUtils;
