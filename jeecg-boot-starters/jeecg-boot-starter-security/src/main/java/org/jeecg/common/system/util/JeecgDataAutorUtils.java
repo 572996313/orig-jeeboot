@@ -1,4 +1,4 @@
-package org.jeecg;
+package org.jeecg.common.system.util;
 
 import org.jeecg.common.system.vo.SysPermissionDataRuleModel;
 import org.jeecg.common.system.vo.SysUserCacheInfo;
