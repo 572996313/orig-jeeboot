@@ -16,6 +16,10 @@
         <module>jeecg-system-api</module>
         <module>jeecg-system-biz</module>
         <module>jeecg-system-start</module>
+        <module>jeecg-system-base-api</module>
+        <module>jeecg-system-base-biz</module>
+        <module>jeecg-system-iam-api</module>
+        <module>jeecg-system-iam-biz</module>
     </modules>
 
 </project>

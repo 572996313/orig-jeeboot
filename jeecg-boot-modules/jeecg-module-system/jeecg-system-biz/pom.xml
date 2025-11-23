@@ -16,6 +16,19 @@
 
         <dependency>
             <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-system-iam-api</artifactId>
+            <version>3.8.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-system-base-api</artifactId>
+            <version>3.8.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
             <artifactId>jeecg-system-local-api</artifactId>
         </dependency>
 
@@ -74,6 +87,12 @@
                     <artifactId>jsqlparser</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-system-iam-biz</artifactId>
+            <version>3.8.3</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
