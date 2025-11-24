@@ -16,6 +16,7 @@
     <modules>
         <module>jeecg-boot-base-api</module>
         <module>jeecg-boot-base-bundle</module>
+        <module>jeecg-boot-common</module>
 <!--        <module>jeecg-boot-base-constants</module>-->
         <module>jeecg-boot-base-core</module>
         <module>jeecg-boot-base-web</module>
