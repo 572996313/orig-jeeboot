@@ -10,7 +10,6 @@ import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.system.query.QueryRuleEnum;
-import org.jeecg.common.system.util.CommonUtils;
 import org.jeecg.common.util.CommonUtils1116;
 import org.jeecg.common.util.oConvertUtils;
 

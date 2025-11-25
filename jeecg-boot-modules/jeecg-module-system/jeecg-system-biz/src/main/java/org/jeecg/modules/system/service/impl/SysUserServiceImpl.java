@@ -32,7 +32,7 @@ import org.jeecg.common.annotation.SensitiveEncode;
 import org.jeecg.common.excel.ImportExcelUtil;
 import org.jeecg.common.exception.JeecgBootBizTipException;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils;
 import org.jeecg.common.system.util.FillRuleUtil;
 import org.jeecg.common.util.TokenUtils;
 import org.jeecg.common.system.vo.LoginUser;

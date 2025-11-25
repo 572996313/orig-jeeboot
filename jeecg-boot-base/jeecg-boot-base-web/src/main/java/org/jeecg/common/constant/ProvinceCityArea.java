@@ -2,7 +2,7 @@ package org.jeecg.common.constant;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
-import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.File;

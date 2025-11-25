@@ -1,10 +1,10 @@
 package org.jeecg.common.util.security;
 
-import cn.hutool.core.util.StrUtil;
-import io.micrometer.common.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.exception.JeecgSqlInjectionException;
 import org.jeecg.common.util.SqlInjectionUtil;
+import org.jeecg.common.util.oConvertUtils;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -59,7 +59,7 @@ public abstract class AbstractQueryBlackListHandler {
         } catch (Exception e) {
             log.warn("校验sql语句，解析报错：{}",e.getMessage());
         }
-        
+
         if(list==null){
             return true;
         }
@@ -87,7 +87,7 @@ public abstract class AbstractQueryBlackListHandler {
             }
             // 判断是否调用了黑名单数据库
             String dbName = table.getDbName();
-            if (StrUtil.isNotEmpty(dbName)) {
+            if (oConvertUtils.isNotEmpty(dbName)) {
                 dbName = dbName.toLowerCase().trim();
                 if (xssTableSet.contains(dbName)) {
                     flag = false;
@@ -125,7 +125,7 @@ public abstract class AbstractQueryBlackListHandler {
                     flag = false;
                     log.warn("sql黑名单校验，字段名【"+name+"】包含特殊字符");
                     break;
-                } 
+                }
             }
         }
         return flag;
@@ -143,7 +143,7 @@ public abstract class AbstractQueryBlackListHandler {
         }
         return false;
     }
-    
+
 
     /**
      * 查询的表的信息

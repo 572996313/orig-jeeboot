@@ -7,7 +7,7 @@ import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.filter.SsrfFileTypeFilter;
-import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils;
 import org.jeecg.common.util.OSSCommonUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.beans.factory.annotation.Value;

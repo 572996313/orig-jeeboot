@@ -2,6 +2,7 @@ package org.jeecg.common.system.util;
 
 import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.api.vo.Result;
+import org.jeecg.common.util.RestUtil;
 import org.jeecg.common.util.SpringContextUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.http.HttpHeaders;

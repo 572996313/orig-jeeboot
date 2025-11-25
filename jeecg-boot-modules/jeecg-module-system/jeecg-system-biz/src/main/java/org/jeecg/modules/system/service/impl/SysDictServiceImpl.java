@@ -25,7 +25,7 @@ import org.jeecg.common.util.SqlInjectionUtil;
 //import org.jeecg.common.util.dynamic.db.DbTypeUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.config.CommonUtils;
-import org.jeecg.config.DbTypeUtils;
+import org.jeecg.common.util.dynamic.db.DbTypeUtils;
 import org.jeecg.config.mybatis.MybatisPlusSaasConfig;
 import org.jeecg.modules.system.entity.SysDict;
 import org.jeecg.modules.system.entity.SysDictItem;

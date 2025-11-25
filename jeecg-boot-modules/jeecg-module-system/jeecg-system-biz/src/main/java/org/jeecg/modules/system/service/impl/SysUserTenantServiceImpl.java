@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.jeecg.common.constant.CacheConstant;
 import org.jeecg.common.constant.SymbolConstant;
 import org.jeecg.common.exception.JeecgBootException;
-import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysTenant;
 import org.jeecg.modules.system.entity.SysUser;

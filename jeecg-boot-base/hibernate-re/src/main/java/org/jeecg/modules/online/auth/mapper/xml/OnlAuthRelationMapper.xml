@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.online.auth.mapper.OnlAuthRelationMapper">
+
+    <select id="queryDisabledButtonNameById" resultType="java.lang.String">
+        SELECT
+        ocb.BUTTON_NAME
+        FROM onl_auth_page oap
+        LEFT JOIN onl_cgform_button ocb
+        ON ocb.CGFORM_HEAD_ID = oap.cgform_id
+        AND ocb.BUTTON_CODE = oap.code
+        WHERE
+        oap.id IN
+        <foreach collection="ids" item="id" open="(" close=")" separator="," >
+            #{id}
+        </foreach>
+        AND ocb.BUTTON_STATUS = 0
+    </select>
+
+</mapper>

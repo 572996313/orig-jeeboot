@@ -3,7 +3,7 @@ package org.jeecg.modules.system.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.filter.SsrfFileTypeFilter;
-import org.jeecg.common.system.util.CommonUtils;
+import org.jeecg.common.util.CommonUtils;
 import org.jeecg.common.util.MinioUtil;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.oss.entity.OssFile;

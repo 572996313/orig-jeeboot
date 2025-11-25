@@ -7,7 +7,6 @@ import java.util.Map;
 import jakarta.annotation.Resource;
 
 import com.baomidou.mybatisplus.annotation.DbType;
-import org.jeecg.common.system.util.CommonUtils;
 import org.jeecg.common.util.CommonUtils1116;
 import org.jeecg.modules.system.entity.SysLog;
 import org.jeecg.modules.system.mapper.SysLogMapper;

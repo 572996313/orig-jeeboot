@@ -19,7 +19,7 @@ import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.common.system.util.JwtUtil;
 import org.jeecg.common.system.vo.SysPermissionDataRuleModel;
 import org.jeecg.common.util.*;
-import org.jeecg.config.common.util.ReflectHelper;
+import org.jeecg.common.util.ReflectHelper;
 import org.jeecg.common.system.util.JeecgDataAutorUtils;
 import org.jeecg.SqlConcatUtil;
 import org.springframework.util.NumberUtils;

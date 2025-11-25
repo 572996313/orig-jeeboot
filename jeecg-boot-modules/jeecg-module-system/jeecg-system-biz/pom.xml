@@ -94,6 +94,10 @@
             <version>3.8.3</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jeecgframework.boot3</groupId>
+            <artifactId>jeecg-boot-base-core</artifactId>
+        </dependency>
 
     </dependencies>
 
