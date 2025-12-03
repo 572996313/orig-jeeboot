@@ -75,7 +75,7 @@ public class OnlCgformHeadController {
     @Autowired
     private IOnlCgformEnhanceService onlCgformEnhanceService;
 
-    private static List<String> b = null;
+    private static List<String> excludeTableList = null;
 
     @Autowired
     ResourceLoader resourceLoader;
@@ -83,7 +83,7 @@ public class OnlCgformHeadController {
 
     @GetMapping({"/list"})
     @PermissionData
-    public Result<IPage<OnlCgformHead>> a(OnlCgformHead onlCgformHead, @RequestParam(name = "pageNo",defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize",defaultValue = "10") Integer pageSize, HttpServletRequest req) {
+    public Result<IPage<OnlCgformHead>> getPageList(OnlCgformHead onlCgformHead, @RequestParam(name = "pageNo",defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize",defaultValue = "10") Integer pageSize, HttpServletRequest req) {
         Result result = new Result();
         QueryWrapper queryWrapper = QueryGenerator.initQueryWrapper(onlCgformHead, req.getParameterMap());
         if (MybatisPlusSaasConfig.OPEN_SYSTEM_TENANT_CONTROL) {
@@ -107,7 +107,7 @@ public class OnlCgformHeadController {
 
     @PostMapping({"/add"})
     @RequiresPermissions({"online:form:add"})
-    public Result<OnlCgformHead> a(@RequestBody OnlCgformHead onlCgformHead) {
+    public Result<OnlCgformHead> add(@RequestBody OnlCgformHead onlCgformHead) {
         Result result = new Result();
 
         try {
@@ -128,7 +128,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<OnlCgformHead> b(@RequestBody OnlCgformHead onlCgformHead) {
+    public Result<OnlCgformHead> edit(@RequestBody OnlCgformHead onlCgformHead) {
         Result result = new Result();
         OnlCgformHead onlCgformHeadEntity = (OnlCgformHead)this.onlCgformHeadService.getById(onlCgformHead.getId());
         if (onlCgformHeadEntity == null) {
@@ -145,7 +145,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:form:delete"})
     @DeleteMapping({"/delete"})
-    public Result<?> a(@RequestParam(name = "id",required = true) String id) {
+    public Result<?> delete(@RequestParam(name = "id",required = true) String id) {
         try {
             this.onlCgformHeadService.deleteRecordAndTable(id);
         } catch (a e) {
@@ -159,7 +159,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:form:remove"})
     @DeleteMapping({"/removeRecord"})
-    public Result<?> b(@RequestParam(name = "id",required = true) String id) {
+    public Result<?> removeRecord(@RequestParam(name = "id",required = true) String id) {
         try {
             this.onlCgformHeadService.deleteRecord(id);
         } catch (a e) {
@@ -173,7 +173,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:form:deleteBatch"})
     @DeleteMapping({"/deleteBatch"})
-    public Result<OnlCgformHead> a(@RequestParam(name = "ids",required = true) String ids, @RequestParam(name = "flag") String flag) {
+    public Result<OnlCgformHead> deleteBatch(@RequestParam(name = "ids",required = true) String ids, @RequestParam(name = "flag") String flag) {
         Result result = new Result();
         if (ids != null && !"".equals(ids.trim())) {
             this.onlCgformHeadService.deleteBatch(ids, flag);
@@ -190,7 +190,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/queryById"})
-    public Result<OnlCgformHead> c(@RequestParam(name = "id",required = true) String id) {
+    public Result<OnlCgformHead> queryById(@RequestParam(name = "id",required = true) String id) {
         Result result = new Result();
         OnlCgformHead onlCgformHead = (OnlCgformHead)this.onlCgformHeadService.getById(id);
         if (onlCgformHead == null) {
@@ -204,7 +204,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/queryByTableNames"})
-    public Result<?> d(@RequestParam(name = "tableNames",required = true) String tableNames) {
+    public Result<?> queryByTableNames(@RequestParam(name = "tableNames",required = true) String tableNames) {
         LambdaQueryWrapper<OnlCgformHead> wrapper = new LambdaQueryWrapper();
         String[] arr = tableNames.split(",");
         wrapper.in(OnlCgformHead::getTableName, Arrays.asList(arr));
@@ -218,7 +218,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> a(@PathVariable("code") String code, @RequestBody OnlCgformEnhanceJs onlCgformEnhanceJs) {
+    public Result<?> saveEnhance(@PathVariable("code") String code, @RequestBody OnlCgformEnhanceJs onlCgformEnhanceJs) {
         try {
             onlCgformEnhanceJs.setCgformHeadId(code);
             this.onlCgformHeadService.saveEnhance(onlCgformEnhanceJs);
@@ -230,7 +230,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/enhanceJs/{code}"})
-    public Result<?> a(@PathVariable("code") String code, HttpServletRequest req) {
+    public Result<?> queryEnhance(@PathVariable("code") String code, HttpServletRequest req) {
         try {
             String type = req.getParameter("type");
             OnlCgformEnhanceJs obj = this.onlCgformHeadService.queryEnhance(code, type);
@@ -247,7 +247,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> b(@PathVariable("code") String code, @RequestBody OnlCgformEnhanceJs onlCgformEnhanceJs) {
+    public Result<?> editEnhance(@PathVariable("code") String code, @RequestBody OnlCgformEnhanceJs onlCgformEnhanceJs) {
         try {
             onlCgformEnhanceJs.setCgformHeadId(code);
             this.onlCgformHeadService.editEnhance(onlCgformEnhanceJs);
@@ -259,7 +259,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/enhanceButton/{formId}"})
-    public Result<?> b(@PathVariable("formId") String formId, HttpServletRequest req) {
+    public Result<?> queryButtonList(@PathVariable("formId") String formId, HttpServletRequest req) {
         try {
             List list = this.onlCgformHeadService.queryButtonList(formId);
             return list != null && list.size() != 0 ? Result.ok(list) : Result.error("查询为空");
@@ -270,7 +270,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/enhanceSql/{formId}"})
-    public Result<?> c(@PathVariable("formId") String formId, HttpServletRequest req) {
+    public Result<?> queryEnhanceSqlList(@PathVariable("formId") String formId, HttpServletRequest req) {
         List ls = this.onlCgformEnhanceService.queryEnhanceSqlList(formId);
         return Result.OK(ls);
     }
@@ -282,7 +282,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> a(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceSql onlCgformEnhanceSql) {
+    public Result<?> setCgformHeadId(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceSql onlCgformEnhanceSql) {
         try {
             onlCgformEnhanceSql.setCgformHeadId(formId);
             if (this.onlCgformEnhanceService.checkOnlyEnhance(onlCgformEnhanceSql)) {
@@ -304,7 +304,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> b(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceSql onlCgformEnhanceSql) {
+    public Result<?> updateEnhanceSql(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceSql onlCgformEnhanceSql) {
         try {
             onlCgformEnhanceSql.setCgformHeadId(formId);
             if (this.onlCgformEnhanceService.checkOnlyEnhance(onlCgformEnhanceSql)) {
@@ -326,7 +326,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> e(@RequestParam(name = "id",required = true) String id) {
+    public Result<?> deleteEnhanceSql(@RequestParam(name = "id",required = true) String id) {
         try {
             this.onlCgformEnhanceService.deleteEnhanceSql(id);
             return Result.ok("删除成功");
@@ -343,7 +343,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> f(@RequestParam(name = "ids",required = true) String ids) {
+    public Result<?> deleteBatchEnhanceSql(@RequestParam(name = "ids",required = true) String ids) {
         try {
             List idList = Arrays.asList(ids.split(","));
             this.onlCgformEnhanceService.deleteBatchEnhanceSql(idList);
@@ -355,7 +355,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/enhanceJava/{formId}"})
-    public Result<?> a(@PathVariable("formId") String formId, OnlCgformEnhanceJava onlCgformEnhanceJava) {
+    public Result<?> queryEnhanceJavaList(@PathVariable("formId") String formId, OnlCgformEnhanceJava onlCgformEnhanceJava) {
         List ls = this.onlCgformEnhanceService.queryEnhanceJavaList(formId);
         return Result.OK(ls);
     }
@@ -367,7 +367,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> b(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceJava onlCgformEnhanceJava) {
+    public Result<?> saveEnhanceJava(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceJava onlCgformEnhanceJava) {
         try {
             if ("1".equals(onlCgformEnhanceJava.getActiveStatus()) && !org.jeecg.modules.online.cgform.dird.d.a(onlCgformEnhanceJava)) {
                 return Result.error("类实例化失败，请检查!");
@@ -398,7 +398,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> c(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceJava onlCgformEnhanceJava) {
+    public Result<?> updateEnhanceJava(@PathVariable("formId") String formId, @RequestBody OnlCgformEnhanceJava onlCgformEnhanceJava) {
         try {
             if ("1".equals(onlCgformEnhanceJava.getActiveStatus()) && !org.jeecg.modules.online.cgform.dird.d.a(onlCgformEnhanceJava)) {
                 return Result.error("类实例化失败，请检查!");
@@ -428,7 +428,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> g(@RequestParam(name = "id",required = true) String id) {
+    public Result<?> deleteEnhanceJava(@RequestParam(name = "id",required = true) String id) {
         try {
             this.onlCgformEnhanceService.deleteEnhanceJava(id);
             return Result.ok("删除成功");
@@ -444,7 +444,7 @@ public class OnlCgformHeadController {
         allEntries = true,
         beforeInvocation = true
     )
-    public Result<?> h(@RequestParam(name = "ids",required = true) String ids) {
+    public Result<?> deleteBatchEnhanceJava(@RequestParam(name = "ids",required = true) String ids) {
         try {
             List idList = Arrays.asList(ids.split(","));
             this.onlCgformEnhanceService.deleteBatchEnhanceJava(idList);
@@ -457,7 +457,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:form:queryTables"})
     @GetMapping({"/queryTables"})
-    public Result<?> a(@RequestParam(name = "tableName",required = false) String tableName, @RequestParam(name = "pageNo",defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize",defaultValue = "10") Integer pageSize, HttpServletRequest req) {
+    public Result<?> queryOnlinetables(@RequestParam(name = "tableName",required = false) String tableName, @RequestParam(name = "pageNo",defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize",defaultValue = "10") Integer pageSize, HttpServletRequest req) {
         String username = JwtUtil.getUserNameByToken(req);
         new ArrayList();
 
@@ -472,12 +472,12 @@ public class OnlCgformHeadController {
         org.jeecg.modules.online.cgform.dird.d.b(list);
         list = org.jeecg.modules.online.cgform.dird.d.f(list);
         List onlineTables = this.onlCgformHeadService.queryOnlinetables();
-        this.b();
+        this.initExcludeTable();
         list.removeAll(onlineTables);
         List result = new ArrayList();
 
         for(String str : list) {
-            if (!this.l(str)) {
+            if (!this.pp(str)) {
                 Map map = new HashMap(5);
                 map.put("id", str);
                 result.add(map);
@@ -489,7 +489,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:form:importTable"})
     @PostMapping({"/transTables/{tbnames}"})
-    public Result<?> d(@PathVariable("tbnames") String tbnames, HttpServletRequest req) {
+    public Result<?> saveDbTable2Online(@PathVariable("tbnames") String tbnames, HttpServletRequest req) {
         String username = JwtUtil.getUserNameByToken(req);
         if (oConvertUtils.isEmpty(tbnames)) {
             return Result.error("未识别的表名信息");
@@ -530,7 +530,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:codeGenerate:projectPath"})
     @GetMapping({"/rootFile"})
-    public Result<?> a() {
+    public Result<?> rootFile() {
         JSONArray array = new JSONArray();
         File[] roots = File.listRoots();
 
@@ -553,7 +553,7 @@ public class OnlCgformHeadController {
 
     @RequiresPermissions({"online:codeGenerate:projectPath"})
     @GetMapping({"/fileTree"})
-    public Result<?> i(@RequestParam(name = "parentPath",required = true) String parentPath) {
+    public Result<?> fileTree(@RequestParam(name = "parentPath",required = true) String parentPath) {
         JSONArray array = new JSONArray();
         File file = new File(parentPath);
         File[] roots = file.listFiles();
@@ -576,7 +576,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/tableInfo"})
-    public Result<?> j(@RequestParam(name = "code",required = true) String code) {
+    public Result<?> tableInfo(@RequestParam(name = "code",required = true) String code) {
         OnlCgformHead onlCgformHead = (OnlCgformHead)this.onlCgformHeadService.getById(code);
         if (onlCgformHead == null) {
             return Result.error("未找到对应实体");
@@ -628,7 +628,7 @@ public class OnlCgformHeadController {
     }
 
     @PostMapping({"/copyOnline"})
-    public Result<?> k(@RequestParam(name = "code",required = true) String id) {
+    public Result<?> copyOnline(@RequestParam(name = "code",required = true) String id) {
         try {
             OnlCgformHead physicTable = (OnlCgformHead)this.onlCgformHeadService.getById(id);
             if (physicTable == null) {
@@ -644,7 +644,7 @@ public class OnlCgformHeadController {
     }
 
     @GetMapping({"/copyOnlineTable/{id}"})
-    public Result<?> b(@PathVariable("id") String id, @RequestParam(name = "tableName") String tableName) {
+    public Result<?> copyOnlineTable(@PathVariable("id") String id, @RequestParam(name = "tableName") String tableName) {
         try {
             this.onlCgformHeadService.copyOnlineTable(id, tableName);
         } catch (JeecgBootException e) {
@@ -657,9 +657,9 @@ public class OnlCgformHeadController {
         return Result.ok();
     }
 
-    private boolean l(String tableName) {
-        if (b != null) {
-            for(String pre : b) {
+    private boolean pp(String tableName) {
+        if (excludeTableList != null) {
+            for(String pre : excludeTableList) {
                 if (tableName.startsWith(pre) || tableName.startsWith(pre.toUpperCase())) {
                     return true;
                 }
@@ -669,13 +669,13 @@ public class OnlCgformHeadController {
         return false;
     }
 
-    private void b() {
-        if (b == null) {
+    private void initExcludeTable() {
+        if (excludeTableList == null) {
             ResourceBundle generateConfigResourceBundle = org.jeecg.modules.online.config.dirc.d.d("jeecg/jeecg_config");
             if (generateConfigResourceBundle != null && generateConfigResourceBundle.containsKey("exclude_table")) {
                 String excludeTable = generateConfigResourceBundle.getString("exclude_table");
                 if (excludeTable != null) {
-                    b = Arrays.asList(excludeTable.split(","));
+                    excludeTableList = Arrays.asList(excludeTable.split(","));
                     return;
                 }
             }
@@ -689,7 +689,7 @@ public class OnlCgformHeadController {
                 properties.load(is);
                 String excludeTable = properties.getProperty("exclude_table");
                 if (excludeTable != null) {
-                    b = Arrays.asList(excludeTable.split(","));
+                    excludeTableList = Arrays.asList(excludeTable.split(","));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
