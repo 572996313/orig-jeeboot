@@ -65,16 +65,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController("onlCgformHeadController")
 @RequestMapping({"/online/cgform/head"})
-public class d {
+public class OnlCgformHeadController {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(d.class);
+    private static final Logger log = LoggerFactory.getLogger(OnlCgformHeadController.class);
     @Autowired
     private IOnlCgformHeadService onlCgformHeadService;
     @Autowired
     private IOnlCgformFieldService onlCgformFieldService;
     @Autowired
     private IOnlCgformEnhanceService onlCgformEnhanceService;
+
     private static List<String> b = null;
+
     @Autowired
     ResourceLoader resourceLoader;
     private static String c;
@@ -112,7 +114,7 @@ public class d {
             this.onlCgformHeadService.save(onlCgformHead);
             result.success("添加成功！");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             result.error500("操作失败");
         }
 
@@ -222,7 +224,7 @@ public class d {
             this.onlCgformHeadService.saveEnhance(onlCgformEnhanceJs);
             return Result.ok("保存成功!");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("保存失败!");
         }
     }
@@ -234,7 +236,7 @@ public class d {
             OnlCgformEnhanceJs obj = this.onlCgformHeadService.queryEnhance(code, type);
             return obj == null ? Result.error("查询为空") : Result.ok(obj);
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("查询失败!");
         }
     }
@@ -251,7 +253,7 @@ public class d {
             this.onlCgformHeadService.editEnhance(onlCgformEnhanceJs);
             return Result.ok("保存成功!");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("保存失败!");
         }
     }
@@ -262,7 +264,7 @@ public class d {
             List list = this.onlCgformHeadService.queryButtonList(formId);
             return list != null && list.size() != 0 ? Result.ok(list) : Result.error("查询为空");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("查询失败!");
         }
     }
@@ -290,7 +292,7 @@ public class d {
                 return Result.error("保存失败,该按钮已存在增强配置!");
             }
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("保存失败!");
         }
     }
@@ -312,7 +314,7 @@ public class d {
                 return Result.error("保存失败,该按钮已存在增强配置!");
             }
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("保存失败!");
         }
     }
@@ -329,7 +331,7 @@ public class d {
             this.onlCgformEnhanceService.deleteEnhanceSql(id);
             return Result.ok("删除成功");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("删除失败!");
         }
     }
@@ -347,7 +349,7 @@ public class d {
             this.onlCgformEnhanceService.deleteBatchEnhanceSql(idList);
             return Result.ok("删除成功");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("删除失败!");
         }
     }
@@ -384,7 +386,7 @@ public class d {
                 }
             }
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("保存失败!");
         }
     }
@@ -415,7 +417,7 @@ public class d {
                 }
             }
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("保存失败!");
         }
     }
@@ -431,7 +433,7 @@ public class d {
             this.onlCgformEnhanceService.deleteEnhanceJava(id);
             return Result.ok("删除成功");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("删除失败!");
         }
     }
@@ -448,7 +450,7 @@ public class d {
             this.onlCgformEnhanceService.deleteBatchEnhanceJava(idList);
             return Result.ok("删除成功");
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error("删除失败!");
         }
     }
@@ -463,7 +465,7 @@ public class d {
         try {
             list = DbReadTableUtil.readAllTableNames();
         } catch (SQLException e1) {
-            a.error(e1.getMessage(), e1);
+            log.error(e1.getMessage(), e1);
             return Result.error("同步失败，未获取数据库表信息");
         }
 
@@ -504,7 +506,7 @@ public class d {
                 if (oConvertUtils.isNotEmpty(tbName)) {
                     Long count = this.onlCgformHeadService.count((Wrapper)(new LambdaQueryWrapper<OnlCgformHead>()).eq(OnlCgformHead::getTableName, tbName));
                     if (count <= 0L) {
-                        a.info("[IP] [online数据库导入表]   --表名：" + tbName);
+                        log.info("[IP] [online数据库导入表]   --表名：" + tbName);
 
                         try {
                             this.onlCgformHeadService.saveDbTable2Online(tbName);
@@ -648,7 +650,7 @@ public class d {
         } catch (JeecgBootException e) {
             return Result.error(e.getMessage());
         } catch (Exception e) {
-            a.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             return Result.error(e.getMessage());
         }
 
