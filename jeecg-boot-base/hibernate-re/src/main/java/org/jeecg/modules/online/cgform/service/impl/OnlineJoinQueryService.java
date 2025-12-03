@@ -54,9 +54,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 @Service("onlineJoinQueryService")
-public class i implements IOnlineJoinQueryService {
+public class OnlineJoinQueryService implements IOnlineJoinQueryService {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(i.class);
+    private static final Logger a = LoggerFactory.getLogger(OnlineJoinQueryService.class);
     @Autowired
     IOnlCgformFieldService onlCgformFieldService;
     @Autowired

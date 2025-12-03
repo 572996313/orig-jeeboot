@@ -17,7 +17,7 @@ import org.jeecg.modules.online.cgform.service.IOnlCgformButtonService;
 import org.springframework.stereotype.Service;
 
 @Service("onlCgformButtonServiceImpl")
-public class a extends ServiceImpl<OnlCgformButtonMapper, OnlCgformButton> implements IOnlCgformButtonService {
+public class OnlCgformButtonServiceImpl extends ServiceImpl<OnlCgformButtonMapper, OnlCgformButton> implements IOnlCgformButtonService {
     public void saveButton(OnlCgformButton onlCgformButton) {
         LambdaQueryWrapper<OnlCgformButton> query = (LambdaQueryWrapper<OnlCgformButton>)((LambdaQueryWrapper<OnlCgformButton>)(new LambdaQueryWrapper<OnlCgformButton>()).eq(OnlCgformButton::getButtonCode, onlCgformButton.getButtonCode())).eq(OnlCgformButton::getCgformHeadId, onlCgformButton.getCgformHeadId());
         Long count = ((OnlCgformButtonMapper)this.baseMapper).selectCount(query);

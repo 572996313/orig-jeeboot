@@ -51,9 +51,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 @Service("onlineCgformAiServiceImpl")
-public class h implements IOnlCgformAiService {
+public class OnlineCgformAiServiceImpl implements IOnlCgformAiService {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(h.class);
+    private static final Logger a = LoggerFactory.getLogger(OnlineCgformAiServiceImpl.class);
     @Autowired
     AiChatService aiChatService;
     @Autowired

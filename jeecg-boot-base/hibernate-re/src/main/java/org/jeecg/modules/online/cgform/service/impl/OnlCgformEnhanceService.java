@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("onlCgformEnhanceService")
-public class b implements IOnlCgformEnhanceService {
+public class OnlCgformEnhanceService implements IOnlCgformEnhanceService {
     @Autowired
     private OnlCgformEnhanceJavaMapper onlCgformEnhanceJavaMapper;
     @Autowired

@@ -49,9 +49,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 @Service("onlineService")
-public class j implements IOnlineService {
+public class OnlineService implements IOnlineService {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(j.class);
+    private static final Logger a = LoggerFactory.getLogger(OnlineService.class);
     @Autowired
     private IOnlCgformFieldService onlCgformFieldService;
     @Autowired

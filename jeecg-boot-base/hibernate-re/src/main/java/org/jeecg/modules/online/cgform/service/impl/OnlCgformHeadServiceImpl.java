@@ -88,9 +88,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 @Service("onlCgformHeadServiceImpl")
-public class d extends ServiceImpl<OnlCgformHeadMapper, OnlCgformHead> implements IOnlCgformHeadService {
+public class OnlCgformHeadServiceImpl extends ServiceImpl<OnlCgformHeadMapper, OnlCgformHead> implements IOnlCgformHeadService {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(d.class);
+    private static final Logger a = LoggerFactory.getLogger(OnlCgformHeadServiceImpl.class);
     @Autowired
     private IOnlCgformFieldService fieldService;
     @Autowired

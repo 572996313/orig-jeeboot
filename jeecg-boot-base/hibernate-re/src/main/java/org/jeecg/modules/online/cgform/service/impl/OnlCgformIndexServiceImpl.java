@@ -21,9 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("onlCgformIndexServiceImpl")
-public class e extends ServiceImpl<OnlCgformIndexMapper, OnlCgformIndex> implements IOnlCgformIndexService {
+public class OnlCgformIndexServiceImpl extends ServiceImpl<OnlCgformIndexMapper, OnlCgformIndex> implements IOnlCgformIndexService {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(e.class);
+    private static final Logger a = LoggerFactory.getLogger(OnlCgformIndexServiceImpl.class);
     @Autowired
     private OnlCgformHeadMapper onlCgformHeadMapper;
 

@@ -33,9 +33,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("onlCgformSqlServiceImpl")
-public class f implements IOnlCgformSqlService {
+public class OnlCgformSqlServiceImpl implements IOnlCgformSqlService {
     @Generated
-    private static final Logger a = LoggerFactory.getLogger(f.class);
+    private static final Logger a = LoggerFactory.getLogger(OnlCgformSqlServiceImpl.class);
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
     @Autowired

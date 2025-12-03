@@ -79,7 +79,7 @@ public class OnlCgformHeadController {
 
     @Autowired
     ResourceLoader resourceLoader;
-    private static String c;
+    private static String tbnamesDef;
 
     @GetMapping({"/list"})
     @PermissionData
@@ -493,10 +493,10 @@ public class OnlCgformHeadController {
         String username = JwtUtil.getUserNameByToken(req);
         if (oConvertUtils.isEmpty(tbnames)) {
             return Result.error("未识别的表名信息");
-        } else if (c != null && c.equals(tbnames)) {
+        } else if (tbnamesDef != null && tbnamesDef.equals(tbnames)) {
             return Result.error("不允许重复生成!");
         } else {
-            c = tbnames;
+            tbnamesDef = tbnames;
             StringBuilder tips = new StringBuilder();
             boolean hasError = false;
             String[] arr = tbnames.split(",");
@@ -519,7 +519,7 @@ public class OnlCgformHeadController {
                 }
             }
 
-            c = null;
+            tbnamesDef = null;
             if (hasError) {
                 return Result.error("导入完成，但有错误：<br>" + tips);
             } else {
